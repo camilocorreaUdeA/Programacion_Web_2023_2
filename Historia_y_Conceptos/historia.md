@@ -38,6 +38,9 @@ Sir Tim Berners-Lee
 <li>En 2008 se introdujo el estándar HTML5, que se usa en la actualidad para el desarrollo de sitios web. Aparece el navegador Google Chrome que al día de hoy es el navegador más popular del mundo.</li>
 </ul>
 
+![image](https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/b0e93055-d0bf-4e8f-a814-707e958a49c4)
+![image](https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/f4899062-4418-4d66-a3b2-e44b1acf0d0b)
+
 
 
 
