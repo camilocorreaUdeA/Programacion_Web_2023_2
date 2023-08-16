@@ -527,3 +527,19 @@ https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a
   ser de forma global para todos los repositorios agregando la bandera --global. 
   Debe utilizarse en conjunto con el comando anterior.</p>
 
+## Si quieres aprender más visita estos enlaces:
+
+<p>https://product.hubspot.com/blog/git-and-github-tutorial-for-beginners</p>
+<p>https://git-scm.com/docs</p>
+<p>https://www.freecodecamp.org/news/git-and-github-for-beginners/</p>
+<p>https://www.datacamp.com/blog/all-about-git</p>
+<p>https://blog.hubspot.com/website/what-is-github-used-for</p>
+<p>https://phoenixnap.com/kb/how-to-use-git</p>
+<p>https://developer.ibm.com/tutorials/d-learn-workings-git/</p>
+<p>https://www.kodeco.com/books/advanced-git/v1.0/chapters/1-how-does-git-actually-work</p>
+<p>https://luisiblogdeinformatica.com/git-github-y-vcs/</p>
+<p>https://experienceleague.adobe.com/docs/contributor/contributor-guide/setup/github-signup.html?lang=es</p>
+<p>https://git-scm.com/book/en/v2/Getting-Started-What-is-Git%3F</p>
+<p>https://missing.csail.mit.edu/2020/version-control/</p>
+<p>https://eagain.net/articles/git-for-computer-scientists/</p>
+<p>https://xosh.org/explain-git-in-simple-words/</p>
