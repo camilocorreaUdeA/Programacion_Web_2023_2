@@ -16,11 +16,11 @@
 14. Haga commit de esos cambios que acaba de realizar, agregue un mensaje que describa lo que hizo.
 15. Agregue un nuevo archivo <i>index.html</i> con el contenido disponible [aquí](https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/blob/main/Historia_y_Conceptos/practica/index_html.txt)
 16. Haga commit del paso anterior
-17. Reemplace el contenido de la línea 7 con lo siguiente:
+17. Reemplace el contenido de la línea 7 con lo siguiente (en el archivo aboutme.html):
     ```html
      <link rel="stylesheet" href="styles/aboutme.css">
     ```
-19. Luego de la línea 35 agregue las siguientes 5 líneas
+19. Luego de la línea 35 agregue las siguientes 5 líneas (en el archivo aboutme.html)
     ```html
      <ul class="social">
         <li><a class="css-is-deranged" href="_TU_DIR_DE_GITHUB_">GitHub</a></li>
