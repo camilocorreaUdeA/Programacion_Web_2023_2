@@ -264,63 +264,92 @@ paréntesis angulares (<>). Esta etiqueta marca el lugar a partir del cual el el
   <p>Martin Luther King Jr. dijo: <q>Yo tuve un sueño</q></p>
 </body>
 ```
-<p>q: Este elemento permite definir una citación corta, el navegador agrega doble comillas para delimitar el texto citado.</p>
+<p>blockquote: Se usa para incluir citas textuales de texto obtenido de una fuente externa. Se utiliza el atributo <i>cite</i> para referenciar la fuente original del texto. El efecto en el texto es que la cita se ubica en un nuevo párrafo con un indentado que la diferencia del texto regular.</p>
 
 ```html
 <body>
-  <p>Martin Luther King Jr. dijo: <q>Yo tuve un sueño</q></p>
+  <blockquote cite="http://www.worldwildlife.org/who/index.html">
+    For 50 years, WWF has been protecting the future of nature. The world's leading conservation organization, WWF works in 100 countries and is supported by 1.2 million 
+    members in the United States and close to 5 million globally.
+  </blockquote>
 </body>
 ```
-<p>q: Este elemento permite definir una citación corta, el navegador agrega doble comillas para delimitar el texto citado.</p>
+<p>s: Con esta etiqueta se indica que un texto ya no es correcto o relevante y está propenso a ser editado para su corrección. El efecto en el texto es el de cruzar una línea horizontal en el texto.</p>
 
 ```html
 <body>
-  <p>Martin Luther King Jr. dijo: <q>Yo tuve un sueño</q></p>
+  <p>Esta <s>palbra</s> debe ser corregida</p>
 </body>
 ```
-<p>q: Este elemento permite definir una citación corta, el navegador agrega doble comillas para delimitar el texto citado.</p>
+<p>u: Se utiliza para subrayar un texto.</p>
 
 ```html
 <body>
-  <p>Martin Luther King Jr. dijo: <q>Yo tuve un sueño</q></p>
+  <p>Esta <u>palabra</u> está subrayada</p>
 </body>
 ```
-<p>q: Este elemento permite definir una citación corta, el navegador agrega doble comillas para delimitar el texto citado.</p>
+<p>br: Es una etiqueta vacía que permite insertar un salto de línea en el texto.</p>
 
 ```html
 <body>
-  <p>Martin Luther King Jr. dijo: <q>Yo tuve un sueño</q></p>
+  <p>Un salto de línea <br> otro <br> y otro más <br></p>
 </body>
 ```
-<p>q: Este elemento permite definir una citación corta, el navegador agrega doble comillas para delimitar el texto citado.</p>
+<p>hr: Permite separar secciones independientes o no relacionadas de un texto. Por ejemplo, un cambio de tema entre dos párrafos consecutivos. El efecto visual es el de una línea horizontal que separa los párrafos.</p>
 
 ```html
 <body>
-  <p>Martin Luther King Jr. dijo: <q>Yo tuve un sueño</q></p>
+  <p>Aquí se está hablando de un tema</p>
+  <hr>
+  <p>Pero aquí de otro completamente distinto</p>
 </body>
 ```
-<p>q: Este elemento permite definir una citación corta, el navegador agrega doble comillas para delimitar el texto citado.</p>
+<p>sub: Este elemento permite insertar subíndices en el texto.</p>
 
 ```html
 <body>
-  <p>Martin Luther King Jr. dijo: <q>Yo tuve un sueño</q></p>
+  <p>La formula química del agua es H<sub>2</sub>O</p>
 </body>
 ```
-<p>q: Este elemento permite definir una citación corta, el navegador agrega doble comillas para delimitar el texto citado.</p>
+<p>sup: Y este permite insertar superíndices.</p>
 
 ```html
 <body>
-  <p>Martin Luther King Jr. dijo: <q>Yo tuve un sueño</q></p>
+  <p>2<sup>10</sup>=1024</p>
 </body>
 ```
-<p>q: Este elemento permite definir una citación corta, el navegador agrega doble comillas para delimitar el texto citado.</p>
+<p>code: Este elemento indica que su contenido hace parte de un código escrito con un lenguaje de programación. El efecto visual es el de un cambio en la fuente para distinguir el código del texto regular.</p>
 
 ```html
 <body>
-  <p>Martin Luther King Jr. dijo: <q>Yo tuve un sueño</q></p>
+  <p>La etiqueta HTML <code>button</code> define un botón en el que puede hacerse clic.</p>
 </body>
 ```
+<p>Listas</p>
+<p>HTML tiene elementos para construir listas en las que no importa el orden y también listas numeradas en las que el orden es relevante.</p>
 
+<p>El elemento <code>&lt;ul&gt;</code> (unordered list) en combinación con el elemento <code>&lt;li&gt;</code> (list item) sirve para definir listas sin orden cuyos elementos son señalizados por viñetas o puntos por el navegador.</p>
+
+```html
+<body>
+  <ul>
+    <li>Elemento de la lista no ordenada</li>
+    <li>Elemento de la lista no ordenada</li>
+    <li>Elemento de la lista no ordenada</li>
+  </ul>
+</body>
+```  
+<p>Por su parte las listas en las que el orden de los elementos de la lista es importante y por tanto un número que indica el orden se construyen con una combinación de los elementos <code>&lt;ol&gt;</code> (ordered list) y <code>&lt;li&gt;</code> (list item).</p>
+
+```html
+<body>
+  <ol>
+    <li>Elemento 1 de la lista ordenada</li>
+    <li>Elemento 2 de la lista ordenada</li>
+    <li>Elemento 3 de la lista ordenada</li>
+  </ol>
+</body>
+```  
 
 
 
