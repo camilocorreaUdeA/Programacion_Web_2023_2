@@ -112,11 +112,215 @@ paréntesis angulares (<>). Esta etiqueta marca el lugar a partir del cual el el
 
 <p>Comentarios en un documento HTML</p>
 
-<p>Para agregar comentarios se utilizan los marcadores <!-- y --> para delimitar en su interior el comentario.</p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
+<p>Para agregar comentarios se utilizan los marcadores <code>&lt;!--</code> y <code>--&gt;</code> para delimitar en su interior el comentario.</p>
+
+```html
+<p>Esto no es un comentario</p>
+<!-- esto es un comentario en html -->
+```
+<p>Manejo de espacios y caracteres especiales en HTML</p>
+<p>Los espacios no son tenidos en cuenta y para incluir caracteres especiales se deben utilizar referencias conocidas como entidades que empiezan con un ampersand (&) seguido de un código en texto y terminadas con punto y coma (;). En este enlace puede ver la lista de entidades usadas en HTML: https://html.spec.whatwg.org/multipage/named-characters.html#named-character-references</p>
+
+### ¿Y qué se pone en el elemento <i>head</i> de un documento html?
+<p>Como ya se había mencionado, el contenido del elemento head no se despliega en la pantalla y por el contrario este contenido sirve para informar acerca del documento a través de metadatos.</p>
+
+<p>Dependiendo del sitio web el contenido del head puede ser muy extenso o no, a continuación se muestran los elementos que se pueden encontrar con mayor regularidad en esta sección del documento HTML.</p>
+
+<p><b>Título</b>: El elemento <code>&lt;title&gt;</code> del head se usa para dar un título a la pestaña del navegador donde se despliega la página web. También se utiliza este título cuando se agrega la página a la sección de favoritos del navegador.</p>
+
+<p><b>Metadatos</b>: Los metadatos son datos que describen o detallan a otros datos, en esta caso a una página web. Para especificar metadatos se utiliza el elemento vacío <code>&lt;meta&gt;</code>, recuerde que un elemento vacío no tiene contenido, por tanto solo tiene etiqueta de apertura y no tiene contenido ni etiqueta de cierre.</p>
+
+<p>Para especificar la información disponible en los metadatos se utilizan atributos en el elemento <code>&lt;meta&gt;</code>.</p>
+
+<p>Por ejemplo para especificar el conjunto de caracteres para codificar el texto en la página se utiliza el atributo <i>charset</i> y el valor en este caso es el conjunto de caracteres que la página va a utilizar. Por lo general el valor que se da es <i>utf-8</i> que es un conjunto de caracteres universal que tiene casi todos los caracteres de todos los idiomas de la humanidad.</p>
+
+```html
+<head>
+  <meta charset="utf-8" />
+</head>
+```
+<p>El elemento <code>&lt;meta&gt;</code> también utiliza los atributos <i>name</i> y <i>content</i> para definir otros metadatos, por ejemplo si quiere informar acerca del autor del documento HTML:</p>
+
+```html
+<head>
+  <meta name="author" content="Universidad de Antioquia" />
+</head>
+```
+<p>O si quiere agregar una descripción del contenido de la página web para que salga en los motores de búsqueda en Internet:</p>
+
+```html
+<head>
+  <meta
+     name="description"
+     content="Sitio web de la Universidad de Antioquia. Alma Mater de los antioqueños" />
+</head>
+```
+<p>Iconos del sitio web: En el head también se puede agregar una referencia a un icono que se puede usar al igual que el título en la pestaña del navegador y en los favoritos o marcadores del navegador. Para este propósito se utiliza el elemento vacío <code>&lt;link /&gt;</code> con los atributos <i>rel</i>, <i>href</i> y <i>type</i>.</p>
+
+```html
+<head>
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+</head>
+```
+<p>Hojas de estilo CSS y scripts de Javascript: Las hojas de estilo permiten mejorar la apariencia y presentación del sitio web, mientras que los scripts proporcionan interactividad y funcionalidad dinámica. Para referenciar una hoja de estilo se utiliza el elemento <code>&lt;link /&gt;</code> y sus atributos de forma similar a como se acaba de ver para el icono del sitio web:</p>
+
+```html
+<head>
+  <link rel="stylesheet" href="mis-estilos-css.css" />
+</head>
+```
+<p>Para los scripts se utiliza el elemento <code>&lt;script&gt;</code>, que no es un elemento vacío, pero que pareciera serlo porque no se utiliza contenido para referenciar al script de javascript sino un atributo del elemento. Se recomienda incluir el atributo booleano defer para que el script sea lo último que se carga en la página luego del HTML y las hojas de estilo.</p>
+
+```html
+<head>
+  <script src="mi-script.js" defer></script>
+</head>
+```
+### ¿Y qué va en el <i>body</i> de un documento HTML?
+<p>En el elemento <code>&lt;body&gt;</code> de un documento HTML va todo el contenido que se va a desplegar en el navegador. Este elemento funciona como un nodo del cual se desprenden muchos otros elementos que están anidados en su contenido y hacen parte del mismo.</p>
+
+<p>En el <i>body</i> se ubican el texto, hipervínculos, imágenes y otros recursos multimedia que conforman una página web. A partir de esta sección vamos a estudiar los elementos que hacen parte del contenido del elemento body de una página web, y aprovechando que el texto es el recurso de mayor presencia en un sitio web empezaremos por conocer las etiquetas para manipular texto y para crear hipervínculos.</p>
+
+<p>Encabezados y párrafos</p>
+<p>En HTML los párrafos son el contenido del elemento <p>. El texto encerrado entre las etiquetas de apertura y cierre de este elemento hace parte de un párrafo individual del texto.</p>
+
+```html
+<body>
+  <p>El elemento <p> sirve para definir parrafos de texto en una página web</p>
+</body>
+```
+<p>El elemento <code>&lt;p&gt;</code> soporta los atributos globales y de eventos de las etiquetas HTML (https://www.w3schools.com/tags/ref_standardattributes.asp, https://www.w3schools.com/tags/ref_eventattributes.asp), siendo los más utilizados con este elemento los siguientes: class, id, lang, title, style y hidden.</p>
+
+<p>Los encabezados se construyen utilizando el elemento <code>&lt;h#&gt;</code> donde # es un número entre 1 y 6. Cada número representa un nivel distinto de jerarquía del encabezado en el texto, siendo <code>&lt;h1&gt;</code> el encabezado principal del texto, <code>&lt;h2&gt;</code> un sub-encabezado y así sucesivamente hasta <code>&lt;h6&gt;</code> que es el de menor orden jerárquico.</p>
+  
+<p>Se recomienda que en todo el documento HTML solo se utilice un elemento <code>&lt;h1&gt;</code> y que se conserve correctamente el orden jerárquico de los sub-encabezados, de modo que uno de menor rango no preceda a uno de mayor jerarquía, por ejemplo un <code>&lt;h3&gt;</code> precediendo a un <code>&lt;h2&gt;</code>.</p>
+
+<p>Al igual que en el caso del elemento <p> los encabezados <code>&lt;h1&gt;...&lt;h6&gt;</code> soportan los atributos globales y de eventos de las etiquetas HTML</p>
+
+```html
+<body>
+  <h1>Encabezado 1</h1>
+  <h2>Sub-encabezado 2</h2>
+  <h3>Sub-sub-encabezado 3</h3>
+  <h4>Sub-sub-sub-encabezado 4</h4>
+  <h5>Sub-sub-sub-sub-encabezado 5</h5>
+  <h6>Sub-sub-sub-sub-sub-encabezado 6</h6>
+</body>
+```
+<p>Otros elementos para resaltar la semántica de los textos dentro de un documento HTML son:</p>
+<p>strong: Resalta el texto del contenido en negrilla para dar la sensación de que esa información resaltada es importante y no debe pasarse por alto.</p>
+
+```html
+<body>
+  <p>Este <strong>palabra</strong> es importante</p>
+</body>
+```
+<p>b: Tiene el mismo efecto de strong. La diferencia radica cuando se usan lectores de pantalla, strong da importancia al texto mientras que b no.</p>
+
+```html
+<body>
+  <p>Este <b>palabra</b> esta resaltada en negrilla</p>
+</body>
+```
+<p>em: Este elemento convierte el estilo del texto en <i>cursiva</i> para marcar una semántica de énfasis en el texto.</p>
+
+```html
+<body>
+  <p>Este <em>palabra</em> es importante</p>
+</body>
+```
+<p>i: Tiene el mismo efecto de em. Se sugiere utilizar para enfatizar términos técnicos, extranjerismos y palabras en otro idioma, nombres propios, entre otros.</p>
+
+```html
+<body>
+  <p>Estoy aprendiendo <i>machine learning</i> en la universidad</p>
+</body>
+```
+<p>mark: Resalta, si con color como un resaltador de tinta, una porción de texto.</p>
+
+```html
+<body>
+  <p>Este <mark>palabra</mark> esta resaltada con color</p>
+</body>
+```
+<p>cite: Tiene el mismo efecto de em al poner el texto en cursiva. Se sugiere utilizar para enfatizar el título de un trabajo artístico o creativo como un libro, un poema, un cuadro, una escultura, una película, una canción, etc.</p>
+
+```html
+<body>
+  <p><cite>The Lord of the Rings</cite> por J.R.R. Tolkien</p>
+</body>
+```
+<p>dfn: Se utiliza para indicar que el contenido es una definición de un término incluido en el contenido del texto. El efecto en el texto es el de cambiar el estilo en cursiva.</p>
+
+```html
+<body>
+  <p><dfn>HTML</dfn> es el lenguaje estandar para crear páginas web.</p>
+</body>
+```
+<p>q: Este elemento permite definir una citación corta, el navegador agrega doble comillas para delimitar el texto citado.</p>
+
+```html
+<body>
+  <p>Martin Luther King Jr. dijo: <q>Yo tuve un sueño</q></p>
+</body>
+```
+<p>q: Este elemento permite definir una citación corta, el navegador agrega doble comillas para delimitar el texto citado.</p>
+
+```html
+<body>
+  <p>Martin Luther King Jr. dijo: <q>Yo tuve un sueño</q></p>
+</body>
+```
+<p>q: Este elemento permite definir una citación corta, el navegador agrega doble comillas para delimitar el texto citado.</p>
+
+```html
+<body>
+  <p>Martin Luther King Jr. dijo: <q>Yo tuve un sueño</q></p>
+</body>
+```
+<p>q: Este elemento permite definir una citación corta, el navegador agrega doble comillas para delimitar el texto citado.</p>
+
+```html
+<body>
+  <p>Martin Luther King Jr. dijo: <q>Yo tuve un sueño</q></p>
+</body>
+```
+<p>q: Este elemento permite definir una citación corta, el navegador agrega doble comillas para delimitar el texto citado.</p>
+
+```html
+<body>
+  <p>Martin Luther King Jr. dijo: <q>Yo tuve un sueño</q></p>
+</body>
+```
+<p>q: Este elemento permite definir una citación corta, el navegador agrega doble comillas para delimitar el texto citado.</p>
+
+```html
+<body>
+  <p>Martin Luther King Jr. dijo: <q>Yo tuve un sueño</q></p>
+</body>
+```
+<p>q: Este elemento permite definir una citación corta, el navegador agrega doble comillas para delimitar el texto citado.</p>
+
+```html
+<body>
+  <p>Martin Luther King Jr. dijo: <q>Yo tuve un sueño</q></p>
+</body>
+```
+<p>q: Este elemento permite definir una citación corta, el navegador agrega doble comillas para delimitar el texto citado.</p>
+
+```html
+<body>
+  <p>Martin Luther King Jr. dijo: <q>Yo tuve un sueño</q></p>
+</body>
+```
+<p>q: Este elemento permite definir una citación corta, el navegador agrega doble comillas para delimitar el texto citado.</p>
+
+```html
+<body>
+  <p>Martin Luther King Jr. dijo: <q>Yo tuve un sueño</q></p>
+</body>
+```
+
+
+
 
