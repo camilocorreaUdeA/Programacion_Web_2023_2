@@ -169,6 +169,22 @@ paréntesis angulares (<>). Esta etiqueta marca el lugar a partir del cual el el
   <link rel="stylesheet" href="mis-estilos-css.css" />
 </head>
 ```
+<p>También se pueden incluir hojas de estilo con el elemento <code>&lt;style&gt;</code> directamente en el <i>head</i></p>
+
+```html
+<head>
+  <style>
+    div {
+      color: white;
+      background-color: black;
+    }
+
+    p {
+      color: red;
+    }
+  </style>
+</head>
+```
 <p>Para los scripts se utiliza el elemento <code>&lt;script&gt;</code>, que no es un elemento vacío, pero que pareciera serlo porque no se utiliza contenido para referenciar al script de javascript sino un atributo del elemento. Se recomienda incluir el atributo booleano defer para que el script sea lo último que se carga en la página luego del HTML y las hojas de estilo.</p>
 
 ```html
