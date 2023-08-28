@@ -156,11 +156,54 @@ Existen otros atributos adicionales que se pueden agregar al elemento video y qu
   </p>
 </video>
 ```
+Elemento <code>iframe</code>
+
 Este elemento permite incrustar en tu sitio web contenido de terceros (documentos HTML, videos, aplicativos, plugins, etc.) sobre el que no se tiene control directo y se quiere aprovechar tal cual está hecho por ejemplo videos de Youtube, mapas de Google Maps, sistemas de comentarios como el de Disqus, modales con trinos de Twitter o posts de Facebook, etc.
+
+Vale la pena mencionar que debido a que el elemento iframe permite incrustar contenido HTML que es totalmente independiente del contenido de tu sitio web y que por tanto tiene su propio contexto de navegación (es como si estuvieras visitando un sitio web desde otro sitio web), luego cualquier Javascript o CSS que tengas aplicado a tu sitio no tiene ningún efecto sobre lo que hayas incrustado con iframe.
 
 Se recomienda el uso del elemento iframe sólo cuando sea estrictamente necesario y en muy contadas ocasiones ya que puede acarrear problemas de seguridad a tu sitio web.
 
+A continuación veremos dos ejemplos puntuales del uso del elemento iframe, en primer lugar como incrustar un video de Youtube y luego un mapa de Google Maps:
+
 Para incrustar un video de Youtube vaya al video y de clic en la opción compartir y luego en la opción insertar y copie el código que allí le proporcionan.
+
+<img width="1360" alt="image" src="https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/85d13b7e-df09-43a9-b8b1-6483862a45c8">
+<img width="579" alt="image" src="https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/617b5147-08c9-464a-845c-4fb36001e080">
+
+```html
+<iframe 
+  width="560" 
+  height="315" 
+  src="https://www.youtube.com/embed/bpqPrG4i2jU?si=dLoSHTKjZvq6SWJl"
+  title="YouTube video player" 
+  style="border:0" 
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope;
+    picture-in-picture; web-share" 
+  allowfullscreen>
+</iframe>
+```
+Y para el caso de un mapa de Google Maps:
+
+<img width="935" alt="image" src="https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/d952b5c4-d412-4800-be0a-7e93b8ae2154">
+<img width="452" alt="image" src="https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/fc45938d-7619-4025-b434-9a25fbdd3b52">
+<img width="652" alt="image" src="https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/51b33405-92c4-40c2-a703-d63f9abbda7c">
+
+```html
+<iframe
+  src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d77677.44702740235!2d-75.54489102740713!3d6.231161190130498!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2sco!4v1693236432570!5m2!1ses!2sco"
+  width="600"
+  height="450"
+  style="border:0;"
+  allowfullscreen=""
+  loading="lazy"
+  referrerpolicy="no-referrer-when-downgrade">
+</iframe>
+```
+
+
+
+
 
 
 
