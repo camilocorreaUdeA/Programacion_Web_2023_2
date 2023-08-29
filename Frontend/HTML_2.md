@@ -9,7 +9,7 @@
 ```html
   <a href=”http://www.enlace.com”>Este es un hipervinculo</a>
 ```
-<p>Un enlace definido como acabamos de ver va a abrir la nueva página en la misma pestaña del navegador de la página en la que estamos en ese momento. Si queremos que en enlace abra la página en una pestaña nueva debemos agregar el atributo <code>target</code>code> con el valor <code>_blank</code>code></p>
+<p>Un enlace definido como acabamos de ver va a abrir la nueva página en la misma pestaña del navegador de la página en la que estamos en ese momento. Si queremos que en enlace abra la página en una pestaña nueva debemos agregar el atributo <code>target</code> con el valor <code>_blank</code></p>
 
 ```html
 <a href=”http://www.enlace.com” target=”_blank”>Este abre en una nueva pestaña</a>
@@ -200,8 +200,83 @@ Y para el caso de un mapa de Google Maps:
   referrerpolicy="no-referrer-when-downgrade">
 </iframe>
 ```
+### Elementos semánticos de HTML
 
+HTML semántico (<i>semantic HTML</i>) se refiere a elementos HTML construidos a partir de etiquetas semánticas, es decir, aquellas que brindan sentido o significado al contenido del elemento. En otras palabras, es código HTML que de manera explícita transmite lo que hace, o bien, su intención.
 
+El uso de HTML semántico proporciona información del rol o la importancia de las diferentes partes que componen un documento HTML, y de paso comunica el significado de los elementos a quienes leen o interpretan el código como desarrolladores, navegadores web,  motores de búsqueda, y tecnologías de ayuda para personas con impedimentos visuales (lectores de pantalla), entre otros.
+
+Ventajas de usar HTML semántico:
+
+<ul>
+  <li><b>Accesibilidad</b>: Para personas que pueden ver el contenido de un sitio web es fácil identificar las partes de que está compuesto, títulos, encabezados, párrafos, artículos, barras de navegación, etc. Pero para personas que tengan algún tipo de impedimento visual y que se apoyan en tecnologías de asistencia para navegar en el contenido de la web es de gran ayuda ya que dichas tecnologías pueden comunicarles de forma más efectiva el contenido al que están accediendo.</li>
+  <li><b>SEO (Search Engine Optimization)</b>: El HTML semántico permite que los sistemas de búsqueda sean más efectivos y de esta forma se logra un mejor posicionamiento y por tanto un mejor aprovechamiento de los recursos invertidos en este tipo de estrategias.</li>
+  <li><b>Legibilidad del código</b>: La semántica facilita el trabajo de quien lee o revisa código ya que se puede inspeccionar con más agilidad elementos específicos del documento HTML sin hacer grandes esfuerzos en tratar de entender la finalidad o la estructura del código.</li>
+</ul>
+
+Los elementos semánticos de HTML se pueden subdividir en dos grandes categorías:
+
+<ol>
+  <li>
+    <h3>HTML semántico para texto</h3>
+    <p>En la sesión pasada vimos los elementos HTML para trabajar con texto en un sitio web, muchos de los elementos allí vistos son precisamente construidos con etiquetas semánticas de HTML, a continuación un rápido recorderis:</p>
+    <code>h1</code>: Encabezado de mayor nivel en un documento HTML, debe haber uno solo en todo el documento.
+
+<code>h2…h6</code>: Sub-encabezados de mayor a menor orden en jerarquía.
+
+<code>p</code>: Párrafo de texto.
+
+<code>ol</code> y <code>ul</code>: listas de elementos en un orden en particular o ninguno en absoluto.
+
+<code>em</code>: Énfasis en una sección de texto.
+
+<code>strong</code>: Un fuerte énfasis en una sección de texto que se considera de gran importancia en el contexto actual del mismo.
+
+<code>q</code> y <code>blockquote</code>: Para citaciones cortas y extensas.
+
+<code>code</code>: Indica que el texto hace parte de un código escrito con un lenguaje de programación.
+
+<code>a</code>: Para definir hipervínculos.
+
+Y además recientemente vimos otros elementos semánticos que no propiamente están relacionados con texto pero son semánticos también y no caben dentro de la categoría de aquellos que hacen referencia a la estructura del documento HTML:
+
+<code>img</code>: Permite incluir imágenes en el documento.
+
+<code>figure</code> y <code>figcaption</code>: usados para contener una imagen y proporcionar una descripción de esta.
+
+<code>video</code>: Para incluir un video en el documento HTML.
+
+<code>iframe</code>: Para incrustar contenido de terceros como videos, otros documentos HTML, widgets y plugins, etc.
+  </li>
+  
+  <li><h3>HTML semántico para la estructura del documento</h3>
+    
+  ![image](https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/48edf5be-055e-4b9b-9cbb-33f64a504958)
+
+<p>Los elementos en esta categoría comunican el esquema o estructura del documento, fueron incluidos en HTML5. Se puede decir que el propósito general de estos elementos es el de agrupar otros elementos en secciones o contextos que contienen información relacionada con el contenido del documento HTML.</p>
+<p>Los elementos semánticos estructurales son los siguientes:</p>    
+<code>header</code>: Es básicamente el encabezado del sitio, puede contener el nombre y logo de la organización, una barra de navegación principal, un formulario para loguearse, una barra de búsqueda, etc.
+    
+<code>footer</code>: Pie de página del sitio, generalmente contiene información adicional del sitio como la información de contacto (números de atención telefónica, dirección, presencia en sedes físicas), redes sociales, etc.
+
+<code>nav</code>: Puede estar contenido en el header o ser un elemento independiente. Generalmente contiene una barra de navegación que tiene enlaces a las distintas páginas o secciones que componen el sitio web.
+
+<code>main</code>: Contiene todo el contenido del sitio o lo que normalmente iría en el elemento body del documento HTML. No está de más decir que solo debe existir un main por documento.
+
+<code>article</code>: Se refiere a las piezas únicas e independientes de contenido dentro de un documento HTML como sería por ejemplo un post en un sitio de microblogging.
+
+<code>section</code>: Es un elemento que permite agrupar contenido relacionado a un mismo tema o que comparten un mismo contexto general. Un section se puede considerar como parte de un article, por lo general los elementos section no son independientes ya que dependen de los demás para formar un sentido o contexto general.
+
+<code>aside</code>: Es un contenedor que sirve para referenciar contenido complementario o información adicional que puede enriquecer o profundizar el contexto general del contenido pero que se deja como alternativa al usuario su visualización. Suele ubicarse en las zonas laterales del sitio web y rodeando al contenido principal, o bien como enlaces a contenido externo.    
+  </li>
+</ol>
+Como reflexión final, piense en el HTML semántico como la forma más directa para transmitir la motivación, la intención y la estructura de un documento HTML, y procure evitar pensar que los elementos HTML tienen como finalidad definir el estilo del sitio web. A continuación se listan algunos usos inadecuados del HTML semántico:
+<ul>
+  <li>Usar las etiquetas de encabezamiento para simplemente forzar un cambio en el tamaño de la letra.</li>
+  <li>Utilizar la etiqueta “a” para textos que no van a ser hipervínculos simplemente con el fin de agregar el subrayado y cambiar el color de la letra.</li>
+  <li>Utilizar strong y em para formatear en negrilla o cursiva pero sin querer significar énfasis realmente.</li>
+  <li>O usar blockquote para agregar sangría a un texto que no es una cita textual.</li>
+</ul>
 
 
 
