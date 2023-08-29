@@ -278,7 +278,9 @@ Como reflexión final, piense en el HTML semántico como la forma más directa p
   <li>O usar blockquote para agregar sangría a un texto que no es una cita textual.</li>
 </ul>
 
+Ejemplo:
 
+[Aquí puede observar un ejemplo de la utilidad del HTML semántico para la definicion de la estructura de un sitio web](https://codepen.io/camilocorreaUdeA/pen/VwqaeBM)
 
 
 
