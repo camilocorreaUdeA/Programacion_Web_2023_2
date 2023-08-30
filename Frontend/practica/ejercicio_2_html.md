@@ -30,9 +30,11 @@ Items a tener en cuenta para el desarrollo de las páginas:
 
 Otros aspectos que se deben validar:
 <ul>
-<li>Todas las páginas comparten el mismo <code>header</code> y <code>nav</code></li>
-<li>Apuestele a su creatividad y aproveche la mayor cantidad de resursos que pueda incluir en sus páginas (imágenes, videos, gifs animados, etc.)</li>
+<li>Todas las páginas comparten el mismo <code>header</code>, <code>nav</code> y <code>footer</code></li>
+<li>Apuestele a su creatividad y aproveche la mayor cantidad de resursos que pueda incluir en sus páginas (imágenes, videos, gifs animados, enlaces a contenido externo, etc.)</li>
 <li>No se preocupe por el aspecto del sitio, por el momento solo nos interesa la funcionalidad y la estructura del mismo, más adelante cuando estudiemos las hojas de estilo con <i>CSS</i> tendremos oprtunidad de mejorar la parte visual</li>
 </ul>
+
+IMPORTANTE: Recuerde desplegar el sitio en github como aprendimos en el ejercicio pasado.
 
 
