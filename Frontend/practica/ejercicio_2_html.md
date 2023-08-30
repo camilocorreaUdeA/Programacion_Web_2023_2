@@ -37,10 +37,16 @@ Otros aspectos que se deben validar:
 
 IMPORTANTE: Recuerde desplegar el sitio en github como aprendimos en el ejercicio pasado.
 
-La imagen a continuación podría servir de modelo o inspiración para su propia implementación ;-)
+Las imagenes a continuación podría servir de modelo o inspiración para su propia implementación ;-)
 
 ![image](https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/4280ac54-62b4-4d75-b971-ae1563809f8c)
 ![image](https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/6bad1251-494c-48ab-b1b8-47de7e763ae2)
+
+![image](https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/398671ca-22b1-4d08-9ac1-e035247bfbbd)
+
+![image](https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/74c658b6-e7de-4d46-a268-362779046cfb)
+
+
 
 
 
