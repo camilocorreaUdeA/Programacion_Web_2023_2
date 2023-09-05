@@ -169,9 +169,45 @@ CSS nos permite utilizar estos identificadores como selectores en las reglas, po
      font-size:20px;
 }
 ```
+Class
 
+Este selector funciona de forma similar al de <code>id</code>, solo que en vez de utilizar ese atributo vamos a utilizar el atributo <code>class</code> y además, hay una gran diferencia, y es que varios elementos del documento pueden compartir el mismo valor de ese atributo. Por tanto la regla que utilice este selector se puede aplicar para múltiples elementos del documento que tengan el mismo valor en el atributo <code>class</code>.
 
+En la regla se utiliza el punto (<code>.</code>), seguido del valor dado al atributo <code>class</code> para indicar a CSS que la regla tiene un selector por <code>class</code>.
 
+```html
+<!-- Elementos con atributo class -->
+<li class="elemento-impar">Parte de una lista cualquiera</li>
+<li>Parte de una lista cualquiera</li>
+<li class="elemento-impar">Parte de una lista cualquiera</li>
+```
+
+```css
+/* Esta regla aplica solo a dos elementos de la lista */
+.elemento-impar {
+     font-family:Courier;
+     font-size:20px;
+}
+```
+Un elemento puede tener varios valores para el atributo class al mismo tiempo, basta con separar los valores con un espacio, luego para especificar una regla que aplica para un elemento que tiene cierto conjunto de valores para el atributo class en particular, va a ser necesario especificar estos valores en el selector para que la regla quede aplicada donde realmente se desea.
+
+```html
+<!-- Elementos con atributo class -->
+<p class="info">Párrafo de class info</p>
+<p class="info advertencia">Párrafo de class info y class advertencia</p>
+```
+
+```css
+/* Esta regla aplica a ambos párrafos */
+.info {
+     font-family:Verdana;
+}
+
+/* Y esta regla aplica solo al segundo párrafo */
+.info.advertencia {
+     text-decoration:underline;
+}
+```
 
 
 
