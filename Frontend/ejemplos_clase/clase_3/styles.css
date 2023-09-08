@@ -1,1 +1,76 @@
+body {
+   background-color: rgb(214, 226, 240);
+}
+ .card-container {
+   background-color: white;
+   width:475px;
+   border-radius:15px;
+   padding:20px;
+   border:solid;
+   margin:auto;
+}
+
+
+.img-container{
+   background-color:rgb(26, 239, 221);
+   border-radius:15px;
+   border:solid;  
+}
+
+
+.pokemon-name {
+   color:rgba(205, 49, 14, 1);
+   text-align:center;
+   font-size:45px;
+   font-weight:bold;
+   letter-spacing:10px;
+   text-shadow:1px 2px 8px #666;
+   margin-top:15px;
+   margin-bottom: 5px;
+}
+
+
+li{
+   color:rgba(138, 147, 139, 1);
+   list-style-type:none;
+   list-style-position:inside;
+   font-size:24px;
+   letter-spacing:3px;
+   line-height:30px;
+   font-family: Geneva;
+   margin-bottom:7px;
+}
+
+
+.description{
+   font-family: "Courier New";
+   font-weight:bold;
+}
+
+
+.descrip-container{
+   display:inline-block;
+}
+ #img-pokeball-container{
+   display:inline-block;
+}
+
+
+.pokeball{
+   width:100px; 
+}
+
+
+ul{
+   padding:0px;
+   margin-bottom:0px;
+}
+
+
+li:hover{
+   color: rgb(87, 46, 112);
+   background-color:rgba(253, 155, 109, 0.87);
+   text-decoration:underline;
+   border-radius:6px;
+}
 
