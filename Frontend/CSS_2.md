@@ -162,8 +162,23 @@ Los pseudo elementos a diferencia de las pseudo clases no observan del estado ac
 
 A continuación la lista de pseudo elementos disponibles en CSS:
 
-1. <code>::after</code>: Inserta contenido después de un elemento. Por ejemplo: <code>p::after</code> inserta contenido después del elemento <code>&lt;p&gt;</code>
-2. <code>::before</code>: Inserta contenido antes de un elemento. Por ejemplo: <code>p::before</code> inserta contenido antes del elemento <code>&lt;p&gt;</code>
+1. <code>::after</code>: Inserta contenido después de un elemento. Por ejemplo: <code>p::after</code> inserta contenido después del elemento <code>&lt;p&gt;</code>. Este selector se acostumbra a usar en conjunto con la propiedad <code>content</code> para generar contenido desde CSS.
+2. <code>::before</code>: Inserta contenido antes de un elemento. Por ejemplo: <code>p::before</code> inserta contenido antes del elemento <code>&lt;p&gt;</code>. Este selector se acostumbra a usar en conjunto con la propiedad <code>content</code> para generar contenido desde CSS.
+```html
+<!doctype html>
+<html>
+  <head>
+    <style>
+      .texto::before {
+        content:"Una línea de texto agregada por CSS antes del contenido original. ";
+      }
+    </style>
+  </head>
+  <body>
+    <p class="texto">Línea de texto original.</p>
+  </body>
+</html>
+```
 3. <code>::first-letter</code>: Selecciona la primera letra de un elemento de texto. Por ejemplo: <code>h1::first-letter</code> selecciona la primera letra del elemento <code>&lt;h1&gt;</code>
 4. <code>::first-line</code>: Selecciona el primer renglón de un elemento <code>&lt;p&gt;</code>. Ejemplo: <code>p::first-line</code>
 5. <code>::marker</code>: Selecciona las viñetas o marcadores de los elementos <code>&lt;li&gt;</code>. Ejemplo: <code>li::markers</code>
@@ -181,12 +196,16 @@ A continuación la lista de pseudo elementos disponibles en CSS:
   </head>
   <body>
     <h2>Ejemplo del pseudo elemento ::selection</h2>
-    <p>
-      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-    </p>
+    <p>Doing the reverse is, of course, also possible using essentially the same technique. That is, marshaling a Go struct into a JSON array is done by defining a MarshalJSON method.</p>
   </body>
 </html>
 ```
+### Combinaciones
+
+Descendant combinator
+Child combinator
+Next sibling combinator
+Sibling combinator
 
 
 
