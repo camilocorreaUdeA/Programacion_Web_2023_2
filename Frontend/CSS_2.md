@@ -113,7 +113,7 @@ En la lista a continuación podemos observar las distintas formas que nos permit
 
 ### Agrupación de selectores
 
-Cuando hay una regla que se puede (o se debe) aplicar a varios elementos al tiempo pero no hay un selector de los que hemos visto que los agrupe a todos al tiempo en un mismo conjunto, y además en aras de evitar crear reglas duplicadas para los distintos elementos, existe la posibilidad de agrupar varios selectores en la definición de una regla. Solo es especificar los selectores separados por coma (,), la regla luego aplica a todos los selectores que se han especificado.
+Cuando hay una regla que se puede (o se debe) aplicar a varios elementos al tiempo pero no hay un selector de los que hemos visto que los agrupe a todos al tiempo en un mismo conjunto, y además en aras de evitar crear reglas duplicadas para los distintos elementos, existe la posibilidad de agrupar varios selectores en la definición de una regla. Solo es especificar los selectores separados por coma (<code>,</code>), la regla luego aplica a todos los selectores que se han especificado.
 
 ```css
 strong,
@@ -125,5 +125,68 @@ em,
 ```
 
 ### Pseudo clases y pseudo elementos
+
+Una pseudo clase es un selector que sirve para identificar elementos que se encuentran en un estado en específico. Ya sea porque cumplen con una condición determinada con respecto a otros elementos del documento HTML, por ejemplo ser el primer elemento <code>li</code> de un elemento <code>ul</code>. O bien, porque se encuentran en un estado resultado de la interacción del usuario con el elemento, por ejemplo cuando se pasa el puntero del mouse sobre un enlace (<code>hoover</code>).
+
+Luego, estas pseudo clases actúan como si se agregara implícitamente una clase que permite identificar de forma más específica al elemento en cuestión aprovechando su estado, resultado de su relación con otros elementos o de la interacción del usuario.
+
+Un selector por pseudo clase se contruye con el nombre del elemento objetivo seguido de la pseudo clase, anteponiento dos puntos (<code>:</code>) al nombre de la pseudo clase.
+
+Un ejemplo por situación o estado del elemento dentro del documento HTML
+
+```html
+<ul>
+   <li>First element</li>  <!-- Este elemento recibira los efectos de la regla de estilos -->
+   <li>Second element</li>
+   <li>Third element</li>
+</ul>
+```
+```css
+ul li:first-child{
+  font-weight: bold;
+}
+```
+Un ejemplo por interacción del usuario con el elemento
+```html
+<!-- La psedo clase tiene sentido al pasar el puntero del mouse sobre el enlace -->
+<a href="https://www.udea.edu.co">Universidad de Antioquia</a> 
+```
+```css
+a:hoover{
+  font-weight: bold;
+}
+```
+Puedes ver una lista completa de pseudo clases disponibles en CSS aquí: [Pseudoclases](https://www.w3schools.com/css/css_pseudo_classes.asp)
+
+Los pseudo elementos a diferencia de las pseudo clases no observan del estado actual del elemento para agregarle implicitamente una clase, sino que permiten insertar nuevos elementos HTML a través de CSS. Para construir un selector con pseudo elementos se utiliza doble dos puntos (<code>::</code>) seguido del pseudo elemento que se pretende utilizar.
+
+A continuación la lista de pseudo elementos disponibles en CSS:
+
+1. <code>::after</code>: Inserta contenido después de un elemento. Por ejemplo: <code>p::after</code> inserta contenido después del elemento <code>&lt;p&gt;</code>
+2. <code>::before</code>: Inserta contenido antes de un elemento. Por ejemplo: <code>p::before</code> inserta contenido antes del elemento <code>&lt;p&gt;</code>
+3. <code>::first-letter</code>: Selecciona la primera letra de un elemento de texto. Por ejemplo: <code>h1::first-letter</code> selecciona la primera letra del elemento <code>&lt;h1&gt;</code>
+4. <code>::first-line</code>: Selecciona el primer renglón de un elemento <code>&lt;p&gt;</code>. Ejemplo: <code>p::first-line</code>
+5. <code>::marker</code>: Selecciona las viñetas o marcadores de los elementos <code>&lt;li&gt;</code>. Ejemplo: <code>li::markers</code>
+6. <code>::selection</code>: Aplica la regla de estilo CSS al texto seleccionado con el mouse. Ejemplo:
+```html
+<!doctype html>
+<html>
+  <head>
+    <style>
+      ::selection {
+        color: rgb(250, 5, 21);
+        background-color: rgb(65, 65, 190);
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Ejemplo del pseudo elemento ::selection</h2>
+    <p>
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+    </p>
+  </body>
+</html>
+```
+
 
 
