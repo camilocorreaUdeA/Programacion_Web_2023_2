@@ -343,7 +343,6 @@ Ejemplo:
   <div class="list subsection"></div>
 </div>
 ```
-
 ```css
 /* regla 1 */
 .subsection {
@@ -355,13 +354,73 @@ Ejemplo:
   color: red;
 }
 ```
-En este ejemplo la regla de mayor especificidad es la regla 2. La regla 1 tiene un selector de tipo class lo cual suma 10 puntos de especificidad, mientras que la regla 2 tiene un selector de descendientes formado por dos selectores de tipo class lo cual suma 20 puntos de especificidad.
+En este ejemplo la regla de mayor especificidad es la regla 2. Explicación: la regla 1 tiene un selector de tipo class lo cual suma 10 puntos de especificidad, mientras que la regla 2 tiene un selector de descendientes formado por dos selectores de tipo class lo cual suma 20 puntos de especificidad (cada uno aporta 10 puntos de especificidad).
 
+Ejemplo:
 
+```html
+<div class="main">
+  <div class="list" id="subsection"></div>
+</div>
+```
+```css
+/* regla 1 */
+#subsection {
+  color: blue;
+}
+
+/* regla 2 */
+.main .list {
+  color: red;
+}
+```
+En este ejemplo la regla de mayor especificidad es la regla 1. Explicación: La regla 1 tiene un selector <code>id</code> lo cual suma 100 puntos de especificidad. La regla 2 como ya habíamos visto en el ejemplo anterior tiene 20 puntos de especificidad.
+
+Ejemplo:
+
+```css
+a.my-class.another-class[href]:hover {
+  color: lightgrey;
+}
+```
+En este ejemplo la regla tiene un valor de espcificidad de 41. Explicación: El selector de tipo de elemento <code>a</code> que contribuye 1 punto, los selectores de class <code>my-class</code> y <code>another-class</code> contribuyen de a 10 puntos cada uno para un total de momento de 21. El selector de atributo <code>[href]</code> contribuye otros 10 puntos, para 31. Y por último el selector de pseudo clase <code>:hover</code> aporta otros 10 puntos para un total de 41 puntos de especificidad.
+
+No se recomienda confeccionar reglas con selectores como el del ejemplo anterior porue a pesar de ser muy específicas son muy difíciles de mantener.
 
 ### Herencia
 
+La herencia en CSS se refiere a las reglas que se aplican a un elemento y resultan aplicadas a los elementos que descienden de este sin necesidad de expresar una regla específica para que se dé dicho comportamiento. Es importante aclarar que no todas las reglas CSS son heredables, de hecho es más común ver este comportamiento en reglas de propiedades tipográficas como <code>color</code>, <code>font-size</code> o <code>font-family</code> u otras como el color de fondo (<code>background-color</code>), ¿recuerdas que los párrafos, <code>p</code>, que están dentro del elemento <code>body</code> conservan el <code>background-color</code> del elemento <code>body</code>?
+
+```html
+<body>
+  <p>El párrafo dentro del body</p>
+</body>
+```
+```css
+/* regla heredada */
+body {
+  background-color: rgb(159, 252, 125);
+}
+```
+La herencia se rompe facilmente con solo especificar una regla para el elemento heredero que reemplace la regla heredada del elemento ancestro.
+```html
+<body>
+  <p>El párrafo dentro del body</p>
+</body>
+```
+```css
+/* regla heredada */
+body {
+  background-color: rgb(159, 252, 125);
+}
+/* regla que rompe la herencia */
+p {
+  background-color: rgb(160, 211, 253);
+}
+```
 ### Orden de las reglas
+
+
 
 
 
