@@ -385,7 +385,7 @@ a.my-class.another-class[href]:hover {
 ```
 En este ejemplo la regla tiene un valor de espcificidad de 41. Explicación: El selector de tipo de elemento <code>a</code> que contribuye 1 punto, los selectores de class <code>my-class</code> y <code>another-class</code> contribuyen de a 10 puntos cada uno para un total de momento de 21. El selector de atributo <code>[href]</code> contribuye otros 10 puntos, para 31. Y por último el selector de pseudo clase <code>:hover</code> aporta otros 10 puntos para un total de 41 puntos de especificidad.
 
-No se recomienda confeccionar reglas con selectores como el del ejemplo anterior porue a pesar de ser muy específicas son muy difíciles de mantener.
+No se recomienda confeccionar reglas con selectores como el del ejemplo anterior porque a pesar de ser muy específicas son muy difíciles de mantener.
 
 ### Herencia
 
@@ -419,6 +419,15 @@ p {
 }
 ```
 ### Orden de las reglas
+
+Esta es la instancia final para el desempate definitivo entre dos reglas en conflicto. Si aún después de calcular la especificidad se conserva el empate entre reglas, entonces el orden en que aparecen va a ser el ítem que determine cuál regla se terminará aplicando.
+
+Si las reglas están definidas en un archivo externo de hoja de estilos la regla que esté definida más al final del archivo, entre las que están en conflicto, va a ser la que va terminar siendo aplicada.
+
+Si un documento HTML tiene varios elementos <code>link</code> que referencian a diferentes archivos de hojas de estilo CSS, el elemento <code>link</code> que esté de último va a ser el de mayor especificidad. Aplica lo mismo para los elementos <code>style</code>. El razonamiento es tambipen válido para combinaciones entre elementos <code>link</code> y <code>style</code>.
+
+Por último cualquier estilo en línea utilizando el atributo <code>style</code> de un elememento (<i>inline style</i>) tiene la mayor especificidad con respecto a cualquier otra regla, es decir, los estilos en línea sobreescriben cualquier regla definida en un archivo externo de hojas destilo o en un elemento <code>style</code>. 
+
 
 
 
