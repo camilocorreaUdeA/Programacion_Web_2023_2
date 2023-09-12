@@ -1,6 +1,6 @@
 # CSS
 
-## Otros selectores, combinaciones y especificidad
+## Otros selectores y combinaciones de selectores
 
 ### Selector por atributo
 
@@ -202,10 +202,123 @@ A continuación la lista de pseudo elementos disponibles en CSS:
 ```
 ### Combinaciones
 
-Descendant combinator
-Child combinator
-Next sibling combinator
-Sibling combinator
+Selector de descendientes (<i>descendant combinator</i>)
+
+Este selector se construye como la combinación de dos selectores separados por espacio. La regla de estilos se aplica al último selector de la combinación siempre y cuando se cumpla que el otro selector de la combinación es su ancestros: ancestro -> descendiente.
+
+```html
+<ul>
+   <li>First element</li>
+      <ol>
+         <li>first element</li>
+         <li>second element</li>
+      </ol>
+   <li>Second element</li>
+   <li>Third element</li>
+</ul>
+```
+```css
+/* selector de descendientes*/
+ul li{
+  border: 2px solid blue;
+}
+```
+
+Selector de descendientes directos o hijos (child combinator)
+
+Funciona exactamente igual al anterior con la diferencia de que solo se seleccionan los descendientes directos de los ancestros y se omiten descendientes de menor nivel. Para combinar los selectores se utiliza el símbolo <code>&gt;</code>.
+
+```html
+<ul>
+   <li>First element</li>
+      <ol>
+         <li>first element</li>
+         <li>second element</li>
+      </ol>
+   <li>Second element</li>
+   <li>Third element</li>
+</ul>
+```
+```css
+/* selector de descendientes directos*/
+ul > li{
+  border: 2px solid blue;
+}
+```
+Selector de hermano contiguo o adyacente (next/adjacent sibling combinator) 
+
+Este selector combina dos selector y aplica la regla de estilos al segundo selector siempre y cuando este precedido por un elemento que cumpla con el primer selector. El símbolo para combinar los selectores es <code>+</code> en este caso.
+
+```html
+<article>
+    <h1>El encabezado</h1>
+    <p>Primer párrafo del artículo</p>
+    <p>Segundo párrafo del artículo</p>
+</article>
+```
+```css
+h1+p {
+    font-weight: bold;
+    background-color: #333;
+    color: #fff;
+    padding: .5em;
+}  
+```
+Selector de hermanos en general (general sibling combinator)
+
+Funciona de la misma manera que el selector anterior pero no se limita solamente al elemento "hermano" contiguo o adyacente sino a todos los demás que pueden no necesariamente ser contiguos. El simbolo utilizado para este selector es <code>~</code>.
+
+```html
+<article>
+    <h1>El encabezado</h1>
+    <p>Primer párrafo del artículo</p>
+    <a href="https://udearroba.udea.edu.co">Ude@</a>
+    <p>Segundo párrafo del artículo</p>
+</article>
+```
+```css
+h1~p {
+    font-weight: bold;
+    background-color: #333;
+    color: #fff;
+    padding: .5em;
+}  
+```
+Selectores compuestos
+
+CSS permite crear selectores que resultan de hacer combinaciones de otros selectores, esto con el único objetivo de crear reglas más específicas, es decir, dirigidas a elementos en particular dentro del documento HTML. Para crear estos selectores compuestos se combinan o encadenan dos o más selectores omitiendo el uso de cualquier símbolo como los que acabamos de ver para los otros selectores combinados.
+
+Por ejemplo si quisieramos crear una regla específica para hipervínculos de un sitio web que tienen el mismo valor en su atributo <code>class</code>.
+
+```html
+<p class="udea">El himno de la Universidad de Antioquia tiene letra del poeta antioqueño Edgar Poe Restrepo y música adaptada por el maestro José María Bravo Márquez...</p>
+<a href="https://www.udea.edu.co" class="udea">Sitio web Universidad de Antioquia</a>
+<a href="https://udearroba.udea.edu.co" class="udea">Ude@</a>
+<a href="https://ingenieria.udea.edu.co">Faculta de Ingeniería</a>
+```
+```css
+a.udea {
+    font-weight: bold;
+    background-color: white;
+    color: rgb(28, 100, 2);
+    padding: .5em;
+}
+
+a.udea:hover{
+    font-weight: bold;
+    background-color: rgb(28, 100, 2);
+    color: #fff;
+    padding: .5em;
+}    
+```
+
+## La cascada de CSS
+
+### Especificidad
+
+### Herencia
+
+### Orden de las reglas
 
 
 
