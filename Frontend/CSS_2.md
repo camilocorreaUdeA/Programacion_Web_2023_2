@@ -314,7 +314,50 @@ a.udea:hover{
 
 ## La cascada de CSS
 
+La cascada en CSS es el algoritmo que determina las reglas de estilo que efectivamente se aplicarán a los elementos de un documento HTML. Dicho de otro modo, la cascada es el mecanismo mediante el cual el navegador puede dirimir en la contienda entre dos o más reglas que estén en conflicto al aplicar a un mismo elemento HTML. Así que cuando algo en CSS no sale como esperabas, no es que CSS haga lo contrario a lo que quieres que haga sino que se necesita un conocimiento más profundo de como funciona la cascada de CSS y que se debe tener en cuenta para que una hoja de estilos de CSS funcione exactamente de la manera esperada.
+
+Entender adecuadamente la cascada permite comprender la manera en que el navegador resuelve los conflictos entre las reglas de una hoja de estilos. A continuación un listado con los conceptos que dan forma al algoritmo de la cascada CSS:
+
+1. Posición y orden de aparición: Se refiere al orden de aparición de las reglas CSS en la hoja de estilos.
+2. Especificidad: Este concepto tiene que ver con la forma en que el algoritmo determina cuando un selector tiene mayor prevalencia sobre otros con lo que ha entrado en conflicto.
+3. Origen: El algoritmo toma en cuenta el momento o el orden de aparición de una regla CSS pero también de donde proviene, si es de una hoja de estilos por defecto del navegador, de una extensión del navegador o las definidas por el desarrollador, etc.
+4. Importancia: Manualmente se puede indicar cuando una regla debe tener mayor relevancia con respecto a las demás.
+
+En este [sitio](https://2019.wattenberger.com/blog/css-cascade) puede ver una explicación más detallada y didáctica de como funciona la cascada CSS.
+
 ### Especificidad
+
+La especificidad es una medida de que tan específico es un selector, y un selector más específico tendrá precedencia sobre otros selectores menos específicos. Cada tipo de selector tiene su propio nivel de especificidad que contribuye a la especificidad global del selector de una regla CSS. Es como si cada tipo de selector tuviera cierto número de puntos de especificidad, luego al sumar todos los puntos contribuidos por los selectores de la regla se calcula la especificidad total del selector.
+
+Para los selectores que hemos visto hasta el momento en el curso, la escala de especificidad es la siguiente, siendo el selector <code>ID</code> el de mayor especificidad y el selector universal el de menor:
+
+1. Selector <code>ID</code>: 100 puntos de especificidad.
+2. Selectores class, pseudo clase y atributo: 10 puntos de especificidad.
+3. Selector de tipo de elemento y pseudo elementos: 1 punto de especificidad.
+4. Selector universal <code>*</code>: 0 puntos de especificidad.
+
+Ejemplo:
+
+```html
+<div class="main">
+  <div class="list subsection"></div>
+</div>
+```
+
+```css
+/* regla 1 */
+.subsection {
+  color: blue;
+}
+
+/* regla 2 */
+.main .list {
+  color: red;
+}
+```
+En este ejemplo la regla de mayor especificidad es la regla 2. La regla 1 tiene un selector de tipo class lo cual suma 10 puntos de especificidad, mientras que la regla 2 tiene un selector de descendientes formado por dos selectores de tipo class lo cual suma 20 puntos de especificidad.
+
+
 
 ### Herencia
 
