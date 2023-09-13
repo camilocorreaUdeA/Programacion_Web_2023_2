@@ -126,7 +126,7 @@ em,
 
 ### Pseudo clases y pseudo elementos
 
-Una pseudo clase es un selector que sirve para identificar elementos que se encuentran en un estado en específico. Ya sea porque cumplen con una condición determinada con respecto a otros elementos del documento HTML, por ejemplo ser el primer elemento <code>li</code> de un elemento <code>ul</code>. O bien, porque se encuentran en un estado resultado de la interacción del usuario con el elemento, por ejemplo cuando se pasa el puntero del mouse sobre un enlace (<code>hoover</code>).
+Una pseudo clase es un selector que sirve para identificar elementos que se encuentran en un estado en específico. Ya sea porque cumplen con una condición determinada con respecto a otros elementos del documento HTML, por ejemplo ser el primer elemento <code>li</code> de un elemento <code>ul</code>. O bien, porque se encuentran en un estado resultado de la interacción del usuario con el elemento, por ejemplo cuando se pasa el puntero del mouse sobre un enlace (<code>hover</code>).
 
 Luego, estas pseudo clases actúan como si se agregara implícitamente una clase que permite identificar de forma más específica al elemento en cuestión aprovechando su estado, resultado de su relación con otros elementos o de la interacción del usuario.
 
@@ -152,7 +152,7 @@ Un ejemplo por interacción del usuario con el elemento
 <a href="https://www.udea.edu.co">Universidad de Antioquia</a> 
 ```
 ```css
-a:hoover{
+a:hover{
   font-weight: bold;
 }
 ```
