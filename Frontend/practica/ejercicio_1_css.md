@@ -16,4 +16,11 @@ Hecha un vistazo a como con unas sencillas reglas de estilo de CSS puedes conver
 En esta versión con un estilo más cool ;-)
 ![image](https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/c498ecee-cf9f-4f42-8c88-6828ab356674)
 
+### Dale rienda suelta a tru creatividad, aplica la mayor cantidad de estilos que te sea posible!!!
 
+Puedes consultar el listado de propiedades CSS [aquí](https://www.web4college.com/css-play/), [también aquí](https://www.quackit.com/css/properties/), y [seguro aquí](https://www.w3.org/Style/CSS/all-properties.en.html).
+
+### ¡IMPORTANTE!
+
+No sobrescribas o modifiques el repositorio del ejercicio anterior. Crea un nuevo repositorio y copia todo lo que consideres relevante del otro repositorio.
+Recuerda publicar tu sitio web como lo has hecho anteriormente con ayuda de Github Pages.
