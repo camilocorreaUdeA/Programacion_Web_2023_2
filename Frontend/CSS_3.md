@@ -42,14 +42,62 @@ p{
 ```
 ![image](https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/66cd900c-2cf4-43e3-b97e-789bf5ae0433)
 
-En el ejemplo vemos 2 elementos de bloque: <code>h1</code> y <code>p</code>, podemos observar lo que se había comentado anteriormente de que ocupan todo el ancho del elemento contenedor (en este caso un elemento <code>div</code>), están apilados uno sobre otro de acuerdo con el orden de aparición en el documento HTML. Además se puede observar la separación entre los dos elementos (para esto hemos resaltado el border) como consecuencia de que por defecto los elemento de bloque tienen la propiedad margin.
+En el ejemplo vemos 2 elementos de bloque: <code>h1</code> y <code>p</code>, podemos observar lo que se había comentado anteriormente, que ocupan todo el ancho del elemento contenedor (en este caso un elemento <code>div</code>), están apilados uno sobre otro de acuerdo con el orden de aparición en el documento HTML y su dimensión vertical se ajusta al tamaño del contenido (observe que el párrafo tiene más dimensión vertical que el encabezado). Además se puede observar la separación entre los dos elementos (para esto hemos resaltado el border) como consecuencia de que por defecto los elemento de bloque tienen la propiedad margin.
 
 ![image](https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/647c2f8e-9ed9-4456-9f5d-fe0c3d7a27f6)
-Se puede observar en la imagen que el margin por defecto asignado al elemento <code>h1</code> es de 46.9px y solo en las direcciones arriba y abajo.
+<p>Se puede observar en la imagen que el margin por defecto asignado al elemento <code>h1</code> es de 46.9px y solo en las direcciones arriba y abajo.</p>
+
 ![image](https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/318f88d3-58b3-489d-bfa1-ada25707ec65)
-Mientras que el margin por defecto del elemento <code>p</code> es de 25px y también solo en las direcciones arriba y abajo.
+<p>Mientras que el margin por defecto del elemento <code>p</code> es de 25px y también solo en las direcciones arriba y abajo.</p>
 
 Otro detalle interesante que se destaca es como el margin del elemento <code>h1</code> llega hasta el límite del borde del elemento <code>p</code>, es decir la separación real entre ambos elementos son 46.9px y no una suma de los margin de los dos elementos como se podría llegar a pensar. A ese comportamiento en la separación de dos elementos de bloque contiguos se le conoce como <i>margin collapse</i> o colapso de márgenes, y es simplemente que el margin con mayor dimensión absorbe al de menor dimensión para convertirse en la separación efectiva entre los dos elementos de bloque.
+
+Por otra parte, los elementos de línea no son apilados uno tras otro en una nueva línea de la pantalla para cada uno, por el contrario son ubicados uno tras otro en la misma línea hasta que llenan todo el ancho del elemento contenedor y eventualmente pasan a una nueva línea cuando sobrepasan dicho ancho. Por defecto las dimensiones de un elemento de línea coinciden con las dimensiones del contenido del mismo, aún así es posible modificarlas a través de CSS (cuando hacer eso tiene algún sentido).
+
+```html
+<body>
+  <div>
+  <a href="#">Hola</a>
+  <a href="#">Mundo</a>
+  <a href="#">Aplicaciones</a>
+  <a href="#">Web</a>
+  <a href="#">Telecomunicaciones</a>
+  <strong>she explained to her date sitting across the table</strong>
+  </div>
+</body>
+```
+```css
+strong{
+  font-size:25px;
+  border:2px solid black;
+  background-color:grey;
+}
+
+a{
+  font-size:25px;
+  border:2px solid black;
+  background-color:lightpink;
+}
+```
+![image](https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/abed4d6c-0a19-4c23-a3ed-1161bee594ae)
+
+En la imagen a continuación se observa como los elementos de línea van llenando paulatinamente el ancho del elemento contenedor.
+
+![image](https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/31a0f06f-f0b1-4c00-90b3-d08efb75e251)
+
+En las siguientes imagenes se puede observar que no tienen margenes asignadas por defecto (ni padding ni margin) y que el tamaño del elemento se ajusta al del contenido.
+
+![image](https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/144b83ca-62c8-4147-9bb3-15fe2fb6527b)
+
+![image](https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/120407cd-4a31-4604-bd0e-e0a03650e2c3)
+
+En este [enlace](https://www.w3schools.com/html/html_blocks.asp) puede ver listas separadas de los elementos de bloque y de línea de HTML.
+
+### Contenedores <code>div</code> y <code>span</code>
+
+### Propiedad <code>display</code>
+
+
 
 
 
