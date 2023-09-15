@@ -95,6 +95,41 @@ En este [enlace](https://www.w3schools.com/html/html_blocks.asp) puede ver lista
 
 ### Contenedores <code>div</code> y <code>span</code>
 
+<code>div</code>
+
+<p>El elemento <code>div</code> es un elemento de bloque que actúa como contenedor para otros elementos. A diferencia de los elementos semánticos de HTML <code>div</code> no expresa el significado de su contenido y en parte se debe a que su función es simplemente la de ser un elemento auxiliar que permita dividir la página web en distintos bloques que pueden ser estilizados con CSS individualmente.</p>
+
+```html
+<body>
+  <div class="bloque-1"></div>
+  <div class="bloque-2"></div>
+  <div class="bloque-3"></div>
+</body>
+```
+```css
+.bloque-1{
+  background-color:#4061c4;
+  height:200px;
+  border:2px solid black;
+}
+
+.bloque-2{
+  background-color:rgba(251, 203, 80, 0.54);
+  height:200px;
+  border:2px solid black;
+}
+
+.bloque-3{
+  background-color:rgba(180, 45, 4, 0.52);
+  height:200px;
+  border:2px solid black;
+}
+```
+![image](https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/c3765efe-0d88-423a-943a-071785578a6f)
+
+<code>span</code>
+
+
 ### Propiedad <code>display</code>
 
 
