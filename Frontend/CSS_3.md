@@ -97,7 +97,7 @@ En este [enlace](https://www.w3schools.com/html/html_blocks.asp) puede ver lista
 
 <code>div</code>
 
-<p>El elemento <code>div</code> es un elemento de bloque que actúa como contenedor para otros elementos. A diferencia de los elementos semánticos de HTML <code>div</code> no expresa el significado de su contenido y en parte se debe a que su función es simplemente la de ser un elemento auxiliar que permita dividir la página web en distintos bloques que pueden ser estilizados con CSS individualmente.</p>
+<p>El elemento <code>div</code> es un elemento de bloque que actúa como contenedor genérico para otros elementos. A diferencia de los elementos semánticos de HTML <code>div</code> no expresa el significado de su contenido y en parte se debe a que su función es simplemente la de ser un elemento auxiliar que permita dividir la página web en distintos bloques que pueden ser estilizados con CSS individualmente.</p>
 
 ```html
 <body>
@@ -129,8 +129,38 @@ En este [enlace](https://www.w3schools.com/html/html_blocks.asp) puede ver lista
 
 <code>span</code>
 
+<p>El elemento <code>span</code> también es un contenedor genérico para agrupar otros elementos y estilizarlos. Pero <code>span</code></p> es un elemento de línea, por tanto es más útil para agrupar textos u otros elementos de línea como los hipervínculos (elemento <code>a</code>).</p>
+
+```html
+<body>
+  <p>She was infatuated with color. She didn't have a favorite color per se, but she did have a fondness for teals and sea greens. You could see it in the clothes she wore that color was an important part of her overall style. She took great pride that <span id="text">color flowed from her and that color was always all around her.</span> That is why, she explained to her date sitting across the table, that she could never have a serious relationship with him due to the fact that he was colorblind.</p>
+</body>
+```
+```css
+#text:hover{
+  background-color:lightpink;
+  border:2px solid black;
+  font-size:35px;
+  font-style:italic;
+}
+```
+
+![image](https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/d100349b-cb99-4afa-a645-0a3cf2a69c9a)
 
 ### Propiedad <code>display</code>
+
+La propiedad <code>display</code> sirve para determinar si un elemento es de bloque o de línea. Modificando esta propiedad se puede lograr que un elemento que por naturaleza es de bloque se convierta en un elemento de línea y vicerversa, y además nos va a ser también de utilidad para construir elementos de cuadrícula (<i>grid</i>) y elementos de caja flexible (<i>flex</i>).
+
+Esta propiedad también puede tener el valor <i>inline-block</i> que permite que los elementos se comporten como elementos de línea a los que se les puede asignar dimensiones de ancho y alto (<i>width</i> y <i>height</i>). Recuerde que los elementos de línea ignoran esas propiedades porque ajustan sus dimensiones a las del contenido.
+
+Posibles valores para la propiedad <code>display</code>:
+<ul>
+  <li><code>block</code>:</li>
+  <li><code>inline</code>:</li>
+  <li><code>inline-block</code>:</li>
+  <li><code>grid</code>:</li>
+  <li><code>flex</code>:</li>
+</ul>
 
 
 
