@@ -107,22 +107,21 @@ En este [enlace](https://www.w3schools.com/html/html_blocks.asp) puede ver lista
 </body>
 ```
 ```css
-.bloque-1{
-  background-color:#4061c4;
+div{
   height:200px;
   border:2px solid black;
+}
+
+.bloque-1{
+  background-color:#4061c4;  
 }
 
 .bloque-2{
   background-color:rgba(251, 203, 80, 0.54);
-  height:200px;
-  border:2px solid black;
 }
 
 .bloque-3{
   background-color:rgba(180, 45, 4, 0.52);
-  height:200px;
-  border:2px solid black;
 }
 ```
 ![image](https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/c3765efe-0d88-423a-943a-071785578a6f)
@@ -155,14 +154,67 @@ Esta propiedad también puede tener el valor <i>inline-block</i> que permite que
 
 Posibles valores para la propiedad <code>display</code>:
 <ul>
-  <li><code>block</code>:</li>
-  <li><code>inline</code>:</li>
-  <li><code>inline-block</code>:</li>
-  <li><code>grid</code>:</li>
-  <li><code>flex</code>:</li>
+  <li><code>block</code>: Elementos de bloque que ocupan todo el ancho del elemento contenedor y se apilan uno tras otro separados por el margen externo</li>
+  <li><code>inline</code>: Elementos de línea que se ubican de manera contigua en una misma línea y cuyas dimensiones son las mismas de su propio contenido.</li>
+  <li><code>inline-block</code>: Elementos que se comportan como si fueran de línea pero con la posibilidad de manipular sus dimensiones.</li>
+  <li><code>grid</code>: Elementos de bloque qu permiten maquetar los elementos en su contenido de acuerdo al modelo grid de CSS</li>
+  <li><code>flex</code>: Elementos de bloque qu permiten maquetar los elementos en su contenido de acuerdo al modelo flexbox de CSS</li>
 </ul>
 
-### Grid
+### Maquetación con CSS Grid
+
+CSS grid es un sistema de maquetación en dos dimensiones que permite organizar el contenido de un elemento contenedor en una cuadrícula formada por filas y columnas. Este sistema facilita la creación de diseños complejos ya que es posible realizar anidamientos de contenedores grid al interior de otros contenedores grid.
+
+<ul>
+  <li>Para definir un elemento <code>grid</code> se debe utilizar la propiedad <code>display</code> con el valor <code>grid</code>.</li>
+  <li>Para especificar el número de columnas y el ancho de las mismas se utiliza la propiedad <code>grid-template-columns</code></li>
+  <li>Para especificar el número de filas de la cuadrícula y la altura de las mismas se utiliza la propiedad <code>grid-template-rows</code></li>
+  <li>Para determinar el espacio entre filas se utiliza la propiedad <code>grid-row-gap</code>. Para las columnas la propiedad <code>grid-column-gap</code>, o bien el mismo valor para ambos con la propiedad <code>grid-gap</code></li>
+  <li></li>
+</ul>
+
+Por ejemplo una cuadrícula de 6x6:
+
+![image](https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/dd491d85-33b3-4f75-a8e8-a67a0131c32e)
+
+```html
+<body>
+  <div class="contenedor">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+    <div>6</div>
+    <div>7</div>
+    <div>8</div>
+    <div>9</div>
+  </div>
+</body>
+```
+```css
+.contenedor{
+  display:grid;
+  grid-template-columns: 200px 200px 200px;
+  grid-template-rows: 200px 200px 200px;
+  grid-gap:15px;
+}
+
+.contenedor > div{
+ border:2px solid black;
+ text-align:center;
+ background-color:rgba(80, 146, 251, 0.54);
+ padding:85px;
+ font-size:25px;
+ font-weight:bold;
+}
+```
+
+
+
+
+
+### Maquetación con CSS Flexbox
 
 
 
