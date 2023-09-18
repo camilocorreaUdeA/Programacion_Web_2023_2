@@ -173,7 +173,7 @@ CSS grid es un sistema de maquetación en dos dimensiones que permite organizar 
   <li></li>
 </ul>
 
-Por ejemplo una cuadrícula de 6x6:
+Por ejemplo una cuadrícula de 6x6 (de 200px por 200px cada celda) con espacio entre columnas y filas de 15px:
 
 ![image](https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/dd491d85-33b3-4f75-a8e8-a67a0131c32e)
 
@@ -209,10 +209,187 @@ Por ejemplo una cuadrícula de 6x6:
  font-weight:bold;
 }
 ```
+Hay ocasiones en las que se prefiere indicar las dimensiones de las cuadrículas en fracciones del espacio disponible dentro del elemento contenedor, es en esos casos que es de utilidad la unidad <i>fr</i>, ya que permite expresar la dimensión de un elemento como tantas partes de fracción del espacio disponible en el contenedor.
 
+Entonces el navegador calcula cuántas unidades <i>fr</i> y distibuye el espacio disponible en esa suma de unidades. Y luego a cada columna o fila se le asigna tantas unidades como estén expresadas en las propiedades <code>grid-template-columns</code> y <code>grid-template-rows</code> respectivamente.
 
+En el ejemplo siguiente, los pixeles restantes luego de separar los 200px para la primera columna se reparten en un total de 3 unidades <i>fr</i>, correspondiendole 1 unidad a la segunda columna y 2 a la tercera.
 
+```html
+<body>
+  <div class="contenedor">
+    <div>200px</div>
+    <div>1fr</div>
+    <div>2fr</div>    
+  </div>
+</body>
+```
+```css
+.contenedor{
+  display:grid;
+  grid-template-columns: 200px 1fr 2fr;
+  grid-gap:3px;
+}
 
+.contenedor > div{
+ border:2px solid black;
+ text-align:center;
+ background-color:rgba(80, 146, 251, 0.54);
+ padding:85px;
+ font-size:25px;
+ font-weight:bold;
+}
+```
+
+![image](https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/f6bc01c4-14c2-4020-b76a-2eecbe8c13b8)
+
+Para definir diseños más dinámicos y complejos las propiedades <code>grid-column</code> y <code>grid-row</code> permiten indicar que un elemento se despliegue sobre varias columnas o filas al mismo tiempo, por tanto rompiendo con la cuadrícula definida originalmente para delimitar de distintas formas las secciones de la página web.
+
+```html
+<body>
+  <main>
+    <header>header</header>
+    <nav>nav</nav>
+    <aside>aside</aside>
+    <article>article</article>
+    <footer>footer</footer>
+  </main> 
+</body>
+```
+```css
+main{
+  display:grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 2fr 1fr 4fr 1fr;
+  width:800px;
+  height:600px;
+}
+
+header{
+ border:2px solid black;
+ text-align:center;
+ background-color:rgba(80, 146, 251, 0.54);
+  font-size:25px;
+  font-weight:bold;
+  grid-column:1/3;
+  grid-row:1;
+}
+
+nav{
+ border:2px solid black;
+ text-align:center;
+ background-color:rgba(137, 251, 80, 0.54);
+ font-size:25px;
+ font-weight:bold;
+ grid-column:1/3;
+ grid-row:2;
+}
+
+aside{
+ border:2px solid black;
+ text-align:center;
+ background-color:rgba(251, 120, 80, 0.48);
+ font-size:25px;
+ font-weight:bold;
+ grid-column:1;
+ grid-row:3;
+}
+
+article{
+ border:2px solid black;
+ text-align:center;
+ background-color:rgba(251, 80, 80, 0.67);
+ font-size:25px;
+ font-weight:bold;
+ grid-column:2;
+ grid-row:3;
+}
+
+footer{
+ border:2px solid black;
+ text-align:center;
+ background-color:rgba(251, 249, 80, 0.48);
+ font-size:25px;
+ font-weight:bold;
+ grid-column:1/3;
+}
+```
+![image](https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/f38263a9-f0ee-4d67-bf64-de59ede61451)
+
+grid-template-areas
+
+```html
+<body>
+  <main>
+    <header>header</header>
+    <nav>nav</nav>
+    <aside>aside</aside>
+    <article>article</article>
+    <footer>footer</footer>
+  </main> 
+</body>
+```
+```css
+main{
+  display:grid;
+  grid-template-areas: 
+    "header header"
+    "nav nav"
+    "aside article"
+    "aside article"
+    "aside article"
+    "footer footer";
+  grid-template-columns: 1fr 2fr; 
+  width:800px;
+  height:600px;
+}
+
+header{
+ border:2px solid black;
+ text-align:center;
+ background-color:rgba(80, 146, 251, 0.54);
+ font-size:25px;
+ font-weight:bold;
+ grid-area:header;
+}
+
+nav{
+ border:2px solid black;
+ text-align:center;
+ background-color:rgba(137, 251, 80, 0.54);
+ font-size:25px;
+ font-weight:bold;
+ grid-area:nav;
+}
+
+aside{
+ border:2px solid black;
+ text-align:center;
+ background-color:rgba(251, 120, 80, 0.48);
+ font-size:25px;
+ font-weight:bold;
+ grid-area:aside;
+}
+
+article{
+ border:2px solid black;
+ text-align:center;
+ background-color:rgba(251, 80, 80, 0.67);
+ font-size:25px;
+ font-weight:bold;
+ grid-area:article;
+}
+
+footer{
+ border:2px solid black;
+ text-align:center;
+ background-color:rgba(251, 249, 80, 0.48);
+ font-size:25px;
+ font-weight:bold;
+ grid-area:footer;
+}
+```
+![image](https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/9f53f17c-b1c6-4d59-8305-7c8ecbd8750a)
 
 ### Maquetación con CSS Flexbox
 
