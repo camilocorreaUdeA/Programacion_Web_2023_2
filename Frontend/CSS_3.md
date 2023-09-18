@@ -269,10 +269,10 @@ header{
  border:2px solid black;
  text-align:center;
  background-color:rgba(80, 146, 251, 0.54);
-  font-size:25px;
-  font-weight:bold;
-  grid-column:1/3;
-  grid-row:1;
+ font-size:25px;
+ font-weight:bold;
+ grid-column:1/3;
+ grid-row:1;
 }
 
 nav{
@@ -393,9 +393,79 @@ footer{
 
 ### Maquetación con CSS Flexbox
 
+Flexbox es un mecanismo para posicionar elementos de un documento HTML en filas y columnas. Flexox utiliza dos tipos de "cajas": <i>flex containers</i> y <i>flex items</i>. Los flex containers sirven para agrupar varios flex items y definir la forma de posicionarlos. Con CSS se especifica de forma explicita cuando un elemento HTML es un flex container pero en el caso de un flex item este solo será tal si está contenido en un flex container, de forma que la única tarea de los flex items es indicar al flex container cuántos elementos este debe tener en cuenta para posicionar o maquetar.
 
+Un elemento HTML puede ser un flex container y un flex item al mismo tiempo, siempre y cuando esté contenido dentro de otro flex container y al tiempo se un flex container para otros elementos (sus flex items en ese caso).
 
+Para definir un elemento como flex container simplemente se utiliza la propiedad <code>display</code> dandole el valor <code>flex</code>, luego se debe definirla disposición de los flex items dentro del flex container. Vale la pena observar que con el modelo flexbox la posición de los elementos se determina en el elemento contenedor y no en los mismos elementos, que es como se haría usualmente en otros modelos de maquetación.
 
+Para distribuir los flex items dentro del flex container se puede utilizar la propiedad <code>justify-content</code> que entre otros puede tener los siguiente valores para determinar la distribución de los elementos:
+<ul>
+  <li>center</li>
+  <li>flex-start</li>
+  <li>flex-end</li>
+  <li>space-around</li>
+  <li>space-between</li>
+</ul>
+
+Por ejemplo, alineando los flex items en el centro del flex container, para esto usamos el valor <code>center</code>:
+
+```html
+<body>
+  <div class="flex-container">
+    <div class="flex-item">1</div>
+    <div class="flex-item">2</div>
+    <div class="flex-item">3</div>
+  </div>
+</body
+```
+```css
+.flex-container{
+  display:flex;
+  justify-content:center;
+  background-color:rgba(251, 80, 80, 0.17);
+}
+
+.flex-container > .flex-item{
+  padding:50px;
+  border:2px solid black;
+  margin: 10px;
+  background-color:rgba(80, 163, 251, 0.38);
+  font-size:20px;
+}
+```
+
+![image](https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/7fbc5c8f-3a3b-4479-821a-7b873c51ec9b)
+
+Aquí es importante anotar que a pesar de que los flex items son elementos de bloque (son elementos div) flexbox lod acomoda como si fueran elementos de línea.
+
+Pro ejemplo si quisieramos distribuir los flex items en todo el ancho el flex container de forma que quden igualmente espaciados, usamos <code>justify-content</code> con el valor <code>space-around</code>:
+
+```html
+<body>
+  <div class="flex-container">
+    <div class="flex-item">1</div>
+    <div class="flex-item">2</div>
+    <div class="flex-item">3</div>
+  </div>
+</body
+```
+```css
+.flex-container{
+  display:flex;
+  justify-content:space-around;
+  background-color:rgba(251, 80, 80, 0.17);
+}
+
+.flex-container > .flex-item{
+  padding:50px;
+  border:2px solid black;
+  margin: 10px;
+  background-color:rgba(80, 163, 251, 0.38);
+  font-size:20px;
+}
+```
+![image](https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/d9c71816-35a5-456a-b9fa-7d51475bbc39)
 
 
 
