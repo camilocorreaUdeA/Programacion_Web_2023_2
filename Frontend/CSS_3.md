@@ -243,7 +243,7 @@ En el ejemplo siguiente, los pixeles restantes luego de separar los 200px para l
 
 ![image](https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/f6bc01c4-14c2-4020-b76a-2eecbe8c13b8)
 
-Para definir diseños más dinámicos y complejos las propiedades <code>grid-column</code> y <code>grid-row</code> permiten indicar que un elemento se despliegue sobre varias columnas o filas al mismo tiempo, por tanto rompiendo con la cuadrícula definida originalmente para delimitar de distintas formas las secciones de la página web.
+Para definir diseños más dinámicos y complejos las propiedades <code>grid-column</code> y <code>grid-row</code> permiten  definir sobre cuáles columnas o filas se debe desplegar un elemento, des está forma se puede tener elementos que ocupan varias y columnas y filas al tiempo, y de esa forma romper con la cuadrícula tradicional perimitiendo diseños más dinámicos donde hay secciones de mayores dimensiones que otras.
 
 ```html
 <body>
@@ -316,7 +316,9 @@ footer{
 ```
 ![image](https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/f38263a9-f0ee-4d67-bf64-de59ede61451)
 
-grid-template-areas
+Otra manera de posicionar los elementos con <b><i>grid</i></b> es utilizando la propiedad <code>grid-template-areas</code>. El mecanismo con está propiedad es el de dar nombres a las partes en las que se divide el documento HTMLy a cada una de esas partes asignar los elementos que va a contner. Entonces a <code>grid-template-areas</code> se le asigna como valor un esquema de las distintas áreas que van a componer la página web, se usan los nombres asignados a las áreas en cada columna o fila que vaya a componer dicha área. Es importante mencionar que solo son posibles áreas cuadradas o rectangulares.
+
+Luego en cada elemento, con la propiedad <code>grid-area</code> se indica el área donde se debe posicionar ese elemento. Esto funciona similar a como se vio anteriormente con las propiedades <code>grid-column</code> y <code>grid-row</code>.
 
 ```html
 <body>
@@ -335,8 +337,6 @@ main{
   grid-template-areas: 
     "header header"
     "nav nav"
-    "aside article"
-    "aside article"
     "aside article"
     "footer footer";
   grid-template-columns: 1fr 2fr; 
@@ -389,9 +389,22 @@ footer{
  grid-area:footer;
 }
 ```
-![image](https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/9f53f17c-b1c6-4d59-8305-7c8ecbd8750a)
+![image](https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/f3d067cd-c27d-4930-ac1a-ac2698a0b496)
 
 ### Maquetación con CSS Flexbox
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
