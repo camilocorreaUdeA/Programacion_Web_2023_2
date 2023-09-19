@@ -437,9 +437,9 @@ Por ejemplo, alineando los flex items en el centro del flex container, para esto
 
 ![image](https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/7fbc5c8f-3a3b-4479-821a-7b873c51ec9b)
 
-Aquí es importante anotar que a pesar de que los flex items son elementos de bloque (son elementos div) flexbox lod acomoda como si fueran elementos de línea.
+Aquí es importante anotar que a pesar de que los flex items son elementos de bloque (son elementos div) flexbox los acomoda como si fueran elementos de línea.
 
-Pro ejemplo si quisieramos distribuir los flex items en todo el ancho el flex container de forma que quden igualmente espaciados, usamos <code>justify-content</code> con el valor <code>space-around</code>:
+Pro ejemplo si quisieramos distribuir los flex items en todo el ancho del flex container de forma que queden igualmente espaciados, usamos <code>justify-content</code> con el valor <code>space-around</code>:
 
 ```html
 <body>
@@ -467,8 +467,83 @@ Pro ejemplo si quisieramos distribuir los flex items en todo el ancho el flex co
 ```
 ![image](https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/d9c71816-35a5-456a-b9fa-7d51475bbc39)
 
+Anteriormente habíamos comentado que un elemento puede tener los roles de flex container y flex item al mismo tiempo, esta característica es de bastante utilidad ya que un flex container solo puede detallar la distribución de sus descendientes directos, así que las distribuciones no aplican a descendientes de mayor nivel de anidamiento. Por lo tanto los flex items que tengan descendientes deben a su vez ser flex containers para que sea posible posicionar esos descendientes utlizando el modelo flexbox.
 
+Sigamos con el ejemplo que venimos trabajando pero en esta ocasión agrupemos dos de los flex items en un nuevo contenedor que servirá como flex container para ellos y como flex item para el flex container orginal.
 
+```html
+<body>
+  <div class="flex-container">
+    <div class="flex-item">1</div>
+    <div class="new-container">
+      <div class="flex-item">2</div>
+      <div class="flex-item">3</div>
+    </div>
+  </div>
+</body
+```
+```css
+.flex-container{
+  display:flex;
+  justify-content:space-between;
+  background-color:rgba(251, 80, 80, 0.17);
+}
+
+.new-container{
+  display:flex;
+  justify-content:space-between;
+}
+
+.flex-item{
+  padding:50px;
+  border:2px solid black;
+  margin: 10px;
+  background-color:rgba(80, 163, 251, 0.38);
+  font-size:20px;
+}
+```
+![image](https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/d595f911-e479-4045-86da-bde6e3c09012)
+
+De momento hemos visto que con la propiedad <code>justify-content</code> podemos controlar la distribución de los flex items a lo ancho del flex container, esto es generalmente útil cuando la altura (height) del flex container no es significativamente diferente a la de los flex items, tal como vimos en los ejemplos anteriores. Pero en los casos donde el flex container tiene una altura definida y que es comparable a la de los flex items va a ser necesario una propiedad que nos permita alinear también de manera vertical los flex items en el espacio del flex container. Esto último lo podemos lograr con la propiedad <code>align-items</code> que nos va a permitir mover los flex items desde arriba hasta abajo del flex container (y también estirarlos) según nuestra necesidad.
+
+Los posibles valores para la propiedad son los siguientes:
+<ul>
+  <li>center</li>
+  <li>flex-start</li>
+  <li>flex-end</li>
+  <li>stretch</li>
+  <li>baseline</li>
+</ul>
+
+Veamos un ejemplo centrando los flex items en medio del flex container:
+
+```html
+<body>
+  <div class="flex-container">
+    <div class="flex-item">1</div>
+    <div class="flex-item">2</div>
+    <div class="flex-item">3</div>    
+  </div>
+</body>
+```
+```css
+.flex-container{
+  display:flex;
+  justify-content:space-between;
+  background-color:rgba(251, 80, 80, 0.17);
+  height: 500px;
+  align-items:center;
+}
+
+.flex-item{
+  padding:50px;
+  border:2px solid black;
+  margin: 10px;
+  background-color:rgba(80, 163, 251, 0.38);
+  font-size:20px;  
+}
+```
+![image](https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/34ef582f-e688-4817-83c1-14231d790696)
 
 
 
