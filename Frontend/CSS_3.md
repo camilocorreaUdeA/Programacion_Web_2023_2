@@ -316,7 +316,7 @@ footer{
 ```
 ![image](https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/f38263a9-f0ee-4d67-bf64-de59ede61451)
 
-Otra manera de posicionar los elementos con <b><i>grid</i></b> es utilizando la propiedad <code>grid-template-areas</code>. El mecanismo con está propiedad es el de dar nombres a las partes en las que se divide el documento HTMLy a cada una de esas partes asignar los elementos que va a contner. Entonces a <code>grid-template-areas</code> se le asigna como valor un esquema de las distintas áreas que van a componer la página web, se usan los nombres asignados a las áreas en cada columna o fila que vaya a componer dicha área. Es importante mencionar que solo son posibles áreas cuadradas o rectangulares.
+Otra manera de posicionar los elementos con <b><i>grid</i></b> es utilizando la propiedad <code>grid-template-areas</code>. El mecanismo con está propiedad es el de dar nombres a las partes en las que se divide el documento HTMLy a cada una de esas partes asignar los elementos que va a contener. Entonces a <code>grid-template-areas</code> se le asigna como valor un esquema de las distintas áreas que van a componer la página web, se usan los nombres asignados a las áreas en cada columna o fila que vaya a componer dicha área. Es importante mencionar que solo son posibles áreas cuadradas o rectangulares.
 
 Luego en cada elemento, con la propiedad <code>grid-area</code> se indica el área donde se debe posicionar ese elemento. Esto funciona similar a como se vio anteriormente con las propiedades <code>grid-column</code> y <code>grid-row</code>.
 
@@ -545,6 +545,35 @@ Veamos un ejemplo centrando los flex items en medio del flex container:
 ```
 ![image](https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/34ef582f-e688-4817-83c1-14231d790696)
 
+Poniendo los flex items en la parte baja del flex container:
+
+```css
+.flex-container{
+  display:flex;
+  justify-content:space-between;
+  background-color:rgba(251, 80, 80, 0.17);
+  height: 500px;
+  align-items:flex-end;
+}
+```
+![image](https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/47a2bc5e-cbfd-4b5e-9413-78c0c53a536c)
+
+O estirandolos en toda la altura del flex container:
+
+```css
+.flex-container{
+  display:flex;
+  justify-content:space-between;
+  background-color:rgba(251, 80, 80, 0.17);
+  height: 500px;
+  align-items:stretch;
+}
+```
+![image](https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/13c546b3-f034-48e9-be78-13b8b3d5d5ae)
+
+flex wrap
+flex direction
+flexible items
 
 
 
