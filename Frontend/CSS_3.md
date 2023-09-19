@@ -571,9 +571,83 @@ O estirandolos en toda la altura del flex container:
 ```
 ![image](https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/13c546b3-f034-48e9-be78-13b8b3d5d5ae)
 
+Hasta ahora nos hemos enfocado en flex items se se despliegan a lo ancho del flex container como formando filas donde cada flex items se ubica justo al lado del otro hasta ocupar todo el ancho del flex container. Es posible cambiar la dirección de disposición de los flex items para que también puedan desplegarse de manera vertical, esto se logra con una simple propiedad: <code>flex-direction</code> que permite indicar si los flex items se distribuyen en forma de fila horizontal o de columna vertical.
+
+Algo que se debe considerar cuando se decide distribuir los flex items en forma de columna y es que las propiedades <code>justify-content</code> y <code>align-items</code> intercalan su funcionalidad, es decir la primera actuará tal cual lo hace cuando los flex items están en fila, es decir, <code>justify-content</code> va a controlar la posición de los flex items en dirección vertical, mientras que <code>align-items</code> va a permitir desplazar la columna a lo ancho (en la dirección horizontal) del flex container.
+
+En el siguiente ejemplo con la propiedad <code>align-items</code> ubicamos la columna con los flex items en el centro del flex container mientras que con <code>justify-content</code> hacemos la distribución vertical en la columna.
+
+```html
+<body>
+  <div class="flex-container">
+    <div class="flex-item">1</div>
+    <div class="child-container">
+      <div class="flex-item">2</div>
+      <div class="flex-item">3</div>
+    </div>
+  </div>
+</body>
+```
+```css
+.flex-container{
+  display:flex;
+  justify-content:space-between;
+  background-color:rgba(251, 80, 80, 0.17);
+  height: 700px;
+  align-items:center;
+  justify-content:space-between;
+  flex-direction:column;
+}
+
+.flex-item{
+  padding:50px;
+  border:2px solid black;
+  margin: 10px;
+  background-color:rgba(80, 163, 251, 0.38);
+  font-size:20px;
+}
+```
+![image](https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/23e5f543-7f3f-45fc-8649-8f85bf78e648)
+
+¿Recuerdas que con el modelo de maquetación grid podíamos fraccionar el contenedor en partes iguales y luego asignar fracciones a los contenidos para tener cuadrículas en las que no necesariamente los elementos tenían las mismas dimensiones? Pues con el modelo flexbox también se puede hacer algo semejante, podemos definir individualmente el ancho que ocuparán los flex items dentro del flex container con la ayuda de la propiedad <code>flex</code>. Esta propiedad se utiliza en los flex items para indicar que tanto se debe "estirar" su ancho para ocupar cierta cantidad de espacio dentro del flex container. Por ejemplo, un flex item con un valor de 2 en la propiedad <code>flex</code> ocupará dos veces el ancho que ocuparía un flex item con un valor de 1.
+
+```html
+<body>
+  <div class="flex-container">
+    <div class="flex-item-1">1</div>
+    <div class="flex-item-2">2</div>
+    <div class="flex-item-3">3</div>    
+  </div>
+</body>
+```
+```css
+.flex-container{
+  display:flex;
+  justify-content:space-between;
+  background-color:rgba(251, 80, 80, 0.17);
+}
+
+[class^="flex-item"]{
+  border:2px solid black;
+  margin: 10px;
+  background-color:rgba(80, 163, 251, 0.38);
+  font-size:20px;
+  text-align:center;
+}
+
+.flex-item-1,
+.flex-item-3{
+  flex:1;
+}
+
+.flex-item-2{
+  flex:2;
+}
+```
+![image](https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/ae1fcd8a-233c-4e4f-a59a-368170cf2422)
+
+
 flex wrap
-flex direction
-flexible items
 
 
 
