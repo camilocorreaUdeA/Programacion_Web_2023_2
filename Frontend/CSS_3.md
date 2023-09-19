@@ -646,8 +646,38 @@ En el siguiente ejemplo con la propiedad <code>align-items</code> ubicamos la co
 ```
 ![image](https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/ae1fcd8a-233c-4e4f-a59a-368170cf2422)
 
+Para dar por concluída esta sesión vamos a mencionar que con el modelo flexbox también es posible ubicar los elementos en cuadrículas como aprendimos a hacerlo con el modelo grid. Con la propiedad <code>flex-wrap</code> vamos a lograr que de forma automática los flex items se ubiquen en una nueva fila del flex container una vez desbordan la capacidad su ancho.
 
-flex wrap
+```html
+<body>
+  <div class="flex-container">
+    <div class="flex-item">1</div>
+    <div class="flex-item">2</div>
+    <div class="flex-item">3</div>
+    <div class="flex-item">4</div>
+    <div class="flex-item">5</div>
+    <div class="flex-item">6</div>    
+  </div>
+</body>
+```
+```css
+.flex-container{
+  display:flex;
+  justify-content:center;
+  background-color:rgba(251, 80, 80, 0.17);
+  flex-wrap: wrap;
+}
+
+.flex-item{
+  border:2px solid black;
+  margin: 10px;
+  background-color:rgba(80, 163, 251, 0.38);
+  font-size:20px;
+  text-align:center;
+  padding:170px;
+}
+```
+![image](https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/2fd22e07-3d72-46b7-8afc-4a1327de1437)
 
 
 
