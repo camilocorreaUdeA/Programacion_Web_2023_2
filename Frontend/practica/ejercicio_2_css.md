@@ -42,5 +42,15 @@ NOTA: Puede utilizar todos los recursos y conocimientos que tenga a disposición
 
 Recuerde desplegar su sitio en Github como lo ha hecho en otras ocasiones.
 
+Enlaces con ejemplos y ayuda:
+<ul>
+  <li>https://blog.hubspot.es/website/opacidad-css</li>
+  <li>https://pro.empresiona.com/blog/como-oscurecer-imagen-fondo-css/</li>
+  <li>https://codepen.io/jorgemaiden/pen/VwvjKGj</li>
+  <li>https://creatuweb.espaciolatino.com/como_se_hace/img_zoom.htm</li>
+  <li>https://www.w3schools.com/howto/howto_css_zoom_hover.asp</li>
+  <li>https://css-tricks.com/zooming-background-images/</li>
+  <li></li>
+</ul>
 
 
