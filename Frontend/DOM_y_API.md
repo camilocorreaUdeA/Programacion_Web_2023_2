@@ -26,17 +26,51 @@ Las APIs locales son las que hemos venido comentando en los ejemplos anteriores,
 
 Esta categoría de APIs no es de nuestro interés para los alcances y objetivos del curso.
 
-Las APIs remotas en cambio si requieren de un agente externo que proporcione los medios y capacidades para que las aplicaciones puedan llevar a cabo el proceso de comunicación, y esto se debe en gran medida a que las aplicaciones residen en sistemas distintos, entonces antes de comunicarse a través de la API se debe establecer una conexión que debe ser mantenida por el tiempo de la comunicación. El ejemplo más común aquí es cuando usted va a navegar en un sitio web, su navegador web está instalado en su computador mientras que el sitio web está alojado en un servidor que no es más que otro computador localizado en otra ubicación geográfica distinta. Por tanto, para que su navegador pueda solicitar contenidos al servidor web requiere de establecer una conexión remota al servidor que le permita hacer la solicitud a través de la web API.
+Las APIs remotas en cambio si requieren de un agente externo que proporcione los medios y capacidades para que las aplicaciones puedan llevar a cabo el proceso de comunicación, y esto se debe en gran medida a que las aplicaciones residen en sistemas distintos, entonces antes de comunicarse a través de la API se debe establecer una conexión que debe ser mantenida por el tiempo de la comunicación. El ejemplo más común aquí es cuando usted va a navegar en un sitio web, su navegador web está instalado en su computador mientras que el sitio web está alojado en un servidor que no es más que otro computador localizado en otra ubicación geográfica distinta. Por tanto, para que su navegador pueda solicitar contenidos al servidor web requiere de establecer una conexión remota al servidor para luego poder hacer la solicitud a través de la API.
 
 Esta categoría de APIs es la que nos interesa para los fines de este curso.
 
-Clasificación de las APIs de acuerdo con su arquitectura:
+Clasificación de las APIs remotas en términos de acceso:
 <ul>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
+  <li><b>Open/Public API:</b> SOn las APIS que están disponibles de manera pública y no existen restricciones para utilizarlas. Públicas no necesariamente significa que su uso sea gratuito.</li>
+  <li><b>Partner API:</b> Son APIs que no están disponibles de forma pública y por tanto se necesita contar con permisos o licencias para utilizarlas. Dentro de esta categoría estpan las APIs que un socio de negocio proporciona para interactuar con sus productos de software.</li>
+  <li><b>Internal/Private API:</b> Son APIs para usar solo entre componentes internos del sistema y por tanto no se exponen al público. Un buen ejemplo es una API que permite a un servicio de un sistema distribuido hacer una ejecución remota de un procedimiento que está localizado en otro servicio del mismo sistema al que está conectado mediante una red de comunicación en común.</li>
+  <li><b>Composite API:</b> Son APIs que se modelan como una combinación de distintos datos y APIs. Por lo general son secuencias de tareas que corren de manera sincrónica para incrementar la velociad de ejecución de un proceso al poder agrupar y ejecutar varias solicitudes en un solo llamado a la API. Además mejora el desempeño del cliente ya que en vez de hacer varios llamados a distintas APIs y esperar individualmente las respuestas de cada una puede hacer un solo llamado en el que se hacen todas las solicitudes y se recibe una sola respuesta.</li>
 </ul>
 
+Clasificación de las APIs remotas de acuerdo con su arquitectura:
+<ul>
+  <li><b>API REST:</b> Representational State Trasnfer permite que un cliente ejecute acciones en un servidor utilizando los métodos HTTP (GET, POST, PUT, PATCH y DELETE) El servidor se encarga de proporcionar "endpoints" para que el cliente pueda manipular distintos tipos de datos. La característica principal de REST es que se no conserva el estado entre solicitudes, o sea que el servidor no conserva datos del cliente y las distintas solicitudes de cliente a servidor son independientes y carecen de relación. En otras palabras, que se pueda ejecutar o no una solicitud no depende de la ejecución de solicitudes pasadas ni va a influir en la ejecución de solicitudes futuras.</li>
+  <li><b>API GraphQL:</b> El lenguaje GraphQL permite desarrollar APIs que ofrecen acceso a datos vinculados que se pueden pensar como un grafo de entidades, por lo tanto se pueden crear solicitudes fuertemente tipadas en las que se espcifica de manera exacta los datos que se necesitan. Luego, mediante un solo "endpoint" expuesto el servidor se obtienen los datos, al contrario de otros tipos de APIs en las que se necesitaría consultar múltiples "endpoints" para obtener los mismos datos.</li>
+  <li><b>API SOAP:</b> SOAP es el acrónimo de Simple Object Access Protocol que es un estándar de mensajería que se basa en el formato XML para la construcción de los mensajes de solicitud y respuesta. SOAP utiliza el patrón de RPC (Remote Procedure Call) donde la comunicación entre cliente y sevidor se modela como el llamado a funciones o métodos a los que se les pasan parámetros específicos para que se retorne un resultado con los datos esperados.</li>
+  <li><b>API RPC:</b> La arquitectura RPC propone un enfoque en el cual cargas de trabajo remotas se ejecutan como si fuera de manera local, esta característca hace que RPC sea muy útil en la construcción de servicios distribuidos ya que una aplicación se puede componer de rutinas o funciones que internamente hacen llamados a funciones que se ejecutan en otros servicios externos. Esto también significa una gran felxibilidad en comparación con arquitecturas como REST poque se puede ejecutar practicamente cualquier función y solicitar cualquier tipo de acción sobre los datos, mientras que REST está restringido a los métodos ofrecidos por el protocolo HTTP.</li>
+</ul>
 
+Para los fines y objetivos de este curso nos interesa enfocarnos solo en las APIs REST así que desde este punto y en adelante cada vez que usemos el término API nos estaremos refiriendo específicamente a REST API.
+
+## REST APIs
+
+Las REST APIs comunican un cliente y un servidor a través de peticiones/solicitudes HTTP, en casi todas las ocasiones para ejecutar operaciones como crear, leer, actualizar y eliminar recursos en una base de datos. Por ejemplo para leer/obtener un recurso a través de una REST API se tendría que usar el método HTTP GET, para crear un nuevo recurso el método POST (o PUT), para actulizar están disponibles los métodos PUT y PATCH y para eliminar un recurso está el método DELETE.
+
+Hay que tener en cuenta que cuando hablamos de obtener o leer un recurso no estamos haciendo referencia al recurso como tal sino a una representación del mismo, de ahí viene el mismo acrónimo de REST, Representational State Transfer, transferencia del estado de representación. Y una representación de un recurso es el estado de ese recurso en un momento en particular. 
+
+La representación del recurso puede ser presentada por la API en distintos formatos, practicamente en cualquiera, entre las más populares se incluyen JSON (Javascript Object Notation), HTML, XML, Python, PHP, texto plano, entre otras. Siendo la más popular de todas JSON ya que es más entendible para el lector y más fácil de decodificar para una máquina y además es agnóstico del lenguaje de programación.
+
+En REST APIs que estén bien diseñadas se incluye el uso de encabezados y parámetros en las solicitudes, ya que permiten incluir información importante como metadatos, credenciales de autenticación y autorización, las rutas a los recursos o URIs, datos para caching y cookies entre otros. Y en el caso de las respuestas también se considera importante incluir los códigos de estado de la solicitud HTTP.
+
+A continuación listamos algunos principios de diseño de APIs REST
+
+<ul>
+  <li><b>Interfaces uniformes:</b> Todas las solicitudes al mismo recurso deben ser iguales sin importar desde dónde se haga la solicitud. Se debe asegurar que cualquier dato pertenece a un solo identificador uniforme de recursos URI. Se recomienda también que los recursos no sean muy grandes pero que contengan la información que necesita el cliente.</li>
+  <li><b>Desacoples entre cliente y servidor: El cliente y el servidor deben ser sistemas independientes. La única información que el cliente debe conocer del servidor son las URIs a los recursos y aparte de los "endpoints" proporcionados por el servidor no debe tener ningún otro canal de interacción con este. Y por el lado del servidor, este no debe poder modificar nada en la aplicación del cliente y su única función de cara al cliente es la de responder con los datos solicitados por este.</b></li>
+  <li><b>Ausencia de estado en las solicitudes:</b> Cada solicitud requiere compartir toda la información necesaria para su procesamiento. No deben existir sesiones de lado del servidor y este no debe almacenar ningún dato del cliente.</li>
+  <li><b>Caché-abilidad:</b> Para incrementar el desempeño del lado del cliente y la escalabilidad del lado del servidor se pueden utilizar cachés de los recursos en el lado del servidor. El servidor debe informar al cliente que recursos pueden ser cacheables.</li>
+  <li><b>Arquitectura de capas:</b> En el canal de comunicación entre cliente y servidor pueden existir muchas capas intermediarias, por tanto se deben diseñar las APIs para que tanto cliente como servidor no tengan en cuenta si en realidad se están comunicando de manera directa con una apliación intermediaria.</li>
+  <li><b>Código bajo demanda:</b> En caso de que una API se utilice para enviar código que pueda ser ejecutado se debe restringir está ejecucuión a que solo sea bajo demanda, solicitud o autorización explícita.</li>
+</ul>
+
+Hemos mencionado en varias ocasiones dos conceptos para los cuales no hemos dado una definición concreta. Veamoslas a continuación:
+
+JSON:
+
+Endpoint:
