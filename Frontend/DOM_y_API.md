@@ -62,7 +62,7 @@ A continuación listamos algunos principios de diseño de APIs REST
 
 <ul>
   <li><b>Interfaces uniformes:</b> Todas las solicitudes al mismo recurso deben ser iguales sin importar desde dónde se haga la solicitud. Se debe asegurar que cualquier dato pertenece a un solo identificador uniforme de recursos URI. Se recomienda también que los recursos no sean muy grandes pero que contengan la información que necesita el cliente.</li>
-  <li><b>Desacoples entre cliente y servidor: El cliente y el servidor deben ser sistemas independientes. La única información que el cliente debe conocer del servidor son las URIs a los recursos y aparte de los "endpoints" proporcionados por el servidor no debe tener ningún otro canal de interacción con este. Y por el lado del servidor, este no debe poder modificar nada en la aplicación del cliente y su única función de cara al cliente es la de responder con los datos solicitados por este.</b></li>
+  <li><b>Desacople entre cliente y servidor: El cliente y el servidor deben ser sistemas independientes. La única información que el cliente debe conocer del servidor son las URIs a los recursos y aparte de los "endpoints" proporcionados por el servidor no debe tener ningún otro canal de interacción con este. Y por el lado del servidor, este no debe poder modificar nada en la aplicación del cliente y su única función de cara al cliente es la de responder con los datos solicitados por este.</b></li>
   <li><b>Ausencia de estado en las solicitudes:</b> Cada solicitud requiere compartir toda la información necesaria para su procesamiento. No deben existir sesiones de lado del servidor y este no debe almacenar ningún dato del cliente.</li>
   <li><b>Caché-abilidad:</b> Para incrementar el desempeño del lado del cliente y la escalabilidad del lado del servidor se pueden utilizar cachés de los recursos en el lado del servidor. El servidor debe informar al cliente que recursos pueden ser cacheables.</li>
   <li><b>Arquitectura de capas:</b> En el canal de comunicación entre cliente y servidor pueden existir muchas capas intermediarias, por tanto se deben diseñar las APIs para que tanto cliente como servidor no tengan en cuenta si en realidad se están comunicando de manera directa con una apliación intermediaria.</li>
@@ -71,6 +71,26 @@ A continuación listamos algunos principios de diseño de APIs REST
 
 Hemos mencionado en varias ocasiones dos conceptos para los cuales no hemos dado una definición concreta. Veamoslas a continuación:
 
-JSON:
+JSON: Javascript Object Notation es un formato basado en texto que se usa para representar datos estructurados en la sintaxis de objetos de Javascript. Es comúnmente utilizado para transmitir datos en aplicaciones web (como formato de datos para el cuerpo de solicitudes y respuestas HTTP). Al ser un formato de uso extendido casi todos los lenguajes de programación cuentan con funciones auxiliares que permiten convertir un objeto de datos a JSON y desde JSON a la representación en un objeto de datos del lenguaje de programación.
+
+Es importante aclarar que JSON solo se utiliza para representar los datos de un objeto, los métodos del objeto no pueden ser representados con JSON.
+
+Los objetos de JSON pueden ser almacenados en archivos de texto con la extensión <code>.json</code>, y para transmitir JSON en solicitudes/respuestas HTTP se recomienda adjuntar el encabezado <code>Content-Type</code> con el valor <code>application/json</code>.
+
+Estructura de un objeto JSON:
+
+```json
+{
+  "propiedad":"valor_en_texto",
+  "otraPropiedadNumerica":25,
+  "esPropiedadBooleana":true,
+  "unArreglo":[
+     "header",
+     "nav",
+     "section",
+     "footer"
+  ]
+}
+```
 
 Endpoint:
