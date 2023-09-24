@@ -50,6 +50,8 @@ Para los fines y objetivos de este curso nos interesa enfocarnos solo en las API
 
 ## REST APIs
 
+![Tomado de https://rapidapi.com/blog/api-glossary/api/](https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/7ef4cb5e-77c4-410f-90d2-a90f221e5711)
+
 Las REST APIs comunican un cliente y un servidor a través de peticiones/solicitudes HTTP, en casi todas las ocasiones para ejecutar operaciones como crear, leer, actualizar y eliminar recursos en una base de datos. Por ejemplo para leer/obtener un recurso a través de una REST API se tendría que usar el método HTTP GET, para crear un nuevo recurso el método POST (o PUT), para actulizar están disponibles los métodos PUT y PATCH y para eliminar un recurso está el método DELETE.
 
 Hay que tener en cuenta que cuando hablamos de obtener o leer un recurso no estamos haciendo referencia al recurso como tal sino a una representación del mismo, de ahí viene el mismo acrónimo de REST, Representational State Transfer, transferencia del estado de representación. Y una representación de un recurso es el estado de ese recurso en un momento en particular. 
@@ -71,7 +73,7 @@ A continuación listamos algunos principios de diseño de APIs REST
 
 Hemos mencionado en varias ocasiones dos conceptos para los cuales no hemos dado una definición concreta. Veamoslas a continuación:
 
-JSON: Javascript Object Notation es un formato basado en texto que se usa para representar datos estructurados en la sintaxis de objetos de Javascript. Es comúnmente utilizado para transmitir datos en aplicaciones web (como formato de datos para el cuerpo de solicitudes y respuestas HTTP). Al ser un formato de uso extendido casi todos los lenguajes de programación cuentan con funciones auxiliares que permiten convertir un objeto de datos a JSON y desde JSON a la representación en un objeto de datos del lenguaje de programación.
+<b>JSON</b>: Javascript Object Notation es un formato basado en texto que se usa para representar datos estructurados en la sintaxis de objetos de Javascript. Es comúnmente utilizado para transmitir datos en aplicaciones web (como formato de datos para el cuerpo de solicitudes y respuestas HTTP). Al ser un formato de uso extendido casi todos los lenguajes de programación cuentan con funciones auxiliares que permiten convertir un objeto de datos a JSON y desde JSON a la representación en un objeto de datos del lenguaje de programación.
 
 Es importante aclarar que JSON solo se utiliza para representar los datos de un objeto, los métodos del objeto no pueden ser representados con JSON.
 
@@ -82,15 +84,38 @@ Estructura de un objeto JSON:
 ```json
 {
   "propiedad":"valor_en_texto",
-  "otraPropiedadNumerica":25,
-  "esPropiedadBooleana":true,
+  "propiedadNumerica":25,
+  "propiedadBooleana":true,
   "unArreglo":[
      "header",
      "nav",
      "section",
      "footer"
-  ]
+  ],
+  "unObjeto":{
+     "propiedad":"valor"
+  }
 }
 ```
+Aspectos a tomar en cuenta acerca de la estructura de JSON:
 
-Endpoint:
+<ul>
+  <li>Para los nombres de las propiedades y los valores que sean texto es estricto el uso de comilla doble, la comilla sencilla no es válida.</li>
+  <li>Las propiedades se separan con coma, la última propiedad del objeto no debe llevarla.</li>
+  <li>Los arreglos se representan como una lista de valores separados por coma y encerrados en corchetes.</li>
+  <li>Un objeto JSON puede tener propiedades cuyo valor son representaciones de otros objetos, es decir, se permite la anidación de objetos en JSON. Los objetos van encerrados dentro de llaves (curly braces)</li>
+  <li>Para los nombres de las propiedades que se compongan de dos o más palabras se recomiendan los estilos <code>camelCase</code> y <code>snake_case</code>. Evite usar espacios o caracteres especiales para separar las palabras. Evite también mezclar ambos estilos de escritura.</li>
+  <li>No debe existir más de una propiedad con el mismo nombre</li> 
+  <li>Todo el objeto va delimitado por llaves (curly braces)</li>
+</ul>
+
+<b>Endpoint</b>: Los endpoints son los extremos en el sistema de comunicación de una API, por lo general se asume que el endpoint incial es cliente, y el cliente puede ser un navegador, una interfaz de usuario o frontend, o bien un servicio que solicita datos a otro. Los endpoints finales están del lado del servidor y son proporcionados por los servicios que están allí alojados y están encargados de realizar una operación determinada sobre un recurso en específico.
+
+En las APIs REST un endpoint se identifica mediante una URL que determina la localización de un recurso alojado en el servidor. Cada URL identifica un endpoint y cada endpoint representa una operación que se pueda ejecutar sobre el recurso señalado por la URL. Es decir, para cada método HTTP u operación autorizada sobre un recurso se destina un endpoint (no necesariamente una URL) individual. Por tanto, dos endpoints pueden tener la misma URL pero depediendo del método HTTP utilizado en la solicitud se ejecuta una función u otra en el servidor.
+
+
+CRUD: Create, Read, Update and Delete
+
+Solicitud HTTP
+
+Respuesta HTTP
