@@ -226,7 +226,7 @@ Operaciones CRUD
 
 Para implementar esta operación en una API REST se utiliza el método HTTP <code>POST</code> y en el cuerpo de la solicitud se pasa el nuevo objeto que será agregado en la base de datos, ese objeto debe ir codificado en el formato escogido para compartir datos entre los endpoints de la aplicación. El formato que utilizaremos en el curso es JSON.
 
-<img width="1369" alt="image" src="https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/289de741-7427-4459-8cb1-0f996f083ff2">
+![image](https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/1bde9247-1944-4932-a0ba-c078d9ebeb72)
 
 2. <code>READ</code>: Esta operación permite consultar la representación de los recursos de la aplicación web. Retorna registros almacenados en la base de datos.
 
@@ -234,8 +234,17 @@ La implementación de esta operación se logra a través del método HTTP <code>
 
 Un solo recurso:
 
+![image](https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/9ee9a0f3-21c1-4d28-b293-d4945e20d060)
+
 Lista de recursos:
+
+![image](https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/3cb17988-cd37-4fd0-85c6-9626e014b8e1)
 
 3. <code>UPDATE</code>: Esta operación que puede ser implementada con los métodos <code>PUT</code> y <code>PATCH</code> permite editar o actualizar un recurso de la aplicacion web. Recuerde que el método <code>PUT</code> crea un nuevo recurso en caso de que el que se haya solicitado modificar no exista. Y además, solo con el método <code>PATCH</code> es posible pasar solamente los campos de datos sujetos a la actualización. También se debe especificar en la URL un dato que distinga completamente al recurso de otros, por lo general se utiliza el id que se le asignó al almacenarlo en la base de datos.
 
-4. <code>DELETE</code>: Con esta operación se eliminan registros de la base de datos. Para implementarla se utiliza el método HTTP <code>DELETE</code>. Se debe especificar en la URL un dato que distinga completamente al recurso de otros, por lo general se utiliza el id que se le asignó al almacenarlo en la base de datos.
+![image](https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/5a5aa95b-5aff-4d7c-a42d-399ff38068a1)
+
+5. <code>DELETE</code>: Con esta operación se eliminan registros de la base de datos. Para implementarla se utiliza el método HTTP <code>DELETE</code>. Se debe especificar en la URL un dato que distinga completamente al recurso de otros, por lo general se utiliza el id que se le asignó al almacenarlo en la base de datos.
+
+![image](https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/ab034419-0289-418d-abf4-46c566743493)
+
