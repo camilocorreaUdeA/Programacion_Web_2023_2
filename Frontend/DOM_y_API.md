@@ -133,6 +133,8 @@ A partir de este momento vamos a relacionar el término aplicación web con una 
   <li>Persistencia o base de datos: Es otra instancia dentro del backend de la aplicación web, y es simplemente el repositorio donde se almacenan los datos que procesa la aplicación. No tiene canal de interacción directa con la interfaz de usuario y cualquier operación sobre los datos que almacen se da como consecuencia de la ejecución de la lógica en los servicios web. El acrónimo CRUD se refiere precisamente a las operaciones que se pueden ejecutar en esta capa.</li>
 </ul>
 
+![image](https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/edda1967-641b-4e97-a34d-303fba9e10c2)
+
 Las operaciones CRUD en una API REST se implementan sobre la base de las peticiones y respuestas de los métodos HTTP, por tanto vamos a hacer un pequeño recuento de la anatomía de las peticiones y respuestas en el protocolo HTTP.
 
 Las peticiones y respuestas del protocolo HTTP comparten una estructura similar compuesta por las siguientes partes:
@@ -216,6 +218,24 @@ Cuerpo de un único recurso: siendo este un archivo de longitud desconocida y co
 </li>
 </ol>
 
-Solicitud HTTP
+![image](https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/cec82073-8297-48c1-aebf-5be0905784d1)
 
-Respuesta HTTP
+Operaciones CRUD
+
+1. <code>CREATE</code>: Esta operación permite crear un nuevo recurso en la aplicación web, es decir, agrega un nuevo registro en la base de datos. Si es una base de datos SQL agrega una nueva fila en la tabla respectiva, o si es una tabla NoSQL agrega una nueva instancia de la estructura de datos utilizada en la base de datos, por ejemplo en MongoDB sería un nuevo documento.
+
+Para implementar esta operación en una API REST se utiliza el método HTTP <code>POST</code> y en el cuerpo de la solicitud se pasa el nuevo objeto que será agregado en la base de datos, ese objeto debe ir codificado en el formato escogido para compartir datos entre los endpoints de la aplicación. El formato que utilizaremos en el curso es JSON.
+
+<img width="1369" alt="image" src="https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/289de741-7427-4459-8cb1-0f996f083ff2">
+
+2. <code>READ</code>: Esta operación permite consultar la representación de los recursos de la aplicación web. Retorna registros almacenados en la base de datos.
+
+La implementación de esta operación se logra a través del método HTTP <code>GET</code> y puede ser de dos formas, lectura de una representación individual de un recurso, o leer una lista con las representaciones de los recursos disponibles en la aplicación web. Para el primer caso se debe especificar en la URL un dato que distinga completamente al recurso de otros, por lo general se utiliza el id que se le asignó al almacenarlo en la base de datos. Para el segundo caso no es necesario especificar un distintivo ya que se van a retornar una lista de los recursos existentes, más adelante veremos que podemos limitar la cantidad de recursos en la lista utilizando algunos parámetros en la solicitud (filtros).
+
+Un solo recurso:
+
+Lista de recursos:
+
+3. <code>UPDATE</code>: Esta operación que puede ser implementada con los métodos <code>PUT</code> y <code>PATCH</code> permite editar o actualizar un recurso de la aplicacion web. Recuerde que el método <code>PUT</code> crea un nuevo recurso en caso de que el que se haya solicitado modificar no exista. Y además, solo con el método <code>PATCH</code> es posible pasar solamente los campos de datos sujetos a la actualización. También se debe especificar en la URL un dato que distinga completamente al recurso de otros, por lo general se utiliza el id que se le asignó al almacenarlo en la base de datos.
+
+4. <code>DELETE</code>: Con esta operación se eliminan registros de la base de datos. Para implementarla se utiliza el método HTTP <code>DELETE</code>. Se debe especificar en la URL un dato que distinga completamente al recurso de otros, por lo general se utiliza el id que se le asignó al almacenarlo en la base de datos.
