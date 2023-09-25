@@ -1,8 +1,8 @@
 # DOM, APIs y otras cosas
 
-## DOM
+## API
 
-## ¿Qué es una API?
+### ¿Qué es una API?
 
 ![Tomado de https://blog.back4app.com/](https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/aa6dd98f-35f4-4602-b597-2ff4c48b707d)
 
@@ -48,7 +48,7 @@ Clasificación de las APIs remotas de acuerdo con su arquitectura:
 
 Para los fines y objetivos de este curso nos interesa enfocarnos solo en las APIs REST así que desde este punto y en adelante cada vez que usemos el término API nos estaremos refiriendo específicamente a REST API.
 
-## REST APIs
+### REST APIs
 
 ![Tomado de https://rapidapi.com/blog/api-glossary/api/](https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/7ef4cb5e-77c4-410f-90d2-a90f221e5711)
 
@@ -70,6 +70,8 @@ A continuación listamos algunos principios de diseño de APIs REST
   <li><b>Arquitectura de capas:</b> En el canal de comunicación entre cliente y servidor pueden existir muchas capas intermediarias, por tanto se deben diseñar las APIs para que tanto cliente como servidor no tengan en cuenta si en realidad se están comunicando de manera directa con una apliación intermediaria.</li>
   <li><b>Código bajo demanda:</b> En caso de que una API se utilice para enviar código que pueda ser ejecutado se debe restringir está ejecucuión a que solo sea bajo demanda, solicitud o autorización explícita.</li>
 </ul>
+
+Estos principios hacen que REST sea un estilo arquitectónico flexible para la construcción de sistemas orientados a servicios basados en estándars web. REST proporciona beneficios entre los que se incluyen escalabilildad, reusabilidad, y bajo acoplamiento los cuales le permiten ajustarse a las necesidades de las aplicaciones web modernas que atienden a millones de usuarios.
 
 Hemos mencionado en varias ocasiones dos conceptos para los cuales no hemos dado una definición concreta. Veamoslas a continuación:
 
@@ -113,8 +115,106 @@ Aspectos a tomar en cuenta acerca de la estructura de JSON:
 
 En las APIs REST un endpoint se identifica mediante una URL que determina la localización de un recurso alojado en el servidor. Cada URL identifica un endpoint y cada endpoint representa una operación que se pueda ejecutar sobre el recurso señalado por la URL. Es decir, para cada método HTTP u operación autorizada sobre un recurso se destina un endpoint (no necesariamente una URL) individual. Por tanto, dos endpoints pueden tener la misma URL pero depediendo del método HTTP utilizado en la solicitud se ejecuta una función u otra en el servidor.
 
+![image](https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/db3b1766-fd16-4793-b57c-d1a2b43a8ef5)
 
-CRUD: Create, Read, Update and Delete
+Endpoint: <code>resources/videos</code>
+
+### CRUD: Create, Read, Update and Delete
+
+CRUD son las siglas de las palabras <code>CREATE</code>, <code>READ</code>, <code>UPDATE</code> y <code>DELETE</code> que son los términos que describen las cuatro operaciones básicas o esenciales para trabajar con datos almacenados en una persistencia o base de datos.
+
+Antes de seguir detallando a mayor profundidad los conceptos asociados a CRUD, hagamos un paréntesis para comentar acerca de la arquitectura de una aplicación web, o más bien de las aplicaciones web que dentro del alcance de aprendizaje de este curso.
+
+A partir de este momento vamos a relacionar el término aplicación web con una arquitectura de software de varios niveles, del término en inglés <i>multi-tier</i>, donde interactúan por lo menos 3 capas distintas a saber: 
+
+<ul>
+  <li>La interfaz de usuario o UI: También conocida como frontend es la interfaz con la que interactúa directamente el usuario a través de un navegador web. Allí conviven el lenguaje de marcación HTML, las hojas de estilo CSS y el lenguaje de programación Javascript. Esta capa es la encaragada de procesar los datos introducidos por el usuario y disparar la ejecución de las operaciones de la aplicación mediante el envío de peticiones/solicitudes al servidor de la aplicación. Luego recibe las respuestas y las procesa de modo que el usuario las pueda visualizar en un formato previamente determinado.</li>
+  <li>Servicio web: Es la primera instancia de lo que se conoce como el backend, o lado del servidor, de la aplicación web. Puede ser un solo servicio o múltiples servicios interconectados, que simplemente son rutinas de software que definen las funciones que van a procesar las peticiones/solicitudes recibidas desde la interfaz de usuario. En el servicio web se definen los distintos endpoints que componen la aplicación web y les asigna la lógica necesaria para cumplir con la operación para la que fueron diseñados.</li>
+  <li>Persistencia o base de datos: Es otra instancia dentro del backend de la aplicación web, y es simplemente el repositorio donde se almacenan los datos que procesa la aplicación. No tiene canal de interacción directa con la interfaz de usuario y cualquier operación sobre los datos que almacen se da como consecuencia de la ejecución de la lógica en los servicios web. El acrónimo CRUD se refiere precisamente a las operaciones que se pueden ejecutar en esta capa.</li>
+</ul>
+
+Las operaciones CRUD en una API REST se implementan sobre la base de las peticiones y respuestas de los métodos HTTP, por tanto vamos a hacer un pequeño recuento de la anatomía de las peticiones y respuestas en el protocolo HTTP.
+
+Las peticiones y respuestas del protocolo HTTP comparten una estructura similar compuesta por las siguientes partes:
+
+<ol>
+<li>Comienzo (start line): Es la primera línea de texto que describe la petición que se va a hacer, o bien, indica el estatus de la respuesta para saber si la petición se atendió correctamente o no. Este comienzo es una única línea de texto.</li>
+
+<li>Encabezados (headers): Conjunto de encabezados, cada uno en su propia línea de texto individual, que describen detalles específicos de la petición o la información incluída dentro del cuerpo del mensaje (tanto de una petición como de una respuesta).</li>
+
+<li>Línea en blanco (empty/blank line): Es obligatoria y se agrega para separar la parte informativa (descriptiva) del mensaje del contenido incluído en el cuerpo del mensaje.</li>
+
+<li>Cuerpo del mensaje (body): Es opcional en algunos casos ya que no todos los métodos HTTP requieren de un cuerpo con datos asociados a la petición o la respuesta. La presencia del cuerpo en el mensaje sugiere que además existen encabezados que detallan la longitud y el tipo de datos de la información allí incluída.</li>
+</ol>
+
+Peticiones HTTP (Requests)
+
+<ol>
+<li>Comienzo (start line)
+
+El comienzo de una petición HTTP debe tener 3 elementos:
+
+<ol>
+<li>Un método HTTP, es un verbo, GET, o un nombre, OPTIONS, que describe la operación a realizar.</li>
+<li>El destinatario de la petición, es por lo general una URL cuyo formato varía de acuerdo con el método HTTP usado en la petición. Puede ser una ruta absoluta al recurso en el servidor, la URL completa o en algunos casos un asterisco que representa al servidor como un todo.</li>
+<li>La versión del protocolo HTTP, indica la versión del protocolo en la que se espera establecer el intercambio de mensajes con el servidor.</li>
+</ol>
+</li>
+
+<li>Encabezados (headers)
+
+Los encabezados son pares de clave y valor separados por dos puntos (:) y que van en líneas individuales. Las claves y valores no diferencian entre mayúsculas y minúsculas.
+
+Se pueden subdividir en 3 categorías: 
+
+<ol>
+<li>Encabezados generales: Aplican al mensaje como un todo.</li>
+<li>Encabezados de petición: detallan a mayor profundidad la petición, dando contexto de la misma y en ciertos casos restringiendo su campo de actuación.</li>
+<li>Encabezados de representación: Describen el formato original de los datos que van en el cuerpo del mensaje, por tanto sólo tienen sentido cuando la petición tiene un cuerpo.</li>  
+</ol>
+</li>
+
+<li>Línea en blanco (empty line)</li>
+
+<li>Cuerpo (body)
+
+Solo utilizan esta parte de la petición los métodos POST, PUT y PATCH. Existen 2 categorías:
+
+<ol>
+<li>Cuerpo de un único recurso: Un solo archivo definido por dos encabezados que son “Content-Type” y “Content-Length”.</li>
+<li>Cuerpo multi-recurso: Son varios archivos que contienen información de distintos recursos, están generalmente asociados a las HTML Forms.</li>
+</ol>
+</li>
+</ol>
+
+Respuestas HTTP (Responses)
+
+<ol>
+<li>Comienzo (start line)
+
+Más conocido como línea de estatus, contiene la siguiente información:
+
+<ol>
+<li>La versión del protocolo HTTP, usualmente HTTP/1.1</li>
+<li>El código de estatus para indicar si la petición se procesó correctamente o no.</li>
+<li>El texto informativo del estatus, no es más que una breve descripción textual del estatus de la petición.</li>
+</ol>
+</li>
+
+<li>Encabezados (headers)
+
+Aplica para la respuesta la misma descripción vista para el caso de las peticiones.
+</li>
+
+<li>Línea en blanco (empty line)</li>
+
+<li>Cuerpo (body)
+
+Es opcional porque no todas las respuestas a peticiones HTTP requieren de un cuerpo que tenga datos, un buen ejemplo es la respuesta a una petición POST. Aquí aplican las mismas categorías vistas para el caso de las peticiones y se adiciona la siguiente:
+
+Cuerpo de un único recurso: siendo este un archivo de longitud desconocida y codificado en “chunks”, es decir, que el encabezado con clave “Transfer-Encoding” viene con el valor “chunked”.
+</li>
+</ol>
 
 Solicitud HTTP
 
