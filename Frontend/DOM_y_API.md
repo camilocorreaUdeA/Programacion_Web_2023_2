@@ -52,7 +52,7 @@ Para los fines y objetivos de este curso nos interesa enfocarnos solo en las API
 
 ![Tomado de https://rapidapi.com/blog/api-glossary/api/](https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/7ef4cb5e-77c4-410f-90d2-a90f221e5711)
 
-Las REST APIs comunican un cliente y un servidor a través de mensajes HTTP, en casi todas las ocasiones para ejecutar operaciones como crear, leer, actualizar y eliminar recursos en una base de datos. Por ejemplo para leer/obtener un recurso a través de una REST API se tendría que usar el método HTTP GET, para crear un nuevo recurso el método POST (o PUT), para actulizar están disponibles los métodos PUT y PATCH y para eliminar un recurso está el método DELETE.
+Las REST APIs comunican un cliente y un servidor a través de mensajes HTTP, en casi todas las ocasiones para ejecutar operaciones como crear, leer, actualizar y eliminar recursos en una base de datos. Por ejemplo para leer/obtener un recurso a través de una REST API se tendría que usar el método HTTP GET, para crear un nuevo recurso el método POST (o PUT), para actualizar están disponibles los métodos PUT y PATCH y para eliminar un recurso está el método DELETE.
 
 Hay que tener en cuenta que cuando hablamos de obtener o leer un recurso no estamos haciendo referencia al recurso como tal sino a una representación del mismo, de ahí viene el mismo acrónimo de REST, Representational State Transfer, transferencia del estado de representación. Y una representación de un recurso es el estado de ese recurso en un momento en particular. 
 
