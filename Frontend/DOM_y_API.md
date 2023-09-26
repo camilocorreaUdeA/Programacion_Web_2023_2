@@ -1,4 +1,4 @@
-# DOM, APIs y otras cosas
+# APIs y otras cosas
 
 ## API
 
