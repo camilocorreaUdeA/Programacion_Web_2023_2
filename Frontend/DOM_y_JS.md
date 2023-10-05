@@ -46,22 +46,38 @@ A continuación vamos a proporcionar un listado de las propiedades del DOM de us
 
 Propiedades de los nodos del DOM:
 <ul>
-  <li><b>innerHTML:</b>Esta propiedad permite acceder y manipular el contenido de un elemento HTML</li>
-  <li><b>nodeName:</b></li>
-  <li><b>nodeValue:</b></li>
-  <li><b>nodeType:</b></li>
-  <li><b>parentNode:</b></li>
-  <li><b>parentElement:</b></li>
-  <li><b>style:</b></li>
-  <li><b>tagName:</b></li>
-  <li><b>textContent:</b></li>
-  <li><b>firstChild:</b></li>
-  <li><b>lastChild:</b></li>
-  <li><b>className:</b></li>
-  <li><b>childNodes:</b></li>
-  <li><b>attributes:</b></li>
-  <li><b>childElementCount:</b></li>
-  <li><b>id:</b></li>
+  <li><b>innerHTML: </b>Esta propiedad permite acceder y manipular el contenido de un elemento HTML.</li>
+  <li><b>nodeName: </b>Devuelve el nombre del nodo.</li>
+  <li><b>nodeValue: </b>Devuelve o permite acceder al valor del nodo.</li>
+  <li><b>nodeType: </b>Devuelve el tipo de nodo.</li>
+  <li><b>parentNode: </b>Devuelve el nodo padre del elemento.</li>
+  <li><b>parentElement: </b>Funciona igual que el anterior pero devuelve nulo cuando el nodo padre no es un elemento HTML.</li>
+  <li><b>style: </b>Retorna un objeto que permite acceder a las reglas de estilo del elemento HTML (declaradas en línea con el atributo style)</li>
+  <li><b>tagName: </b>Devuelve el nombre de la etiqueta del elemento HTML.</li>
+  <li><b>textContent: </b>Devuelve y premite cambiar el texto del contenido de un elemento HTML. Puede simplificarse a <i>text</i></li>
+  <li><b>innerText: </b>Funciona igual al anterior.</li>
+  <li><b>firstChild: </b>Devuelve un objeto que permite acceder a las propiedades del primer nodo descendiente del elemento.</li>
+  <li><b>lastChild: </b>Igual que el anterior pero en el caso del último descendiente</li>
+  <li><b>className: </b>Permite conocer el valor del atributo <i>class</i> del elemento</li>
+  <li><b>childNodes: </b>Devuelve una lista con todos los nodos descendientes del elemento</li>
+  <li><b>attributes: </b>Devuelve una lista con todos los atributos del elemento.</li>
+  <li><b>childElementCount: </b>Devuelve el número total de elementos que son descendientes directos del elemento.</li>
+  <li><b>id: </b>Devuelve el valor del atributo <i>id</i> del elemento.</li>
+</ul>
+
+Métodos del DOM:
+<ul>
+ <li><b></b></li>
+ <li><b></b></li> 
+ <li><b></b></li> 
+ <li><b></b></li> 
+ <li><b></b></li> 
+ <li><b></b></li> 
+ <li><b></b></li> 
+ <li><b></b></li> 
+ <li><b></b></li> 
+ <li><b></b></li> 
+ <li><b></b></li> 
 </ul>
 
 
