@@ -225,43 +225,56 @@ const nodo = document.querySelector("div");
 /* accediendo a las propiedades directamente a traves de la propiedad style */
 div.style.backgroundColor = "lightblue";
 /* accediendo a las propiedades a traves de la propiedad cssText */
-div.style.cssText = "backgroundColor: lightblue; border: 2px solid black;";
+div.style.cssText = "background-color: lightblue; border: 2px solid black;";
 /* asignando el atributo style y su valor con el método setAttribute */
-div.setAttribute("style", "backgroundColor: lightblue; border: 2px solid black;")
+div.setAttribute("style", "background-color: lightblue; border: 2px solid black;")
 ```
-
+[Ejemplo](https://codepen.io/camilocorreaUdeA/pen/mdaQgwR?editors=1111)
 ```html
 <html>
  <head></head>
  <body>
   <div>
-   <p>
+   <p>Desarrollo de aplicaciones web</p>
   </div>
  </body>
 </hmtl>
 ```
 ```js
-/* modificando los elementos de un listado */
-const cursos = [
-  {
-    nombre:"Learn Javascript Online",
-    enlace:"https://learnjavascript.online/"
-  },
-  {
-    nombre:"Introduction to Javascript",
-    enlace:"https://learnjavascript.online/"
-  },
-  {
-    nombre:"Javascript.Info",
-    enlace:"https://javascript.info/"
-  }
-];
-let itemsLista = document.querySelector("#lista-cursos-js").children
-for(i in itemsLista){
-  itemsLista[i].textContent = `${cursos[i].nombre}: ${cursos[i].enlace}`;
+/* modificando los estilos */
+const div = document.querySelector("div");
+div.setAttribute('style', 'background-color: rgba(113, 215, 249, 0.45); border: 2px solid black;');
+const p = document.querySelector("div p");
+p.style.color = "red";
+p.style.fontSize = "30px";
+```
+Podemos lograr el mismo objetivo haciendo coincidir el selector del elemento con un selector predefinido en las reglas CSS. En este ejemplo en particular vamos utilizar la propiedad <i>classList</i> que permite agregar o modificar los valores del atributo <i>class</i> de un elmento, y si ese atributo no existe lo crea. Luego vamos a llamar al método <i>add</i> para agregar al atributo <i>class</i> el valor que determinará la coincidencia con el selector de las reglas CSS. Se puede lograr el mismo efecto con el método <code>setAttribute</code>, con este último podemos asignar un valor al atributo <i>id</i> y lograr la coincidencia con un selector por id. [Ejemplo](https://codepen.io/camilocorreaUdeA/pen/NWeEmMz?editors=1111) 
+```html
+<html>
+ <head></head>
+ <body>
+  <div>
+   <p>Desarrollo de aplicaciones web</p>
+  </div>
+ </body>
+</hmtl>
+```
+```css
+.my-div{
+  background-color: rgba(113, 215, 249, 0.45); 
+  border: 2px solid black;  
+}
+
+.my-div p{
+  color: red;
+  font-size: 30px;
 }
 ```
-
+```js
+/* modificando los estilos */
+const div = document.querySelector("div");
+div.classList.add("my-div");
+```
 
 Para agregar (insertar) nuevos elementos al documento, primero se deben crear con el método <code>document.createElement</code>
 
