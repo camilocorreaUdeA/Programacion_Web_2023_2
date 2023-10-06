@@ -71,6 +71,7 @@ Algunas propiedades de los nodos del DOM:
 
 ¿Recuerdas los selectores que utilizabamos para aplicar las reglas de estilo CSS a un elemento en particular del documento? Pues, esos mismos selectores nos van a ser de utilidad para seleccionar un elemento y procesarlo con Javascript. Para ese propósito vamos a utilizar el método <code>querySelector</code> del nodo <i>document</i>
 
+[Ejemplo:](https://codepen.io/camilocorreaUdeA/pen/KKbrbge?editors=1111)
 ```html
 <html>
  <head></head>
@@ -85,10 +86,11 @@ Algunas propiedades de los nodos del DOM:
 ```
 ```js
 /* seleccionando el primer elemento li de la lista ul */
-const primerElementoLista = document.querySelector(".lista :firstChild")
-console.log(primerElementoLista.textContent) /* Frijoles */
+const primerElementoLista = document.querySelector(".lista :first-child");
+console.log(primerElementoLista.textContent); /* Frijoles */
 ```
 Con el método <code>querySelectorAll</code> puedes seleccionar todos los elementos que compartan el mismo selector CSS:
+[Ejemplo:](https://codepen.io/camilocorreaUdeA/pen/oNJQJZj?editors=1111)
 
 ```html
 <html>
@@ -104,11 +106,12 @@ Con el método <code>querySelectorAll</code> puedes seleccionar todos los elemen
 ```
 ```js
 /* seleccionando todos los elementos li de la lista ul */
-const elementosLista = document.querySelectorAll(".item")
-const arepa = elementosLista[1]
-console.log(arepa.textContent) /* Arepa */
+const elementosLista = document.querySelectorAll(".item");
+const arepa = elementosLista[1];
+console.log(arepa.textContent); /* Arepa */
 ```
 Para seleccionar un elemento por el valor del atributo <i>id</i> se utiliza el método <code>getElementById</code>
+[Ejemplo](https://codepen.io/camilocorreaUdeA/pen/RwEqEVo?editors=1111)
 
 ```html
 <html>
@@ -120,11 +123,12 @@ Para seleccionar un elemento por el valor del atributo <i>id</i> se utiliza el m
 ```
 ```js
 /* seleccionando un elemento por id */
-const parrafo = document.getElementById("par")
-console.log(parrafo.textContent) /* Texto del parrafo */
+const parrafo = document.getElementById("par");
+console.log(parrafo.textContent); /* Texto del parrafo */
 ```
 
 Para seleccionar elementos por el valor del atributo <i>class</i> se utiliza el método <code>getElementsByClassName</code>
+[Ejemplo](https://codepen.io/camilocorreaUdeA/pen/JjwewJo?editors=1111)
 
 ```html
 <html>
@@ -138,10 +142,11 @@ Para seleccionar elementos por el valor del atributo <i>class</i> se utiliza el 
 ```
 ```js
 /* seleccionando todos los elementos de la misma class */
-const parrafos = document.getElementsByClassName("par")
-console.log(parrafos[1].textContent) /* Texto del parrafo 2*/
+const parrafos = document.getElementsByClassName("par");
+console.log(parrafos[1].textContent); /* Texto del parrafo 2*/
 ```
 O bien se pueden seleccionar elementos por la etiqueta del elemento con el método <code>getElementsByTagName</code>
+[Ejemplo](https://codepen.io/camilocorreaUdeA/pen/QWzJzMx?editors=1111)
 
 ```html
 <html>
@@ -155,12 +160,110 @@ O bien se pueden seleccionar elementos por la etiqueta del elemento con el méto
 ```
 ```js
 /* seleccionando todos los elementos con la misma etiqueta */
-const parrafos = document.getElementsByTagName("p")
-console.log(parrafos[1].textContent) /* Texto del parrafo 2*/
+const parrafos = document.getElementsByTagName("p");
+console.log(parrafos[1].textContent); /* Texto del parrafo 2*/
 ```
 Combinando los métodos selectores y las propiedades de los nodos del DOM podemos hacer modificaciones al contenido (y al estilo) de los elementos HTML del documento.
+[Ejemplo](https://codepen.io/camilocorreaUdeA/pen/yLGQGPG?editors=1111)
+
+```html
+<html>
+ <head></head>
+ <body>
+  <div></div>
+ </body>
+</hmtl>
+```
+```js
+/* seleccionando todos los elementos con la etiqueta div y modificando su contenido HTML*/
+const newContent = '<p><a href="https://learnjavascript.online/">¡Aprende Javascript en línea!</a></p>';
+document.getElementsByTagName("div")[0].innerHTML = newContent;
+```
+[Ejemplo](https://codepen.io/camilocorreaUdeA/pen/bGOQOvM?editors=1111)
+
+```html
+<html>
+ <head></head>
+ <body>
+  <div>
+   <strong>Cursos recomendados para aprender Javascript en 2023:</strong>
+   <ul id="lista-cursos-js">
+    <li>Curso 1</li>
+    <li>Curso 2</li>
+    <li>Curso 3</li>
+   </ul>
+  </div>
+ </body>
+</hmtl>
+```
+```js
+/* modificando los elementos de un listado */
+const cursos = [
+  {
+    nombre:"Learn Javascript Online",
+    enlace:"https://learnjavascript.online/"
+  },
+  {
+    nombre:"Introduction to Javascript",
+    enlace:"https://learnjavascript.online/"
+  },
+  {
+    nombre:"Javascript.Info",
+    enlace:"https://javascript.info/"
+  }
+];
+let itemsLista = document.querySelector("#lista-cursos-js").children;
+for(i in itemsLista){
+  itemsLista[i].textContent = `${cursos[i].nombre}: ${cursos[i].enlace}`;
+}
+```
+¿Cómo modificar los estilos? Podemos modificarlos de varias formas pero aquí vamos a revisar dos de ellas. La primera forma es a través de la propiedad <i>style</i> de los nodos del DOM, al modificar esta propiedad estamos modificando directamente los estilos en línea del elemento. La segunda forma, que utiliza las reglas de estilo CSS definidas es un archivo externo (styles.css), requiere que las modificaciones se hagan en los atributos del elemento con el objetivo de lograr una coincidencia exacta con el selector de la regla CSS que se ha preparado con anticipación.
+
+```js
+/* formas de agregar estilos a un elemento */
+const nodo = document.querySelector("div");
+/* accediendo a las propiedades directamente a traves de la propiedad style */
+div.style.backgroundColor = "lightblue";
+/* accediendo a las propiedades a traves de la propiedad cssText */
+div.style.cssText = "backgroundColor: lightblue; border: 2px solid black;";
+/* asignando el atributo style y su valor con el método setAttribute */
+div.setAttribute("style", "backgroundColor: lightblue; border: 2px solid black;")
+```
+
+```html
+<html>
+ <head></head>
+ <body>
+  <div>
+   <p>
+  </div>
+ </body>
+</hmtl>
+```
+```js
+/* modificando los elementos de un listado */
+const cursos = [
+  {
+    nombre:"Learn Javascript Online",
+    enlace:"https://learnjavascript.online/"
+  },
+  {
+    nombre:"Introduction to Javascript",
+    enlace:"https://learnjavascript.online/"
+  },
+  {
+    nombre:"Javascript.Info",
+    enlace:"https://javascript.info/"
+  }
+];
+let itemsLista = document.querySelector("#lista-cursos-js").children
+for(i in itemsLista){
+  itemsLista[i].textContent = `${cursos[i].nombre}: ${cursos[i].enlace}`;
+}
+```
 
 
+Para agregar (insertar) nuevos elementos al documento, primero se deben crear con el método <code>document.createElement</code>
 
 
 Métodos del DOM:
