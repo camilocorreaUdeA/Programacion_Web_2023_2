@@ -1,4 +1,4 @@
-# Invocando APIs con Javascript
+# Consumiendo APIs con Javascript
 
 ## Fetch API
 
