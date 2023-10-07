@@ -276,29 +276,159 @@ const div = document.querySelector("div");
 div.classList.add("my-div");
 ```
 
-Para agregar (insertar) nuevos elementos al documento, primero se deben crear con el método <code>document.createElement</code>
+Para agregar (insertar) un nuevo elemento al documento puede seguir los siguientes pasos:
+<ol>
+<li>Crear el nuevo elemento con el método <code>document.createElement</code>, este recibe como parámetro la etiqueta del elemento que desea crear.</li>
+<li>Agregue el contenido al nuevo elemento. Puede utilizar la propiedad <code>innerHTML</code> o si el contenido va a ser solo texto puede usar el metodo <code>createTextNode pasandole como parámetro el texto del contenido.</code></li>
+<li>Agregue el nuevo elemento al documento. Los nuevos elementos se insertan o se agrean a un elmento existente, que será el nodo padre del nuevo elemento, para insertar el nuevo elemento al final  de los otros descendientes del nodo padre puede utilizar el método <code>appendChild</code> del elemento padre pasando en el parámetro el nuevo elemento descendiente. O si quiere ubicar el nuevo elemento en una ubicación predeterminada (tomando como punto de referencia otro descendiente existente) puede utilizar el método <code>insertBefore</code> del nodo padre indicando en los parámetros el nuevo elemento y el elemento antes de cuya posición quiere insertar el nuevo elmento.</li>
+</ol>
+[Ejemplo](https://codepen.io/camilocorreaUdeA/pen/ZEVVWXb?editors=1111)
 
+```html
+<html>
+ <head></head>
+ <body>
+  <div>
+   <strong>Lista de tareas</strong>
+    <ul id="to-do-list">
+    </ul>      
+  </div>
+ </body>
+</hmtl>
+```
+```js
+/* agregando nuevos elementos */
+const tareas = [
+    "Repasar HTML",
+    "Consultar acerca de CSS",
+    "Aprender Javascript",
+    "Practicar la consulta de APIs",
+    "Construir mi primer aplicación web"    
+  ];
+  for(tarea of tareas) {
+    const lista = document.querySelector("#to-do-list");
+    const nuevaTarea = document.createElement("li");
+    const textoTarea = document.createTextNode(tarea);
+    nuevaTarea.appendChild(textoTarea);
+    lista.appendChild(nuevaTarea);   
+  }
+```
+[Ejemplo](https://codepen.io/camilocorreaUdeA/pen/mdaaPYa)
 
-Métodos del DOM:
-<ul>
- <li><b></b></li>
- <li><b></b></li> 
- <li><b></b></li> 
- <li><b></b></li> 
- <li><b></b></li> 
- <li><b></b></li> 
- <li><b></b></li> 
- <li><b></b></li> 
- <li><b></b></li> 
- <li><b></b></li> 
- <li><b></b></li> 
-</ul>
+```html
+<html>
+ <head></head>
+ <body>
+  <div>
+   <p>Yo soy el primer párrafo</p>     
+  </div>
+ </body>
+</hmtl>
+```
+```js
+/* agregando nuevos elementos */
+const div = document.querySelector("div");
+const primerP = document.querySelector("div p");
+const newP = document.createElement("p");
+newP.textContent = "Eras...yo ya soy el primer párrafo";
+div.insertBefore(newP, primerP);
+```
+Y para remover elementos existe el método <code>removeChild</code>. Así:
 
+```js
+nodoPadre.removeChild(nodoDescendiente);
+```
 
+### Captura de eventos
 
+Un evento es una acción que ocurre o se ejecuta en una página web, por jemplo cuando se da clic a un botón o a un enlace. Con Javascript pdemos hacer que la página web escuche o este pendiente de esos eventos para luego reaccionar a su ocurrencia. Los eventos más comunes son: el clic del mouse, la presión de la tecla enter, pasar el puntero del mouse por encima de algún elemento, la selección de una opción en un menú desplegable, marcar una caja de selección, etc. Para ver una lista completa de los eventos disponibles puede visitar este [enlace](https://developer.mozilla.org/en-US/docs/Web/Events).
 
+Captura de eventos como atributos de los elementos HTML.
 
+Podemos agregar atributos a los elementos HTML que permiten que puedan escuchar y atender un evento. Por ejemplo, el atributo <code>onclick</code> permite especificar una función que se debe ejecutar una vez dan clic en el elemento. [Ejemplo](https://codepen.io/camilocorreaUdeA/pen/ZEVVOPx)
 
+```html
+<html>
+ <head></head>
+ <body>
+  <p>Desarrollo de aplicaciones web!</p>    
+  <button onclick="cambiar()">Dale clic!</button>
+ </body>
+</hmtl>
+```
+```css
+.clase {
+  color: green;
+  font-size: 40px;
+  font-weight: bold;
+}
+```
+```js
+/* función que atiende el evento */
+function cambiar() {
+  const p = document.querySelector("p");
+  p.setAttribute("class", "clase");
+}
+```
+Agregando <i>listeners</i> en Javascript
+
+Si prefiere separar la lógica del contenido puede trasladar la escucha de los eventos al script de Javascript. La primera forma de hacerlo sería seleccionando el elemento y asignando la ejecución de una función a la propiedad asociada al evento que se desea atender. En el siguiente ejemplo reproduciremos el anterior pero trasladando la esucha del evento al código de Javascript. [Ejemplo](https://codepen.io/camilocorreaUdeA/pen/XWooKvx)
+
+```html
+<html>
+ <head></head>
+ <body>
+  <p>Desarrollo de aplicaciones web!</p>    
+  <button>Dale clic!</button>
+ </body>
+</hmtl>
+```
+```css
+.clase {
+  color: green;
+  font-size: 40px;
+  font-weight: bold;
+}
+```
+```js
+const boton = document.querySelector("button");
+boton.onclick = () => cambiar(); /* escuchando el evento */
+
+function cambiar() {
+  const p = document.querySelector("p");
+  p.setAttribute("class", "clase");
+}
+```
+
+En la segunda forma vamos a utilizar el método <code>addEventListener</code> con el que vamos a indicar el evento a escuchar y la función con la que se debe atender. Vamos a reproducir de nuevo el primer ejemplo pero aplicando esta segunda forma. [Ejemplo](https://codepen.io/camilocorreaUdeA/pen/gOZZwpw)
+
+```html
+<html>
+ <head></head>
+ <body>
+  <p>Desarrollo de aplicaciones web!</p>    
+  <button>Dale clic!</button>
+ </body>
+</hmtl>
+```
+```css
+.clase {
+  color: green;
+  font-size: 40px;
+  font-weight: bold;
+}
+```
+```js
+/* atendiendo el evento con un listener */
+const boton = document.querySelector("button");
+boton.addEventListener(
+  "click",
+  () => {
+    const p = document.querySelector("p");
+    p.setAttribute("class", "clase");    
+  }
+);
+```
 
 
 
