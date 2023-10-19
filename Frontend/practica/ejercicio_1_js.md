@@ -66,3 +66,5 @@ flavor_text_entries: es un arreglo de objetos en los que se puede encontrar un c
 En el objeto retornado existe un campo evolves_to que su vez contiene un objeto species en el que se puede consultar el nombre de la siguiente evolución y la URL al endpoint Species de la evolución.    
   </li>
 </ol>
+
+ENTREGA: Tal cual lo ha hecho para las demás actividades. Un enlace al repositorio y otro al despliegue de la aplicación en Github. 
