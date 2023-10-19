@@ -67,4 +67,6 @@ En el objeto retornado existe un campo evolves_to que su vez contiene un objeto 
   </li>
 </ol>
 
+NOTA: Las figuras que se muestran son solo mockups de referencia. Por favor explote al máximo su creatividad y estilice la aplicación de la mejor manera posible.
+
 ENTREGA: Tal cual lo ha hecho para las demás actividades. Un enlace al repositorio y otro al despliegue de la aplicación en Github. 
