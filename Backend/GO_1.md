@@ -53,4 +53,46 @@ Utilidades de Go para los desarrolladores:
 
 ## Instalación de Go
 
+Puedes revisar el [Getting started](https://go.dev/doc/tutorial/getting-started) oficial.
+También puedes seguir las instrucciones oficiales de [instalación](https://go.dev/doc/install)
+
+En general el proceso de instalación de Go es bastante intuitivo:
+<ul>
+  <li>Instala el IDE de tu preferencia, recomiendo VSCode pero Goland también está bien.</li>
+  <li>Descarga Go [aquí](https://go.dev/dl/). Allí están los instaladores para los distintos sistemas operativos.</li>
+  <li>Instalación manual de Go en tu máquina:
+    <ul>
+      <li>Linux: Ejecute en la terminal: <code>rm -rf /usr/local/go && tar -C /usr/local -xzf go1.21.3.linux-amd64.tar.gz</code>, luego setea la variable de ambiente <code>PATH</code> para que también apunte al directorio bin de Go: <code>export PATH=$PATH:/usr/local/go/bin</code></li>
+      <li>Con MacOS y Windows descargue el instalador correspondiente, ejecutelo y verifique la instalación con el comando <code>go version</code> en la terminal.</li>
+    </ul>
+  </li>
+  <li>Otras formas de instalar Go:
+  <ul>
+    <li>MacOS: Instale <b>homebrew</b> en su sistema y una vez instalado ejecute en la terminal el comando <code>brew install go</code></li>
+    <li>Windows: Instale <b>chocolatey</b> y una vez instalado ejecute en la terminal el comando <code>choco install golang</code></li>
+  </ul>
+    </li>
+  <li>Verifique la instalación ejecutando el comando <code>go version</code></li>
+</ul>
+
+Una vez hayas instalado Go en tu máquina y si ya tienes VSCode instalado también (¡si no, entonces instalalo!). Abre VSCode y luego presiona la combinación de teclas <code>Ctrl + Shif + P</code> y en el menú que se despliega escoge la opción <code>Go: Install/Update Tools</code>. Espere que se complete la instalación de las herramientas.
+
+<img width="603" alt="image" src="https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/8a9b7c5d-b8b5-4dd4-82a0-c7926d2bd2c0">
+
+Luego instale la extensión de Go para facilitar la codificación ya que trae funciones como autocompletado, indentación automática y verificación de errores de sintaxis, etc.
+
+<img width="655" alt="image" src="https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/aa49bf57-b453-45e1-a61f-adb722405ca3">
+
+## Go modules
+
+<i>Go modules</i> es el sistema de administración de dependencias en Go, el cual facilita el acceso a la información de versiones y la inclusión de paquetes externos en una aplicación de Go.
+
+Un modulo en Go es una colección de paquetes almacenados en un árbol de archivos (directorio) donde un archivo llamado <i>go.mod</i> es el nodo raíz del árbol.
+
+El archivo <i>go.mod</i> define la ruta del modulo que se usa como la ruta de <i>import</i> del directorio raíz. También indica la versión de Go usada para compilar el proyecto y el conjunto de dependencias (otros modulos) que se importan y se utilizan en el proyecto.
+
+## Creación de un proyecto en Go
+
+
+
 
