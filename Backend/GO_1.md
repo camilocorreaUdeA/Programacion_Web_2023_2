@@ -59,7 +59,7 @@ También puedes seguir las instrucciones oficiales de [instalación](https://go.
 En general el proceso de instalación de Go es bastante intuitivo:
 <ul>
   <li>Instala el IDE de tu preferencia, recomiendo VSCode pero Goland también está bien.</li>
-  <li>Descarga Go [aquí](https://go.dev/dl/). Allí están los instaladores para los distintos sistemas operativos.</li>
+  <li>Descarga Go en https://go.dev/dl/. En ese sitio están los instaladores para los distintos sistemas operativos.</li>
   <li>Instalación manual de Go en tu máquina:
     <ul>
       <li>Linux: Ejecute en la terminal: <code>rm -rf /usr/local/go && tar -C /usr/local -xzf go1.21.3.linux-amd64.tar.gz</code>, luego setea la variable de ambiente <code>PATH</code> para que también apunte al directorio bin de Go: <code>export PATH=$PATH:/usr/local/go/bin</code></li>
