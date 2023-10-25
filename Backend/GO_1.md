@@ -93,6 +93,102 @@ El archivo <i>go.mod</i> define la ruta del modulo que se usa como la ruta de <i
 
 ## Creación de un proyecto en Go
 
+Para crear un proyecto de Go:
+<ol>
+  <li>Crear un directorio para alojar el proyecto.</li>
+  <li>Acceda al directorio con VSCode.</li>
+  <li>Abra una Terminal (Terminal -> New Terminal)</li>
+  <li>En la terminal ejecute el siguiente comando <code>go mod init &lt;<i>ruta-al-modulo</i>&gt;</code> Donde <i>ruta-al-modulo</i> es el nombre del modulo del proyecto, por convención de acostumbra que esta ruta sea la misma URL al repositorio en github.com donde se alojará el proyecto, por ejemplo: <i>github.com/usuario123/repo-proyecto</i></li>
+
+  ![image](https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/3cd3a8b7-cafd-431f-a3f9-7dbebdc04846)
+  
+  <li>Verifique que un archivo <i>go.mod</i> haya sido agregado al directorio raíz del proyecto.</li>  
+</ol>
+
+## Anatomía básica de un archivo fuente de Go (archivos con extensión <i>.go</i>)
+
+![image](https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/196c1dd0-032a-4e7b-9cda-def7e0ca9d15)
+
+<ul>
+  <li>Línea package &lt;<i>nombre-package</i>&gt;: Esta línea es la única parte obligatoria de la anatomía y debe ir en todos los archivos fuente de una aplicación de Go, ella indica a que paquete (package) pertenece el archivo fuente. Si el archivo fuente contiene una función <i>main</i> (<i>entry point</i> a la aplicación) entonces el nombre del paquete debe ser <i>main</i>, y por tanto la línea debe quedar <code>package main</code></li>
+  <li>Conjunto de <i>imports</i>: En esta sección se hace referencia a los paquetes de los cuales se importan variables, tipos o funciones en el archivo de fuente actual. Se puede importar tanto paquetes locales (es decir, paquetes que están dentro del mismo proyecto) o paquetes externos (son paquetes creados por terceros que se agregan como modulos al proyecto) que se descargan direactmente del repositorio donde están alojados. La sintaxis incluye la palabra <i>import</i> seguida por el conjunto de los nombres y/o las rutas a los paquetes que se van a importar, encerrados entre paréntesis. Dichos paréntesis no son necesarios cuando es un solo paquete el que se importa.</li>
+  <li>Declaraciones de variables, constantes y tipos: Por convención se sugiere hacer declaraciones de variables y constantes y definiciones de tipos justo después de la sección de imports y antes de la definición de cualquier función.</li>
+  <li>Definición de funciones (lógica): A continuación de las declaraciones de variables y constantes y de las definiciones de tipos se codifican las funciones que hacen parte del archivo fuente. Si el paquete es main, entonces se sugiere que la función main se defina antes de cualquier otra función.</li>
+</ul>
+
+## Jerarquía dentro de un módulo en Go
+
+Hasta el momento hemos hablado de los conceptos de módulo, paquete y archivo fuente pero sin dar una definción precisa de cada uno y sin explicar cuál sería la relación entre estos conceptos, pues bien, a continuación dejamos las definiciones pertinentes:
+<ul>
+  <li><b>Archivo fuente:</b> Es un archivo amoldado por el patrón de anatomía básica que vimos anteriormente. Todos los archivos fuente en Go tienen la extensión .go y son simplemente el lugar en el que se agrupan un conjunto de funciones, declaraciones de variables y definiciones de tipos que están inter-relacionados y que tienen el objetivo de implementar unas funcionalidades que componen una lógica de negocio o algoritmo en específico.</li>
+  <li><b>Paquete (package):</b> Un paquete es una agrupación de archivos fuente dentro de un mismo directorio, dichos archivos deben compartir el mismo nombre de paquete en la línea package. Un paquete permite exportar a otros paquetes (o módulos) las variables, constantes, tipos y funciones definidos en los archivos fuente que lo conforman.</li>
+  <li><b>Módulo:</b> Es un conjunto o colección formado por uno o más paquetes almacenados en un árbol de archivos y en cuyo directorio raíz existe un archivo go.mod que contiene el nombre del módulo (ruta al repositorio), la versión del lenguaje con la que fue creado y las posibles dependencias que pueda tener con otros módulos externos. Un módulo en Go es en cierto grado lo que comunmente se denomina librería o biblioteca en otros lenguajes de programación.</li>
+</ul>
+
+## Tipos de datos en Go, declaración de variables, constantes, funciones y definición de tipos
+
+### Tipos nativos de Go
+
+Numéricos
+
+```go
+/* enteros */
+uint8 (uint, byte), uint16, uint32, uint64
+int8 (int, rune), int16, int32, int64
+
+/* decimales */
+float32, float64
+
+/* complejos */
+complex64, complex128
+```
+Booleano
+
+```go
+bool
+```
+Texto y cadenas de caracteres
+
+```go
+string
+```
+
+Colecciones de datos
+
+Arrays: Son colecciones de datos de un mismo tipo que se almacenan de forma consecutiva en memoria y para las que se define el tamaño en el momento mismo de la declaración. Un tipo array está compuesto tanto por el tipo de dato de los elementos como por la longitud de arreglo mismo. Un array es estático en memoria, esto quiere decir que no pueden cambiar de tamaño en tiempo de ejecución, conservan el tamaño asignado en la declaración durante el ciclo de vida de la aplicación.
+
+```go
+/* arreglo de 10 elementos de tipo int */
+var array [10]int
+```
+Slices: Son colecciones similares a los arrays pero con la diferencia de que son dinámicos en memoria, es decir, pueden cambiar de tamaño en tiempo de ejecución, se les puede retirar o agregar elementos. Hay que tener cuidado cuando al agregar elementos se sobrepasa la capacidad del slice ya que esto implica una relocalización del slice en memoria, por tanto invalidando los punteros y copias del slice.
+
+```go
+/* slice */
+var slice []string
+```
+Mapas: Un mapa en Go es una colección no ordenada de elementos de cierto tipo a los que se puede acceder o indexar mediante un conjunto de claves que también son de algún tipo. Son similares a los mapas o diccionarios de otros lenguajes de programación, es decir, son colecciones de pares clave-valor, donde el par puede ser del mismo tipo o de tipos distintos, y una clave es única e irrepetible en el mapa. Las claves pueden ser de cualquier tipo a excepción de los tipos array, slice, mapa o función.
+
+```go
+/* mapa cuyas claves son de tipo string y sus valores de tipo int */
+var map[string]int
+```
+Punteros: Los punteros son variables que permiten almacenar direcciones de memoria o referencias de otras variables (no punteros) del mismo tipo. Los punteros cuentan con los operadores <code>*</code> y <code>&</code> para averiguar por el valor almacenado en la referencia y para acceder a una referencia.
+
+```go
+/* puntero a una variable de tipo uint64 */
+var ptr *uint64
+```
+Funciones: Sí, las funciones en Go son tratadas como tipos de datos. Un tipo función describe el conjunto de funciones que comparten el mismo conjunto de parámetros de entrada (cantidad y tipos de datos) y tipos de retorno.
+
+```go
+/* variable de tipo funcion para almacenar funciones que reciben un dato string y retornan un slice de int64 */
+var fun func(string)[]int64
+```
+Interfaces: 
+
+
+
 
 
 
