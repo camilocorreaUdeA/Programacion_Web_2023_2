@@ -152,6 +152,12 @@ Texto y cadenas de caracteres
 ```go
 string
 ```
+Punteros: Los punteros son variables que permiten almacenar direcciones de memoria o referencias de otras variables (no punteros) del mismo tipo. Los punteros cuentan con los operadores <code>*</code> y <code>&</code> para averiguar por el valor almacenado en la referencia y para acceder a una referencia.
+
+```go
+/* puntero a una variable de tipo uint64 */
+var ptr *uint64
+```
 
 Colecciones de datos
 
@@ -171,21 +177,70 @@ Mapas: Un mapa en Go es una colección no ordenada de elementos de cierto tipo a
 
 ```go
 /* mapa cuyas claves son de tipo string y sus valores de tipo int */
-var map[string]int
+var mapa map[string]int
 ```
-Punteros: Los punteros son variables que permiten almacenar direcciones de memoria o referencias de otras variables (no punteros) del mismo tipo. Los punteros cuentan con los operadores <code>*</code> y <code>&</code> para averiguar por el valor almacenado en la referencia y para acceder a una referencia.
+Funciones, interfaces y estructuras
+
+Funciones: Las funciones en Go son tratadas como tipos de datos. Un tipo función describe el conjunto de funciones que comparten el mismo conjunto de parámetros de entrada (cantidad y tipos de datos) y tipos de retorno.
 
 ```go
-/* puntero a una variable de tipo uint64 */
-var ptr *uint64
+/* variable de tipo funcion para almacenar funciones que reciben un dato string y retornan un slice de int64 y un error */
+var fun func(string)([]int64, error)
 ```
-Funciones: Sí, las funciones en Go son tratadas como tipos de datos. Un tipo función describe el conjunto de funciones que comparten el mismo conjunto de parámetros de entrada (cantidad y tipos de datos) y tipos de retorno.
+Interfaces: Las interfaces son contratos que definen un conjunto de métodos (funciones) que deden ser implementados por cualquier tipo que quiera cumplir el contrato de la interfaz (implementar la interfaz). Un tipo que implementa una interfaz automáticamente adquiere el tipo definido por la interfaz. Por lo tanto, una variable del tipo de una interfaz es capaz de almacenar un valor de cualquier otro tipo que implemente la interfaz (que implemente los métodos definidos en la interfaz). Todos los tipos en Go implementan una interfaz en común que es la interfaz vacía (empty interface) definida como <code>interface{}</code> y también con el alias <code>any</code>.
 
 ```go
-/* variable de tipo funcion para almacenar funciones que reciben un dato string y retornan un slice de int64 */
-var fun func(string)[]int64
+/* una interfaz que define unos métodos para ser implementados por otros tipos */
+type MiInterfaz interface {
+   MetodoUno()
+   MetodoDos(string)error
+}
 ```
-Interfaces: 
+Estructuras: Las estructuras son secuencias de datos de distintos tipos (inclusive de otros tipos de estructuras o de interfaces), llamados campos de la estructura. Cada campo tiene un nombre y un tipo. Las estructuras permiten que se les asocien funciones, conocidas como métodos de la estructura, lo cual las hace similares a las clases de otros lenguajes de programación. Se puede acceder a los campos y métodos de una estructura mediante una variable o instancia del tipo de la estructura. Se puede decir que las estructuras son tipos personalizados por el usuario en Go.
+
+```go
+/* una estructura en Go con sus campos */
+type MiEstructura struct {
+   Nombre          string
+   Edad            uint
+   Email           string
+   Caracteristicas []string
+}
+```
+### Declaración de variables en Go
+
+Variables globales de un paquete
+
+Las variables globales de un paquete son aquellas visibles desde cualquier función definida en el paquete. Siempre se declaran por fuera de cualquier función y en la sección del ar archivo fuente dedicado a la declaración de variables y definición de tipos y funciones.
+
+Las variables globales se declaran siempre con la palabra clave <code>var</code> seguida del nombre de la variable y opcionalmentedel tipo de la variable o de una inicialización dejando al compilador la tarea de deducir el tipo.
+
+```go
+/* distintas formas de declarar variables globales en Go */
+var cadenaDeTexto string /* indicando el tipo y sin inicialización explícita, el valor inicial de cadenaDeTexto será "" */
+var contadorDeEventos uint = 10 /* indicando el tipo e inicializando de manera explícita */
+var dataSource = "digital" /* sin indicar el tipo y dejando su deducción al compilador a partir del valor asignado */
+var x, y, z float32 /* declarando un conjunto de variables del mismo tipo */
+/* declarando un conjunto de variables de distintos tipos */
+var (
+  isSafe = true
+  numArray []float64
+  times int32 = 1
+)
+```
+Constantes
+
+
+
+Variables locales de una función
+
+Declaración de arrays, slices y maps
+
+Definición e instanciación de structs
+
+Definición de funciones
+
+Definición de interfaces
 
 
 
