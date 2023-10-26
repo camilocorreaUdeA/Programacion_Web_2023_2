@@ -295,7 +295,7 @@ Los slices se declaran de forma similar a los arreglos pero no se debe indicar e
 
 Puede declarar un slice como una porción de un arreglo existente, pero debe tener cuidado porque al modificar el slice también estará modificando el arreglo original.
 
-Puede utilizar la función <code>...</code> para declarar slices, debe indicar como mínimo el tipo del slice y la longitud. Opcionalmente puede indicar la capacidad inicial del slice.
+Puede utilizar la función <code>make</code> para declarar slices, debe indicar como mínimo el tipo de los elementos del slice y la longitud. Opcionalmente puede indicar la capacidad inicial del slice.
 
 También puede utilizar la función <code>len()</code> para averiguar la longitud del slice en determinado momento, y la función <code>cap()</code> para averiguar la capacidad.
 
