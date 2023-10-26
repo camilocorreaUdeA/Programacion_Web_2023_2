@@ -221,6 +221,7 @@ var cadenaDeTexto string /* indicando el tipo y sin inicialización explícita, 
 var contadorDeEventos uint = 10 /* indicando el tipo e inicializando de manera explícita */
 var dataSource = "digital" /* sin indicar el tipo y dejando su deducción al compilador a partir del valor asignado */
 var x, y, z float32 /* declarando un conjunto de variables del mismo tipo */
+var a, b, c = false, 100, "hello"  /* declarando un conjunto de variables de distinto tipo */
 /* declarando un conjunto de variables de distintos tipos */
 var (
   isSafe = true
@@ -228,13 +229,53 @@ var (
   times int32 = 1
 )
 ```
-Constantes
-
-
-
 Variables locales de una función
 
+Las variables locales son aquellas que se declaran al interior de las funciones y solo tienen validez dentro de la función en la que se declaran (scope). Se pueden declarar de la misma manera que se declaran las variables globales y adicionalmente se pueden declarar usando el operador walrus dejando que el compilador deduzca el tipo.
+
+```go
+func myFunc() {
+  myLocalVar := "una_var_local"
+}
+```
+Constantes
+
+Las constantes son literales asociados a un valor que se conserva durante toda la ejecución de la aplicación. Las constantes pueden ser globales o locales según se requiera. Y para su declaración aplican las mismas reglas que para la declaración de variables globales y locales, a excepción de que se usa siempre la palabra clave <code>const</code>, siempre se deben inicializar en el momento de su declaración y no se pueden declarar utilizando el operador <code>:=</code> (operador walrus).
+
+Nota: No se pueden declarar constantes de los tipos array, slice, map, struct ni interface.
+
+```go
+/* distintas formas de declarar constantes en Go */
+const dataCode uint = 111 /* indicando el tipo */
+const newLabelCode = "tag_label"  /* permitiendo deducción del tipo de la constante */
+const x, y, z = 1, 2, 3 /* declarando un conjunto de constantes del mismo tipo */
+/* declarando un conjunto de constantes de distintos tipos */
+const (
+  isAnalog = false
+  numPossibleDataEvents = 15
+  DigitalDatasource = "generic_digital"
+)
+```
+Declaración de punteros
+
+Para declarar un puntero se utiliza el operador <code>*</code> y para almacenar una referencia en el puntero se utiliza el operador <code>&</code>. No se pueden declarar punteros constantes ni punteros a constantes. La aritmética de punteros no existe en Go. Pueden declararse tanto punteros globales como locales y por lo tanto también aplica el operador walrus y la deducción de tipo para punteros.
+
+Nota: Existe el operador <code>new</code> para inicializar un puntero al momento de su declaración. Inicializar se entiende como asignar un valor distinto a nulo (<code>nil</code>) al puntero.
+
+```go
+/* distintas formas de declarar punteros en Go */
+var ptrOne *int /* puntero a variables de tipo int */
+var ptrTwo = &someVariable  /* deducción del tipo puntero por inicialización */
+var ptrThree = new(MyStruct) /* inicialización del puntero a instancias del tipo MyStruct con el operador new */
+
+func myFunc() {
+  myLocalVar := 50
+  myLocalPtr := &myLocalVar /* deducción del tipo de puntero a *int */
+}
+```
 Declaración de arrays, slices y maps
+
+
 
 Definición e instanciación de structs
 
