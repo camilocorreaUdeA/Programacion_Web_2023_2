@@ -275,8 +275,64 @@ func myFunc() {
 ```
 Declaración de arrays, slices y maps
 
+Arrays: Los arreglos o arrays de declaran con el operador corchetes <code>[]</code>, indicando allí la longitud del arreglo. Los elementos del arreglo se pueden modificar indexandolos con el operador <code>[]</code> pero no se pueden elmininar ni agregar elementos al arreglo. Con el operador <code>len()</code> se puede averiguar la longitud del arreglo.
 
+Nota: Puede omitir indicar la longitud del arreglo utilizando el operador elipsis <code>...</code>, aunque solo es válido cuando inicializa el arreglo directamente en la declaración.
 
+```go
+/* distintas formas de declarar arreglos en Go */
+var arrayOne [10]uint64
+var arrayTwo = [2]string{"hello", "world"}
+
+func myFunc() {
+  myLocalArray := [...]int{-2, -1, 0, 2, 4}
+  otherArray := [4]string{}
+}
+```
+Slices: Los slices se pueden pensar como arreglos dinámicos, es decir que pueden cambiar de longitud en tiempo de ejecución, o sea que se pueden eliminar o agregar elementos a conveniencia. El tipo slice está compuesto por un arreglo interno, un puntero al arreglo interno y la longitud y la capacidad del arreglo interno. La longitud es la cantidad de elementos en el arreglo interno, mientras que la capacidad es la cantidad de elementos que puede almacenar el slice antes de tener que hacer una nueva localización de memoria (esto generalmente pasa cuando se van agregando nuevos elementos al slice y se supera su capacidad en el momento).
+
+Los slices se declaran de forma similar a los arreglos pero no se debe indicar el tamaño en la declaración, esa característica es la que le indicará al compilador que la variable es del tipo slice y no del tipo array.
+
+Puede declarar un slice como una porción de un arreglo existente, pero debe tener cuidado porque al modificar el slice también estará modificando el arreglo original.
+
+Puede utilizar la función <code>...</code> para declarar slices, debe indicar como mínimo el tipo del slice y la longitud. Opcionalmente puede indicar la capacidad inicial del slice.
+
+También puede utilizar la función <code>len()</code> para averiguar la longitud del slice en determinado momento, y la función <code>cap()</code> para averiguar la capacidad.
+
+Los slices cuentan con la función <code>append()</code> que permite agregar nuevos elementos al final del slice, por lo tanto incrementando la longitud del slice y consumiendo la capacidad. Una vez se supera la capacidad disponible se ejecuta una nueva localización de memoria para aumentar la capacidad del slice.
+
+```go
+/* distintas formas de declarar slices en Go */
+var array = [4]string{"hello", "world", "go", "golang"}
+var slice = array[1:3] /* declarando un slice a partir de un arreglo existente */
+var otroSlice = []int{} /* declarando un slice vacío */
+var otroVacio []int
+var otroMas = []string{"word", "palabra"} /* inicializando en la declaración */
+var ss = make([]int64, 10) /* slice de elementos de tipo int64 y longitud y capacidad iniciales 10 */
+var slicie = make([]string, 0, 15) /* slice de elementos de tipo string, longitud 0 y capacidad inicial 15 */
+
+func myFunc() {
+  myLocalSlice := make([]MyStruct, len(datos)) /* suponga que datos es un slice que ya existe */
+}
+```
+Maps:
+
+Los mapas son colecciones de pares clave-valor donde la clave y el valor pueden ser de distintos tipos. Se pueden declarar utilizando la función <code>make</code> indicando el tipo del mapa (el tipo de un map está compuesto por el tipo de la clave y el tipo del valor) y una capacidad opcional si de antemano se sabe cuántos elementos va a almacenar el mapa.
+
+Un map está constituido internamente por una función hash, una instancia de una estructura de datos hash y un puntero a esa instancia, por lo tanto siempre que vaya agregar elementos a un map por primera vez, debe asegurarse de que esté ha sido inicilizado, de lo contrario ocurrirá un error en tiempo de compilación conocido como <code>panic</code> que indica que está tratando de agregar elementos a un map nulo.
+
+Los mapas cuentan con las funciones <code>len()</code> para saber cuántos elementos hay en el map, y <code>delete()</code> para eliminar un par clave-valor del mapa.
+
+```go
+/* distintas formas de declarar maps en Go */
+var m1 map[string]int /* mapa de claves de tipo string y valores de tipo int, no inicializado */
+var m2 = map[int]bool{} /* mapa de claves de tipo int y valores de tipo bool, inicializado */
+var m3 = make(map[string][]string) /* mapa de claves de tipo string y valores de tipo []string (slice de strings), inicializado */
+
+func myFunc() {
+  myLocalMap := make(map[string]int64) /* mapa local inicializado */
+}
+```
 Definición e instanciación de structs
 
 Definición de funciones
