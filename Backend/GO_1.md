@@ -39,7 +39,7 @@ Ventajas de Go con respecto a otros lenguajes de programación:
 
 Utilidades de Go para los desarrolladores:
 <ul>
-  <li>Generación automática de documentacipon del código.</li>
+  <li>Generación automática de documentación del código.</li>
   <li>Herramientas de testing y benchmarking nativas incluídas en el lenguaje.</li>
   <li>Detección de condiciones de carrera para apliaciones concurrentes.</li>
   <li>Un sistema de tipos liviano pero suficiente para clasificar y diferenciar datos y objetos.</li>
@@ -98,7 +98,7 @@ Para crear un proyecto de Go:
   <li>Crear un directorio para alojar el proyecto.</li>
   <li>Acceda al directorio con VSCode.</li>
   <li>Abra una Terminal (Terminal -> New Terminal)</li>
-  <li>En la terminal ejecute el siguiente comando <code>go mod init &lt;<i>ruta-al-modulo</i>&gt;</code> Donde <i>ruta-al-modulo</i> es el nombre del modulo del proyecto, por convención de acostumbra que esta ruta sea la misma URL al repositorio en github.com donde se alojará el proyecto, por ejemplo: <i>github.com/usuario123/repo-proyecto</i></li>
+  <li>En la terminal ejecute el siguiente comando <code>go mod init &lt;<i>ruta-al-modulo</i>&gt;</code> Donde <i>ruta-al-modulo</i> es el nombre del modulo del proyecto, por convención se acostumbra que esta ruta sea la misma URL al repositorio en github.com donde se alojará el proyecto, por ejemplo: <i>github.com/usuario123/repo-proyecto</i></li>
 
   ![image](https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/3cd3a8b7-cafd-431f-a3f9-7dbebdc04846)
   
