@@ -430,7 +430,26 @@ Definir un alias o un tipo derivado se puede hacer con la palabra clave <code>ty
 type MyIntType int
 var myVar = MyIntType(50)
 ```
-### Variables, tipos y funciones exportadas y no-exportadas
+### Variables, constantes, tipos y funciones exportadas y no-exportadas
+
+Las variables, constantes, tipos y funciones de un paquete se pueden exportar para que puedan ser visibles en los paquetes que lo importen. Los nombres exportados comienzan siempre con letra mayúscula mientras que los no-exportados (solo visibles en el paquete donde se declaran/definen) comienzan siempre con letra minúscula.
+
+```go
+package mi_paquete
+
+import "fmt"
+
+var VariableExportada string /* esta variable será visible en los paquetes que importan al paquete mi_paquete */
+const noExportada = "non-exported" /* esta constante no será visible en los paquetes que importan al paquete mi_paquete */
+
+/* tipo visible en los paquetes que importan al paquete mi_paquete */
+type A struct {
+}
+
+/* tipo no visible en los paquetes que importan al paquete mi_paquete, solo en los archivos fuente que conforman a mi_paquete */
+type client struct {
+}
+```
 
 
 
