@@ -361,9 +361,68 @@ type MiInterfaz interface {
   MetodoDos(param string)int64
 }
 
-var myVar MiInterfaz = A{} /* Esto resultará en un error de compilación si el tipo A no implementa los métodos en el tipo MiInterfaz */
+var myVar MiInterfaz = A{} /* Esto resultará en un error de compilación si el tipo A no implementa los métodos de MiInterfaz */
 ```
 Definición de funciones
+
+Una función es un bloque contenido de código que implementa una funcionalidad o tarea específica. Las funciones pueden tomar unos parámetros de entrada que son procesados en la funcipon y pueden generar una salida o valor de retorno. Las funciones en Go pueden tomar cero o múltiples parámetros de entrada de distintos tipos y pueden retornar cero o varios valores de distintos tipos también. Para declarar funciones se utiliza la palabara clave <code>func</code> seguida del nombre de la función, la lista de parámetros de entrada entre paréntesis y luego los tipos de los valores de retorno (entre paréntesis si son más de uno).
+
+```go
+/* función sin parámetros de entrada ni valores de retorno */
+func voidFunc() {
+  /* lógica de función */
+}
+
+/* parámetros de entrada y un valor de retorno */
+func myFunc(x, y int) int {
+  /* lógica de función */
+}
+
+/* múltiples valores de retorno */
+func newFunc(s string) (int, error) {
+  /* lógica de función */
+}
+```
+Por ser las funciones tipos de datos, se pueden asignar a variables (<i>first-class functions</i>)
+
+```go
+/* función como variable */
+var myFunc = func(s string) (int, error) {
+  /* lógica de función */
+}
+
+/* Luego, para invocarla */
+x, err := myFunc("hello")
+```
+Al interior de funciones también se pueden declarar funciones anónimas (<i>first-class functions</i>)
+
+```go
+/* función anónima dentro de otra función */
+func voidFunc() {
+  /* lógica de función */
+  func(s string){
+    fmt.Printf("Printing %s from anonymous func", s)
+  }("web apps")
+  /* lógica de función */
+}
+```
+Las funciones en Go clasifican como <i>high-order functions</i> ya que pueden recibir funciones como parámetros de entrada y también pueden retornar funciones.
+
+```go
+/* una función que recibe parámetro de tipo función */
+func highOrderFuncOne(f func(x, y int) error) {
+  /* lógica de función */
+}
+
+/* una función que retorna valores de tipo función */
+func highOrderFuncTwo() func(x, y int) error {
+  /* lógica de función */
+  return func(x, y int) error {
+    /* lógica de función */
+  }
+}
+```
+
 
 
 
