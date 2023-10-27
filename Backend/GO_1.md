@@ -422,6 +422,15 @@ func highOrderFuncTwo() func(x, y int) error {
   }
 }
 ```
+Definición de tipos derivados (aliases)
+
+Definir un alias o un tipo derivado se puede hacer con la palabra clave <code>type</code> el nombre del alias y el tipo del que se deriva. Estos tipos derivados son útiles cuando se necesita asociar métodos a los tipos nativos de Go, sirven como un intermediario entre el método y el tipo nativo.
+
+```go
+type MyIntType int
+var myVar = MyIntType(50)
+```
+### Variables, tipos y funciones exportadas y no-exportadas
 
 
 
