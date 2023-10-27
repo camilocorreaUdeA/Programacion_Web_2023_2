@@ -335,9 +335,37 @@ func myFunc() {
 ```
 Definición e instanciación de structs
 
+Las estructuras o structs son los tipos de datos personalizados por el usuario en Go, son agrupaciones de variables de distinto tipo que se conocen como campos de la estructura. Además, como veremos más adelante, puede asociarse métodos a las estructuras. Luego, solo vamos a poder acceder a los campos y métodos de una estructura a través de una variable o instancia del tipo definido por la estructura.
+
+```go
+type Estructura struct {
+  CampoUno string
+  CampoDos int
+  CampoTres []uint64
+}
+
+var obj Estructura /* Los campos de obj se inicializan con los zero-values de los tipos correspondientes */
+var myObj = Estructura{"hello", 20, []uint64{1, 2, 3}} /* Deducción del tipo, e inicialización de los campos ignorando los nombres */
+
+func myFunc() {
+  myLocalPtr := &Estructura{CampoUno: "name"} /* deducción del tipo puntero a Estructura e inicializción selectiva de campos (obliga a especificar nombres) */
+}
+```
+Definición de interfaces
+
+Una interfaz es un contrato para implementar un tipo, el tipo de la interfaz. La interfaz es un conjunto de métodos que deben ser implementados por el los tipos que desean acceder a compartir el tipo de la interfaz (polimorfismo). Recuerde definir las interfaces en la sección del archivo de código fuente destinada a la declaración de variables, definición de tipos e interfaces.
+
+```go
+type MiInterfaz interface {
+  MetodoUno()
+  MetodoDos(param string)int64
+}
+
+var myVar MiInterfaz = A{} /* Esto resultará en un error de compilación si el tipo A no implementa los métodos en el tipo MiInterfaz */
+```
 Definición de funciones
 
-Definición de interfaces
+
 
 
 
