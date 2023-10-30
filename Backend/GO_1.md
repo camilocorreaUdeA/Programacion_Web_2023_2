@@ -527,6 +527,173 @@ tt := string(ss)  // esta conversión es posible ya que el tipo CustomString es 
 ```
 ### Estructuras de control de flujo de la aplicación
 
+__Ciclos (loops)__
+
+Ciclo for clásico
+
+```golang
+for [ Initial Statement ] ; [ Condition ] ; [ Post Statement ] {
+    [Actions]
+}
+```
+```golang
+for i := 0; i < N; i++{
+	//lógica del ciclo
+}
+```
+```golang
+counter := 0 /*  sacando la variable fuera del alcance (scope) del ciclo
+for ; counter < N; counter++{
+	//do something
+}
+```
+```golang
+ss := []uint{1. 2, 3, 4, 5, 6}
+/* ciclo for con dos variables al tiempo */
+for i, j := 0, len(ss)-1; i < len(ss)/2; i, j = i+1, j-1 {
+	ss[i], ss[j] = ss[j], ss[i]
+}
+fmt.Printf("%#v", ss)
+```
+Ciclo while
+
+```golang
+cond := N
+for cond > 0 {
+	// lógica del ciclo
+	cond--
+}
+```
+Ciclo infinito
+
+```golang
+for {
+	if algunaCondicion {
+    break
+  }
+  if otraCondicion{
+    continue
+  }
+  // lógica del ciclo
+}
+```
+Ciclo iterativo sobre elementos de slices y maps
+
+```golang
+ss := []string{"hello", "world"}
+m := map[int]string{1:"hello", 2:"world"}
+
+for i, val := range ss {
+	fmt.Println("ss en la posición", i, "es", val)
+}
+for k, v := range m {
+	fmt.Println("m en la clave", k, "tiene el valor", v)
+}
+```
+Puede silenciar variables de ciclos con el operador <i>blank identifier</i> cuando no las necesite
+```golang
+ss := []string{"hello", "world"}
+m := map[int]string{1:"hello", 2:"world"}
+
+for _, val := range ss {
+	fmt.Println(val)
+}
+for _, v := range m {
+	fmt.Println(v)
+}
+```
+__Condicionales__
+
+if...else if...else
+
+```golang
+if [ condition ] {
+    [Actions]
+}else if [ alternative condition ] {
+    [Actions]
+}else{
+    [Actions]
+} 
+```
+Asignación de una variable y evaluación de la condición en el mismo lugar
+
+```golang
+if value := rand.Intn(100); value > 60 {
+	//do something
+}
+```
+```golang
+if resp, err := someFunc(); err != nil {
+	// error!
+}
+```
+```golang
+m1 := map[string]int
+if value, ok := m1["key"]; !ok {
+	// no existe esa clave en el mapa
+}
+```
+Switch, case... default
+
+Switch clásico
+
+```golang
+now := time.Now().Unix()
+mins := now % 2
+switch mins {
+	case 0:
+		fmt.Println("even")
+	case 1:
+		fmt.Println("odd")
+}
+```
+Múltiples evaluaciones para el mismo caso
+
+```golang
+score := 7
+switch score {
+	case 0, 1, 3:
+		fmt.Println("Terrible")
+	case 4, 5:
+		fmt.Println("Mediocre")
+	case 6, 7:
+		fmt.Println("Not bad")
+	case 8, 9:
+		fmt.Println("Almost perfect")
+	case 10:
+		fmt.Println("hmm did you cheat?")
+	default:
+		fmt.Println(score, " off the chart")
+}
+```
+La palabra <i>fallthrough</i> sirve para pasar de un caso a otro de forma directa, aún cuando no se cumple la condición del siguiente caso
+
+```golang
+flavors := []string{"chocolate", "vanilla", "strawberry", "banana"}
+
+for _, flavor := range flavors {
+	switch flavor {
+	case "strawberry":
+		fmt.Println(flavor, "is my favorite!")
+		fallthrough
+	case "vanilla", "chocolate":
+		fmt.Println(flavor, "is great!")
+	default:
+		fmt.Println("I've never tried", flavor, "before")
+	}
+}
+```
+Opción evaluada directamente en los cases
+```golang
+t := time.Now().Hour()
+switch {
+case t < 12:
+	fmt.Println("It's before noon")
+default:
+	fmt.Println("It's after noon")
+}
+```
+
 
 
 
