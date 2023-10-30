@@ -568,7 +568,7 @@ Ciclo infinito
 
 ```golang
 for {
-	if algunaCondicion {
+  if algunaCondicion {
     break
   }
   if otraCondicion{
@@ -619,18 +619,18 @@ Asignación de una variable y evaluación de la condición en el mismo lugar
 
 ```golang
 if value := rand.Intn(100); value > 60 {
-	//do something
+  //do something
 }
 ```
 ```golang
 if resp, err := someFunc(); err != nil {
-	// error!
+  // error!
 }
 ```
 ```golang
 m1 := map[string]int
 if value, ok := m1["key"]; !ok {
-	// no existe esa clave en el mapa
+  // no existe esa clave en el mapa
 }
 ```
 Switch, case... default
@@ -641,10 +641,10 @@ Switch clásico
 now := time.Now().Unix()
 mins := now % 2
 switch mins {
-	case 0:
-		fmt.Println("even")
-	case 1:
-		fmt.Println("odd")
+  case 0:
+    fmt.Println("even")
+  case 1:
+    fmt.Println("odd")
 }
 ```
 Múltiples evaluaciones para el mismo caso
@@ -652,35 +652,34 @@ Múltiples evaluaciones para el mismo caso
 ```golang
 score := 7
 switch score {
-	case 0, 1, 3:
-		fmt.Println("Terrible")
-	case 4, 5:
-		fmt.Println("Mediocre")
-	case 6, 7:
-		fmt.Println("Not bad")
-	case 8, 9:
-		fmt.Println("Almost perfect")
-	case 10:
-		fmt.Println("hmm did you cheat?")
-	default:
-		fmt.Println(score, " off the chart")
+  case 0, 1, 3:
+    fmt.Println("Terrible")
+  case 4, 5:
+    fmt.Println("Mediocre")
+  case 6, 7:
+    fmt.Println("Not bad")
+  case 8, 9:
+    fmt.Println("Almost perfect")
+  case 10:
+    fmt.Println("hmm did you cheat?")
+  default:
+    fmt.Println(score, " off the chart")
 }
 ```
 La palabra <i>fallthrough</i> sirve para pasar de un caso a otro de forma directa, aún cuando no se cumple la condición del siguiente caso
 
 ```golang
 flavors := []string{"chocolate", "vanilla", "strawberry", "banana"}
-
 for _, flavor := range flavors {
-	switch flavor {
-	case "strawberry":
-		fmt.Println(flavor, "is my favorite!")
-		fallthrough
-	case "vanilla", "chocolate":
-		fmt.Println(flavor, "is great!")
-	default:
-		fmt.Println("I've never tried", flavor, "before")
-	}
+  switch flavor {
+    case "strawberry":
+      fmt.Println(flavor, "is my favorite!")
+      fallthrough
+    case "vanilla", "chocolate":
+      fmt.Println(flavor, "is great!")
+    default:
+      fmt.Println("I've never tried", flavor, "before")
+  }
 }
 ```
 Opción evaluada directamente en los cases
@@ -688,11 +687,17 @@ Opción evaluada directamente en los cases
 t := time.Now().Hour()
 switch {
 case t < 12:
-	fmt.Println("It's before noon")
+  fmt.Println("It's before noon")
 default:
-	fmt.Println("It's after noon")
+  fmt.Println("It's after noon")
 }
 ```
+
+### Asociación de métodos a structs e implementación de interfaces
+
+Para asociar métodos a las estructuras (struct) se debe utilizar un parámetro conocido como receptor o <i>receiver</i> que se agrega a la definición de una función para indicar que no es cualquier función sino que por el contrario es un método asociado al tipo del struct indicado en el receptor. Por lo tanto, la invocación de esa función solo puede hacerse a través de una instancia o variable del tipo definido por el struct.
+
+
 
 
 
