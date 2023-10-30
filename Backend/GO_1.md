@@ -432,7 +432,7 @@ var myVar = MyIntType(50)
 ```
 ### Variables, constantes, tipos y funciones exportadas y no-exportadas
 
-Las variables, constantes, tipos y funciones de un paquete se pueden exportar para que puedan ser visibles en los paquetes que lo importen. Los nombres exportados comienzan siempre con letra mayúscula mientras que los no-exportados (solo visibles en el paquete donde se declaran/definen) comienzan siempre con letra minúscula.
+Las variables, constantes, tipos y funciones de un paquete se pueden exportar para que puedan ser visibles (accesibles) en los paquetes que lo importen. Los nombres exportados comienzan siempre con letra mayúscula mientras que los no-exportados (solo visibles en el paquete donde se declaran/definen) comienzan siempre con letra minúscula.
 
 ```go
 package mi_paquete
@@ -451,9 +451,81 @@ type client struct {
 }
 ```
 
+### Creando e importando paquetes
 
+Para crear un paquete lo único que se necesita es crear un directorio para agrupar los archivos de código fuente que harán parte del paquete. Se debe procurar que el nombre del directorio se use en la línea package de los archivos.
 
+<img width="1111" alt="image" src="https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/42c37b12-9a99-491f-90c7-e29eb6b7f65a">
 
+Para importar el paquete lo debe incluir en la sección de import del archivo fuente desde donde está importando.
+
+<img width="787" alt="image" src="https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/968fbde2-31f8-4b1b-962d-39101e8d3df5">
+
+Puede dar un nombre o alias al import para llamar las funciones, variables, constantes y tipos exportados opr elpaquete utilizando el alias
+
+<img width="789" alt="image" src="https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/f88f1235-6c2a-4c01-bc8a-f504f20754b0">
+
+O si está seguro de que no van a haber colisiones entre los nombres de las funciones (variables, constantes y tipos) de los paquetes importados puede utilizar el caracter punto como alias del import para poder utilizar directamente los nombres importados.
+
+<img width="790" alt="image" src="https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/dd3c00bc-3b04-419f-8b8e-a6fbf72bd2d0">
+
+Por defecto, Go retira, de forma automática, de la lista de imports los paquetes de los que no se está utilizando ningún nombre exportado, si se desea conservar el paquete en la lista a pesar de no estar usandolo se debe utilizar como alias el operador <code>blank identifier</code> cuyo símbolo es el caractér <i>underscore</i> <code>_</code>.
+
+<img width="762" alt="image" src="https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/69522fff-c7e8-401b-99d2-c9e9bffa4139">
+
+### Operadores disponibles en Go
+
+__Aritméticos y de nivel de bit__
+
+```
++    suma                      integers, floats, complex, strings (concatenación)
+-    resta                     integers, floats, complex
+*    producto                  integers, floats, complex
+/    división                  integers, floats, complex
+%    modulo                    integers
+
+&    bitwise AND               integers
+|    bitwise OR                integers
+^    bitwise XOR               integers
+&^   bit clear (AND NOT)       integers
+
+<<   corrimiento a izquierda   integers
+>>   corrimiento a derecha     integers
+```
+__Comparación__
+
+```
+==    igual
+!=    no igual
+<     menor
+<=    menor o igual
+>     mayor
+>=    mayor o igual
+```
+__Lógicos__
+
+```
+&&    AND condicional   
+||    OR condicional   
+!     negación NOT                
+```
+__Conversiones de tipo (type castings)__
+
+Recuerde que Go es un lengiuaje fuertemente tipado, por tanto el lenguaje no realiza conversiones implícitas (truncamientos o amplificaciones). Las conversiones que sean necesarias se deben realizar de forma explícita.
+
+```go
+i := 42 // int por defecto
+f := float64(i) // coversión de int a float64
+u := uint32(f) // conversión de float64 a uint32
+```
+
+```go
+type CustomString string
+
+ss := CustomString("hello")
+tt := string(ss)  // esta conversión es posible ya que el tipo CustomString es un tipo derivado de string
+```
+### Estructuras de control de flujo de la aplicación
 
 
 
