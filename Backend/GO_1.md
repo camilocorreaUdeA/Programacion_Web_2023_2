@@ -800,7 +800,67 @@ func main() {
   }
 }
 ```
+### Manejo y propagación de errores en Go
 
+El manejo y propagación de errores en Go se hace de forma manual ya que en Go no existe el concepto de excepciones, y en cambio existe una interfaz con un método que permite encapsular los mensajes de error para propagarlos en las diferentes capas de la aplicación.
+
+La interfaz <code>error</code> pertenece a la librería estándar de Go y está definida de la siguiente manera:
+
+```go
+type error interface {
+  Error() string
+}
+```
+Luego, cualquier tipo que implemente el método <code>Error()</code>, implementa correctamente a la interfaz <code>error</code>.
+
+El paquete <code>errors</code> de la librería estándar de Go tiene la función <code>New</code> que permite encapsular un mensaje en una variable del tipo de la interfaz <code>error</code>. También el paquete <code>fmt</code> cuenta con la función <code>Errorf</code> que permite formatear una cadena de caracteres que satisface la interfaz <code>error</code>.
+
+Se asume ausencia de error cuando al evaluar el valor de una variable o un retorno del tipo <code>error</code> da como resultado <code>nil</code>.
+
+[Ejemplo](https://go.dev/play/p/PEXmyQk2dzP)
+
+```go
+type Custom struct {
+  CustomId int64
+}
+
+func (c *Custom) SetCustomId(id string) error {
+  /* almacenando el error de la función strconv.Atoi en la variable err */
+  numId, err := strconv.Atoi(id)
+  /* chequeando si hubo error */
+  if err != nil {
+    /* propagando el error a donde se llame el método SetCustomId */
+    return fmt.Errorf("falló al setear el campo CustomId, con error: %w", err)
+  }
+  c.CustomId = int64(numId)
+  return nil
+}
+
+func main() {
+  cust := &Custom{}
+  /* capturando el posible error */
+  err := cust.SetCustomId("once")
+  /* chequeando si hubo error */
+  if err != nil {
+    /* lógica en caso de error */
+    fmt.Printf("Error: %s", err.Error())
+  }
+}
+```
+
+### Paquetes de la librería estándar de Go y módulos de terceros útiles para el desarrollo Web (backend) con Go
+
+<ul>
+  <li><b>fmt:</b></li>
+  <li><b></b></li>
+  <li><b></b></li>
+  <li><b></b></li>
+  <li><b></b></li>
+  <li><b></b></li>
+  <li><b></b></li>
+  <li><b></b></li>
+  <li><b></b></li>
+</ul>
 
 
 
