@@ -695,8 +695,76 @@ default:
 
 ### Asociación de métodos a structs e implementación de interfaces
 
-Para asociar métodos a las estructuras (struct) se debe utilizar un parámetro conocido como receptor o <i>receiver</i> que se agrega a la definición de una función para indicar que no es cualquier función sino que por el contrario es un método asociado al tipo del struct indicado en el receptor. Por lo tanto, la invocación de esa función solo puede hacerse a través de una instancia o variable del tipo definido por el struct.
+Para asociar métodos a las estructuras (struct) se debe utilizar un parámetro conocido como receptor o <i>function receiver</i> que se agrega a la definición de una función para indicar que no es cualquier función sino que por el contrario es un método asociado al tipo del struct indicado en el receptor. Por lo tanto, la invocación de esa función solo puede hacerse a través de una instancia o variable del tipo definido por el struct.
 
+[Ejemplo](https://go.dev/play/p/TKv_EIr8ZlL)
+
+```go
+type Usuario struct {
+   Nombre string
+   Edad   uint
+   Status string
+   Activo bool
+}
+
+func(u *Usuario) SetNombre(name string) {
+   u.Nombre = name
+}
+
+func(u *Usuario) GetNombre() string {
+   return u.Nombre
+}
+
+func(u *Usuario) EstaActivo() string {
+   if u.Activo {
+      return fmt.Sprintf("El usuario %s, está activo con status %s", u.Nombre, u.Status)
+   }
+   return fmt.Sprintf("El usuario %s está inactivo", u.Nombre)
+}
+```
+El receptor (<i>function receiver</i>) del método se agrega después de la palabra <code>func</code>. Y entre paréntesis se agrega un parámetro que simplemente es un nombre para el receptor, en el ejemplo anterior era "u" y el tipo, en el ejemplo "*Usuario". El receptor indica que el método está asociado a ese tipo definido en el receptor mismo. Lo anterior determina que el método solo se puede llamar a través de una instancia del tipo inidicado en el receptor.
+
+Los receptores pueden ser de tipo puntero, como en este ejemplo en particular, esto quiere decir que el método está capacitado para modificar a través del método los campos de la instancia (¿objeto?).
+
+Para implementar una interfaz, simplemente se deben implementar los métodos definidos en la interfaz en el tipo que se quiere que implemente la interfaz.
+
+[Ejemplo](https://go.dev/play/p/honiepXyqW2)
+
+```go
+type Reader interface {
+  Read() string
+}
+
+type Writer interface {
+  Write(w string)
+}
+
+/* una interfaz construída a partir de otras interfaces (composición) */
+type ReadWriter interface {
+  Reader
+  Writer
+}
+
+/* tipo a implementar las interfaces */
+type Reporte struct {
+   Propiedad string  
+}
+
+func(r *Reporte) Read() string{
+   return r.Propiedad
+}
+
+func(r *Reporte) Write(w string) {
+   r.Propiedad = w
+}
+
+/* solo un tipo que implemente la interfaz ReadWrite se puede pasar a esta función */
+/* polimorfismo en Go */
+func ModificarPropiedad(rw ReadWriter, prop string) {
+   rw.Write(prop)
+   fmt.Println("Nuevo valor de la propiedad:", rw.Read())
+}
+```
 
 
 
