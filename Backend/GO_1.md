@@ -765,6 +765,41 @@ func ModificarPropiedad(rw ReadWriter, prop string) {
    fmt.Println("Nuevo valor de la propiedad:", rw.Read())
 }
 ```
+En Go no está desarrollado el concepto de <i>Herencia</i> que conocemos de lenguajes plenamente orientados a objetos (C++, Python, Java, etc...). Pero en cambio si está bastante desarrollado el concepto de <i>Composición</i>. Luego, se puede lograr el mismo efecto de la herencia a través de la composición de structs. La composición se implementa agregando al struct un campo del tipo de la struct de la cuál se quiere recibir los métodos y campos. Este campo puede tener nombre o no, cuándo no tiene nombre se le conoce como <i>campo incrustado</i>.
+
+[Ejemplo](https://go.dev/play/p/Ecrv9x53glm)
+
+```go
+type Base struct {
+   Propiedad string
+   
+}
+
+func(b *Base) SetPropiedad(val string) {
+   b.Propiedad = val
+}
+
+func(b Base) GetPropiedad() string {
+   return b.Propiedad
+}
+
+type Composed struct {
+  Base  /* composición del tipo Base con campo incrustado */
+}
+
+func (c Composed) CheckEsValido() bool {
+  return c.EsValido  /* campo obtenido por composición */
+}
+
+func main() {
+  comp := Composed{Base: Base{EsValido: true}}
+  comp.SetPropiedad("property")  /* método obtenido por composición */
+  fmt.Println(comp.GetPropiedad()) /* método obtenido por composición */
+  if comp.CheckEsValido() {
+    fmt.Println("es válido")
+  }
+}
+```
 
 
 
