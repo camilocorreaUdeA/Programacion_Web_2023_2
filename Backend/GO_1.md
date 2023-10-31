@@ -461,7 +461,7 @@ Para importar el paquete lo debe incluir en la sección de import del archivo fu
 
 <img width="787" alt="image" src="https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/968fbde2-31f8-4b1b-962d-39101e8d3df5">
 
-Puede dar un nombre o alias al import para llamar las funciones, variables, constantes y tipos exportados opr elpaquete utilizando el alias
+Puede dar un nombre o alias al import para llamar las funciones, variables, constantes y tipos exportados por el paquete. Antes de invocar una función o hacer referencia a una variable debe utilizar el alias dado al paquete.
 
 <img width="789" alt="image" src="https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/f88f1235-6c2a-4c01-bc8a-f504f20754b0">
 
@@ -538,20 +538,20 @@ for [ Initial Statement ] ; [ Condition ] ; [ Post Statement ] {
 ```
 ```golang
 for i := 0; i < N; i++{
-	//lógica del ciclo
+  //lógica del ciclo
 }
 ```
 ```golang
 counter := 0 /*  sacando la variable fuera del alcance (scope) del ciclo
 for ; counter < N; counter++{
-	//do something
+  //do something
 }
 ```
 ```golang
 ss := []uint{1. 2, 3, 4, 5, 6}
 /* ciclo for con dos variables al tiempo */
 for i, j := 0, len(ss)-1; i < len(ss)/2; i, j = i+1, j-1 {
-	ss[i], ss[j] = ss[j], ss[i]
+  ss[i], ss[j] = ss[j], ss[i]
 }
 fmt.Printf("%#v", ss)
 ```
@@ -560,8 +560,8 @@ Ciclo while
 ```golang
 cond := N
 for cond > 0 {
-	// lógica del ciclo
-	cond--
+  // lógica del ciclo
+  cond--
 }
 ```
 Ciclo infinito
@@ -584,10 +584,10 @@ ss := []string{"hello", "world"}
 m := map[int]string{1:"hello", 2:"world"}
 
 for i, val := range ss {
-	fmt.Println("ss en la posición", i, "es", val)
+  fmt.Println("ss en la posición", i, "es", val)
 }
 for k, v := range m {
-	fmt.Println("m en la clave", k, "tiene el valor", v)
+  fmt.Println("m en la clave", k, "tiene el valor", v)
 }
 ```
 Puede silenciar variables de ciclos con el operador <i>blank identifier</i> cuando no las necesite
@@ -596,10 +596,10 @@ ss := []string{"hello", "world"}
 m := map[int]string{1:"hello", 2:"world"}
 
 for _, val := range ss {
-	fmt.Println(val)
+  fmt.Println(val)
 }
 for _, v := range m {
-	fmt.Println(v)
+  fmt.Println(v)
 }
 ```
 __Condicionales__
