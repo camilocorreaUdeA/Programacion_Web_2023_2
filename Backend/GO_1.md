@@ -874,6 +874,47 @@ __Módulos de terceros__
   <li><b>mongo-go-driver:</b> Proporciona interfaces y funciones para interactuar con la base de datos NoSQL basada en documentos Mongo-DB. Repo: https://github.com/mongodb/mongo-go-driver</li>
 </ul>
 
+__Cómo incluir modulos de terceros en tu proyecto__
+
+El manejo de dependencias con <i>go-modules</i> es bastante sencillo e intutivo. Con un único comando se descargan los paquetes directamente desde su repositorio y son agregados como dependencias al archivo <i>go.mod</i>.
+
+Para agregar un paquete de terceros se utiliza el comando <code>go get -u &lt;ruta-repositorio-paquete&gt;</code>. Este comando iniciará la descarga del paquete y lo incluirá como dependencia de tu proyecto en el archivo <i>go.mod</i> para que a partir de ese momento este disponible para ser importado desde cualquier archivo fuente del proyecto.
+
+Si tiene dudas acerca de la ruta correcta para el comando <i>go get</i>, por lo general los repositorios cuentan con información acerca de la instalación del paquete. Ejemplo:
+
+<img width="953" alt="image" src="https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/649d6316-62b1-4a73-9f7f-30a2ecf5bcb9">
+
+<img width="942" alt="image" src="https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/bdc674c6-30b9-49d7-8335-32063698b816">
+
+Veamos por ejemplo como incluir el paquete <i>gorilla/mux</i> en nuestro proyecto:
+
+1. Dirijase al repositorio https://github.com/gorilla/mux
+
+<img width="1479" alt="image" src="https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/74a34c43-4971-4244-849e-f438e042030d">
+
+2. Busque allí la documentación para la instalación (comando go get)
+
+<img width="948" alt="image" src="https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/9976764d-87da-43b6-940a-e50072f67eb7">
+
+3. Copie el comando y ejecutelo en la terminal de su proyecto
+
+<img width="1226" alt="image" src="https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/dc7f20c4-b67b-4a4d-96d5-a0c959556d66">
+
+4. Opcionalmente puede verificar la instalación en el archivo go.mod
+
+<img width="874" alt="image" src="https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/82a1de57-0739-4d73-afe6-6dcbb386f5d3">
+
+5. Importe el paquete en el archivo fuente donde lo va a utilizar. Tenga en cuenta que la línea en el import corresponde con la ruta al repositorio desde donde lo descargó.
+
+<img width="1016" alt="image" src="https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/8996f368-72c2-4d98-b5ae-4e7af7e63582">
+
+6. Ya está listo para utilizar las funciones y demás utilidades del paquete.
+
+<img width="898" alt="image" src="https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/assets/42076547/332d623a-74b5-4727-a0b6-e67bec111823">
+
+
+
+
 
 
 
