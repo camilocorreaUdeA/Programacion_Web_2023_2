@@ -850,16 +850,28 @@ func main() {
 
 ### Paquetes de la librería estándar de Go y módulos de terceros útiles para el desarrollo Web (backend) con Go
 
+__Librería estándar__
 <ul>
-  <li><b>fmt:</b></li>
-  <li><b></b></li>
-  <li><b></b></li>
-  <li><b></b></li>
-  <li><b></b></li>
-  <li><b></b></li>
-  <li><b></b></li>
-  <li><b></b></li>
-  <li><b></b></li>
+  <li><b>fmt:</b> Cuenta con funciones para el formato de entrada y salida por consola.</li>
+  <li><b>time:</b> Este paquete proporciona las funcionalidades básicas para el despliegue y cálculo de medidas de tiempo (fechas, hora, etc.)</li>
+  <li><b>math:</b> Proporciona constantes y funciones matemáticas de propósito general.</li>
+  <li><b>strings:</b> Implementaciones útiles para el manejo, manipulación y formato de cadenas de caractéres codificadas en UTF-8.</li>
+  <li><b>strconv:</b> Cuenta con funciones que permiten hacer conversiones entre cadenas de caratéres y otros tipos de dato disponibles en el lenguaje.</li>
+  <li><b>encoding:</b> Proporciona utilidades para la conversión de datos desde el nivel de byte a representaciones textuales. El paquete encoding/json cuenta con las funciones para conversion desde/hacia JSON.</li>
+  <li><b>net/url:</b> Contiene funcionalidades para la manipulación de URLs y la extracción de paramétros contenidos en estas.</li>
+  <li><b>net/http</b> Proporciona interfaces y funciones para imlpementar aplicaciones tipo cliente/servidor sobre los protocolos TCP y HTTP.</li>
+</ul>
+
+__Módulos de terceros__
+<ul>
+  <li><b>carbon:</b> Es un paquete que facilita la manipulación y despliegue de mechas y medidas de tiempo. Con funciones más intuitivas por su semántica que las del paquete <i>time</i>. Repo: https://github.com/golang-module/carbon</li>
+  <li><b>gorilla/mux:</b> Incluye un router y un dispatcher para una correcta atención de peticiones HTTP, facilitando la asociación de las peticiones con el respectiva función para atenderlas. Repo: https://github.com/gorilla/mux</li>
+  <li><b>echo:</b> Es un framework para desarrollo web con Go, especialmente útil para la construcción de REST APIs. Repo: https://github.com/labstack/echo</li>
+  <li><b>fiber:</b> Otro framework web, pero este está inspirado en el framework para Node.js <i>Express.js</i> Repo: https://github.com/gofiber/fiber</li>
+  <li><b>gin:</b> Es uno de los frameworks para desarrollo web más populares de Go. Se diferencia de los demás por su alto desempeño. Repo: https://github.com/gin-gonic/gin</li>
+  <li><b>sqlx:</b> Es un paquete con interfaces y funciones para la interacción con bases de datos SQL. Está construido a partir del paquete <i>database/sql</i> de la librería estándar. Repo: https://github.com/jmoiron/sqlx</li>  
+  <li><b>gorm:</b> Este paquete es un ORM (Object-Relational Mapping) para SQL. Un ORM es una técnica que permite hacer solicitudes y manipular datos de una base de datos utilizando el paradigma de orientación a objetos. Repo: https://github.com/go-gorm/gorm</li>
+  <li><b>mongo-go-driver:</b> Proporciona interfaces y funciones para interactuar con la base de datos NoSQL basada en documentos Mongo-DB. Repo: https://github.com/mongodb/mongo-go-driver</li>
 </ul>
 
 
