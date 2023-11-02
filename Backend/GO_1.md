@@ -866,6 +866,8 @@ __Módulos de terceros__
 <ul>
   <li><b>carbon:</b> Es un paquete que facilita la manipulación y despliegue de mechas y medidas de tiempo. Con funciones más intuitivas por su semántica que las del paquete <i>time</i>. Repo: https://github.com/golang-module/carbon</li>
   <li><b>gorilla/mux:</b> Incluye un router y un dispatcher para una correcta atención de peticiones HTTP, facilitando la asociación de las peticiones con el respectiva función para atenderlas. Repo: https://github.com/gorilla/mux</li>
+  <li><b>http-router:</b> Este paquete proporciona un sencillo pero eficaz router o multiplexador para solicitudes HTTP, muy útil cuando se necesita coincidir patrones específicos en las rutas a los endpoints expuestos por tu servidor. Repo: https://github.com/julienschmidt/httprouter</li>
+  <li><b>resty:</b> Resty es un cliente para hacer solitudes HTTP. Ofrece funciones intuitivas y fáciles de utilizar contra un servicio que se requiere consultar. Repo: https://github.com/go-resty/resty</li>
   <li><b>echo:</b> Es un framework para desarrollo web con Go, especialmente útil para la construcción de REST APIs. Repo: https://github.com/labstack/echo</li>
   <li><b>fiber:</b> Otro framework web, pero este está inspirado en el framework para Node.js <i>Express.js</i> Repo: https://github.com/gofiber/fiber</li>
   <li><b>gin:</b> Es uno de los frameworks para desarrollo web más populares de Go. Se diferencia de los demás por su alto desempeño. Repo: https://github.com/gin-gonic/gin</li>
