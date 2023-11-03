@@ -39,6 +39,7 @@ func (bd *BaseDatos) CrearAmigo(writer http.ResponseWriter, req *http.Request) {
 	if err != nil {
 		http.Error(writer, "fallo al crear un nuevo amigo", http.StatusBadRequest)
 	}
+	defer body.Close()
 	err = json.Unmarshal(body, nuevoAmigo)
 	if err != nil {
 		http.Error(writer, "fallo al crear un nuevo amigo", http.StatusInternalServerError)
