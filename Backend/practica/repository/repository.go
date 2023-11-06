@@ -29,7 +29,7 @@ type repository[Entity any] struct {
 	connection *sqlx.DB
 }
 
-// Retrieves a Persistence object customized for the specific data types
+// Retrieves a repository object customized for the specific data types
 func NewRepository[Entity any](conn *sqlx.DB) (*repository[Entity], error) {
 	if conn == nil {
 		return nil, fmt.Errorf("a sqlx.DB instance is strictly needed to create a persistence")
