@@ -68,7 +68,7 @@ __Capa de handlers__
   <li>Los <i>handlers</i> deberían implementar unas validaciones básicas a los parámetros de la URL. Por ejemplo: que el <i>id</i> sea efectivamente un número (no contenga letras ni caracteres especiales), que no sea un número negativo ni cero, etc. Si alguna validación falla se debe retornar un status <i>Bad Request</i> como respuesta a la solicitud. (Esas validadciones aplican también para los parámetros para la cantidad de datos y el offset del método List)</li>
   <li>Cuando la operación se completa con éxito el <i>handler</i> debe retornar un status <i>OK</i> a excepción de cuando se reponde a una solicitud de tipo <i>POST</i> para la que se debe responder con el status <i>Created</i>.</li>
   <li>Para las operaciones Read y List se debe retornar el cuerpo de la respuesta a la solicitud. Este cuerpo es recibido desde la capa de controladores (slice de bytes).</li>
-  <li></li>
+  <li>Los <i>handlers</i> pueden implementarse como <code>http.HandlerFunc</code> o bien como <code>http.Handler</code></li>
 </ol>
 
 __Main__
