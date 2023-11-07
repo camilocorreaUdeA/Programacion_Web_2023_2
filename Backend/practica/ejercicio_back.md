@@ -43,5 +43,6 @@ __Capa de modelo de datos__
 
 __Capa de controladores__
 <ol>
-  <li></li>
+  <li>El controlador es una estructura que tiene un campo que es un objeto del tipo de la interfaz <code>Repository</code> del paquete <i>repository</i> (https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/tree/main/Backend/practica/repository)</li>
+  <li>El controlador tiene asociados los métodos que implementan cada una de las operaciones CRUD (Create, Read, Update, Delete) sobre la base de datos</li>
 </ol>
