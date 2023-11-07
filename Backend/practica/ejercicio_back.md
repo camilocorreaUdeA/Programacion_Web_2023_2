@@ -35,7 +35,7 @@ __Capa de modelo de datos__
 <ol>
   <li>El modelo es un <code>struct</code> que debe contar con mínimo 7 campos. Cada campo corresponde a una columna de la tabla en la base de datos</li>
   <li>Debe incluir un campo adicional de tipo <code>int64</code> para almacenar un <code>id</code> que permitira identificar cada objeto de datos de los demás que están almacenados en la tabla de la base de datos. Este campo <code>id</code> se utiliza para leer y actualizar filas de la tabla de forma individual (dos de las operacinoes de la aplicación)</li>
-  <li>Cada campo del modelo debe ir acompañado por un <code>tag</code> o etiqueta en la que se asocia el campo a una columna de la tabla de la base de datos, es decir, el nombre usado en el <code>tag</code> debe conincidir exactamente con el nombre de la columna en la tabla. El tag se construye de la siguiente manera: <code>`db:"nombre_columna"`</code></li>
+  <li>Cada campo del modelo debe ir acompañado por un <code>tag</code> o etiqueta en la que se asocia el campo a una columna de la tabla de la base de datos, es decir, el nombre usado en el <code>tag</code> debe conincidir exactamente con el nombre de la columna en la tabla. El <code>tag</code> se construye de la siguiente manera: <code>`db:"nombre_columna"`</code></li>
  </ol>
  Su modelo de datos debería verse similar al del ejemplo a continuación:
 
@@ -43,6 +43,20 @@ __Capa de modelo de datos__
 
 __Capa de controladores__
 <ol>
-  <li>El controlador es una estructura que tiene un campo que es un objeto del tipo de la interfaz <code>Repository</code> del paquete <i>repository</i> (https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/tree/main/Backend/practica/repository)</li>
-  <li>El controlador tiene asociados los métodos que implementan cada una de las operaciones CRUD (Create, Read, Update, Delete) sobre la base de datos</li>
+  <li>El controlador es una estructura que tiene un campo que es un objeto del tipo de la interfaz <code>Repository</code> exportada por el paquete <i>repository</i> (https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/tree/main/Backend/practica/repository)</li>
+  <li>El controlador debe tener asociados los métodos que implementan cada una de las operaciones CRUD (Create, Read, Update, Delete) sobre la base de datos.</li>
+  <li>El controlador debe actuar como una capa mediadora entre los <i>handlers</i> y el <i>repositorio</i>, por tanto sus métodos deben convertir los datos recibidos en la solicitud y transformarlos acorde con el formato en que deben ser pasados a las funciones de la capa de repositorio.</li>
+  <li>Métodos a implementar:
+    <ul>
+      <li>Create: Es un método que permite insertar una nueva fila (registro) a la tabla en la base de datos. Debe retornar el id (valor de la columna id) del nuevo registro y un valor de error paa los casos en que el método falla al insertar en la base de datos. Debe recibir como parámetro de entrada el objeto de la solicitud (http.Request) para de allí poder extraer el cuerpo que contiene los datos que se van a ingresar a la tabla.</li>
+      <li>Read: Este método permite consultar un registro indexando por el valor de la columna id. Debe retornar un slice de bytes que contiene el objeto de datos retornado por la capa de repositorio codificado en JSON. También debe retornar un valor de error para propagar cualquier fallo que ocurra al tratar de leer la tabla.</li>
+      <li>List: Es un método similar al anterior pero este permite leer varios registros consecutivos de la tabla. Desde la capa de handlers recibe como parámetros la cantidad de registros que desea leer (limit, page size, etc.) y a partir de que fila de la tabla quiere leer (offset). El método debe retornar los registros codificados en JSON (un slice de byte) y un valor de error por si ocurre alguna falla al consultar la tabla.</li>
+      <li>Update: Con este método se actualiza un registro (fila) específico de la tabla (indexado por el valor de la columna id). Luego de decodificar el objeto de datos del cuerpo de la petición debe actualizar solamente los campos que contengan algún valor (valor distinto al zero-value del tipo de dato) para actualizar. Esté método debe retornar un valor de error en el que se indique si la operación falló o si por el contrario se ejecutó con éxito.</li>
+      <li>Delete: Es el método utilizado para remover o borrar una fila de la tabla de la base de datos. Este método debe recibir el id de la fila que se quiere eliminar y debe retornar un valor de error para indicar el éxito o fallo de la operación.</li>
+      <li>NewController: Esta función NO debe ser un método del controlador. Es una función que permite crear una instancia del controlador, recibe como parámetro un objeto del tipo de la interfaz <code>Repository</code> exportada por el paquete <i>repository</i> que se utiliza para incializar el campo presente en la estructura controlador. Esta función retorna la instancia con el campo inicializado</li>
+    </ul>
+  </li>
 </ol>
+
+__Capa de handlers__
+
