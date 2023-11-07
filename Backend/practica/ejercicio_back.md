@@ -52,11 +52,39 @@ __Capa de controladores__
       <li>Read: Este método permite consultar un registro indexando por el valor de la columna id. Debe retornar un slice de bytes que contiene el objeto de datos retornado por la capa de repositorio codificado en JSON. También debe retornar un valor de error para propagar cualquier fallo que ocurra al tratar de leer la tabla.</li>
       <li>List: Es un método similar al anterior pero este permite leer varios registros consecutivos de la tabla. Desde la capa de handlers recibe como parámetros la cantidad de registros que desea leer (limit, page size, etc.) y a partir de que fila de la tabla quiere leer (offset). El método debe retornar los registros codificados en JSON (un slice de byte) y un valor de error por si ocurre alguna falla al consultar la tabla.</li>
       <li>Update: Con este método se actualiza un registro (fila) específico de la tabla (indexado por el valor de la columna id). Luego de decodificar el objeto de datos del cuerpo de la petición debe actualizar solamente los campos que contengan algún valor (valor distinto al zero-value del tipo de dato) para actualizar. Esté método debe retornar un valor de error en el que se indique si la operación falló o si por el contrario se ejecutó con éxito.</li>
-      <li>Delete: Es el método utilizado para remover o borrar una fila de la tabla de la base de datos. Este método debe recibir el id de la fila que se quiere eliminar y debe retornar un valor de error para indicar el éxito o fallo de la operación.</li>
-      <li>NewController: Esta función NO debe ser un método del controlador. Es una función que permite crear una instancia del controlador, recibe como parámetro un objeto del tipo de la interfaz <code>Repository</code> exportada por el paquete <i>repository</i> que se utiliza para incializar el campo presente en la estructura controlador. Esta función retorna la instancia con el campo inicializado</li>
+      <li>Delete: Es el método utilizado para remover o borrar una fila de la tabla de la base de datos. Este método debe recibir el id de la fila que se quiere eliminar y debe retornar un valor de error para indicar el éxito o fallo de la operación.</li>            
     </ul>
+    <li>NewController: Esta función NO debe ser un método del controlador. Es una función que permite crear una instancia del controlador, recibe como parámetro un objeto del tipo de la interfaz <code>Repository</code> exportada por el paquete <i>repository</i> que se utiliza para incializar el campo presente en la estructura controlador. Esta función retorna la instancia con el campo inicializado</li>
   </li>
+  <li>En este paquete también se definen las consultas (queries) que utilizaran los métodos contra la base de datos a través de la capa de repositorio.</li>
 </ol>
 
 __Capa de handlers__
+<ol>
+  <li>Esta capa implementa los métodos que atienden directamente las rutas o <i>endpoints</i> expuestos desde la aplicación hacia el exterior. Son métodos de una estructura <i>Handler</i></li>
+  <li>Implemente un método <i>handler</i> por cada uno de los <i>endpoints</i> de la aplicación. Cada <i>endpoint</i> debe cubrir una operación en base de datos (CRUD)</li>
+  <li>Los <i>handlers</i> reciben como parámetros de entrada un objeto del tipo <code>http.ResponseWriter</code> y otro objeto del tipo puntero <i>http.Request</i></li>
+  <li>Los <i>handlers</i> se encargan de pasar los parámetros de la solicitud (y el cuerpo de la solicitud cuando aplica) a los métodos de la capa de controladores. Para el caso de operaciones como lectura, lista, actualización y eliminación deben pasar un parámetro <code>id</code> pasado en la URL del <i>endpoint</i>. Para las operaciones de creación y actualización deben pasar el cuerpo de la solicitud que es donde vienen los datos para almacenar en la base de datos.</li>
+  <li>Los <i>handlers</i> deberían implementar unas validaciones básicas a los parámetros de la URL. Por ejemplo: que el <i>id</i> sea efectivamente un número (no contenga letras ni caracteres especiales), que no sea un número negativo ni cero, etc. Si alguna validación falla se debe retornar un status <i>Bad Request</i> como respuesta a la solicitud. (Esas validadciones aplican también para los parámetros para la cantidad de datos y el offset del método List)</li>
+  <li>Cuando la operación se completa con éxito el <i>handler</i> debe retornar un status <i>OK</i> a excepción de cuando se reponde a una solicitud de tipo <i>POST</i> para la que se debe responder con el status <i>Created</i>.</li>
+  <li>Para las operaciones Read y List se debe retornar el cuerpo de la respuesta a la solicitud. Este cuerpo es recibido desde la capa de controladores (slice de bytes).</li>
+  <li></li>
+</ol>
+
+__Main__
+
+El proyecto debe contar con un archivo fuente <code>main.go</code> en el que se implementa y se ejecuta un servidor web (en una función main). Los <i>endpoints</i> y sus respectivos <i>handlers</i> deben asociarse al servidor.
+
+En este archivo se deben crear las instancias de la interfaz <code>Repository</code>, del objeto de la estructura del controlador y del objeto de la estructura de los handlers.
+
+Y también es en este archivo que se definen las rutas (URLs) de los <i>endpoints</i>.
+
+### Información adicional
+<ul>
+  <li>Puede utilizar los paquetes externos que considere convenientes. (Routers, multiplexers, frameworks web, etc.)</li>
+  <li>Hablando de paquetes externos, para poder utilizar el paquete <i>repository</i> debe instalar en su proyecto un driver para SQL que puede encontrar en este repositorio: https://github.com/jmoiron/sqlx</li>
+</ul>
+
+
+
 
