@@ -46,6 +46,7 @@ __Capa de controladores__
   <li>El controlador es una estructura que tiene un campo que es un objeto del tipo de la interfaz <code>Repository</code> exportada por el paquete <i>repository</i> (https://github.com/camilocorreaUdeA/Programacion_Web_2023_2/tree/main/Backend/practica/repository)</li>
   <li>El controlador debe tener asociados los métodos que implementan cada una de las operaciones CRUD (Create, Read, Update, Delete) sobre la base de datos.</li>
   <li>El controlador debe actuar como una capa mediadora entre los <i>handlers</i> y el <i>repositorio</i>, por tanto sus métodos deben convertir los datos recibidos en la solicitud y transformarlos acorde con el formato en que deben ser pasados a las funciones de la capa de repositorio.</li>
+  <li>Los métodos del controlador deben utilizar el respectivo método de la capa de repositorio. Esos métodos deben ser invocados a través del objeto que está en el campo de la estructura controlador (objeto del tipo de la interfaz <code>Repository</code>)</li>
   <li>Métodos a implementar:
     <ul>
       <li>Create: Es un método que permite insertar una nueva fila (registro) a la tabla en la base de datos. Debe retornar el id (valor de la columna id) del nuevo registro y un valor de error paa los casos en que el método falla al insertar en la base de datos. Debe recibir como parámetro de entrada el objeto de la solicitud (http.Request) para de allí poder extraer el cuerpo que contiene los datos que se van a ingresar a la tabla.</li>
