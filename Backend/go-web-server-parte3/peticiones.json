@@ -1,0 +1,17 @@
+/* ejemplo cuerpo de la petición POST */
+
+{
+    "nombre":"Fernando",
+    "edad":28,
+    "descripcion":"estudiante UdeA",
+    "esta_cerca":true,
+    "direccion":"medellín"
+}
+
+/* ejemplo cuerpo de la petición PATCH
+actualizando solo los campos edad y direccion */
+
+{
+    "edad":27,
+    "direccion":"arboletes"
+}
